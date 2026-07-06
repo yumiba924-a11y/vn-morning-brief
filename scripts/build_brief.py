@@ -146,6 +146,16 @@ def summarize_with_claude(cfg, items):
     if not items:
         return []
 
+    # 無料モード: ANTHROPIC_API_KEY が無ければ Claude をスキップし、原文見出しのまま通す。
+    # （日本語訳・3行要約・示唆は付かないが、費用ゼロで配信できる）
+    if not os.environ.get("ANTHROPIC_API_KEY"):
+        print("[claude] APIキー未設定 → 無料モード（要約なし・原文見出しのまま）", file=sys.stderr)
+        for it in items:
+            it["jp_title"] = it["title"]
+            it["summary"] = (it.get("snippet") or "")[:180]
+            it["implication"] = ""
+        return items
+
     client = anthropic.Anthropic()  # ANTHROPIC_API_KEY を環境変数から自動取得
     payload = [
         {"i": n, "source": it["source"], "category": it["category"],
@@ -270,8 +280,8 @@ def build_html(cfg, stamp, fx_rows, idx_rows, news):
 
   <div style="margin-top:22px;padding-top:10px;border-top:1px solid {C['line']};
        font-size:11px;color:{C['sub']};">
-    自動生成: 為替は open.er-api.com、ニュースはGoogle News/各RSS、
-    翻訳・要約はClaude API。数値の確定値は原典でご確認ください。
+    自動生成: 為替は open.er-api.com、指数は Yahoo Finance、ニュースはGoogle News/各RSS、
+    翻訳・要約はClaude API（APIキー設定時）。数値の確定値は原典でご確認ください。
   </div>
 </div></body></html>"""
 
