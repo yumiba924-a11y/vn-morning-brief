@@ -45,6 +45,17 @@ jobs:
             --history social_history/buzz_f247_daily.csv \
             --outdir social_out
 
+      # Foreign Room（外国人保有余力）＋外人フロー を VCI(Vietcap) から収集。
+      # vnstock依存のため個別pip install。失敗してもバズ収集は止めない(continue-on-error)。
+      - name: Collect Foreign Room & flow (VCI)
+        continue-on-error: true
+        run: |
+          pip install --quiet vnstock pandas
+          python scripts/room_collector.py \
+            --symbols-file config/universe.csv \
+            --history social_history/room_daily.csv \
+            --outdir social_out
+
       # 観察ビュー（Tier2バズ序列＋平常比・2ソース）を output/social_latest.html に生成
       - name: Build observation view
         run: python scripts/social_view.py
