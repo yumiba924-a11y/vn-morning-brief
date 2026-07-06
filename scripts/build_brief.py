@@ -328,19 +328,25 @@ def save_html(cfg, stamp_file, html_str):
     # 最新版へのショートカット
     with open(os.path.join(d, "latest.html"), "w", encoding="utf-8") as f:
         f.write(html_str)
-    print(f"[save] {path}")
+    # GitHub Pages 配信用（/docs/brief.html）。毎朝ここが自動更新される。
+    docs = os.path.join(ROOT, "docs")
+    os.makedirs(docs, exist_ok=True)
+    with open(os.path.join(docs, "brief.html"), "w", encoding="utf-8") as f:
+        f.write(html_str)
+    print(f"[save] {path} + docs/brief.html")
     return path
 
 
 def send_email(cfg, subject, html_str):
     host = os.environ.get("SMTP_HOST")
-    if not host:
-        print("[mail] SMTP未設定のため送信スキップ（HTML保存のみ）")
+    user = os.environ.get("SMTP_USER")
+    pw = os.environ.get("SMTP_PASS")
+    mail_to = os.environ.get("MAIL_TO")
+    # HOSTだけ有ってUSER/PASS/宛先が欠けている中途半端な状態でも落とさずスキップ。
+    if not (host and user and pw and mail_to):
+        print("[mail] SMTP情報が不足のため送信スキップ（HTML保存のみ）")
         return
     port = int(os.environ.get("SMTP_PORT", "465"))
-    user = os.environ["SMTP_USER"]
-    pw = os.environ["SMTP_PASS"]
-    mail_to = os.environ["MAIL_TO"]
     mail_from = os.environ.get("MAIL_FROM", user)
 
     msg = MIMEMultipart("alternative")

@@ -18,8 +18,12 @@ VIEW = os.path.join(ROOT, "output", "social_latest.html")
 
 def main():
     host = os.environ.get("SMTP_HOST")
-    if not host:
-        print("[send_view] SMTP未設定のため送信スキップ（HTMLは生成済）")
+    user = os.environ.get("SMTP_USER")
+    pw = os.environ.get("SMTP_PASS")
+    mail_to = os.environ.get("MAIL_TO")
+    # HOSTだけ有ってUSER/PASS/宛先が欠けている中途半端な状態でも落とさずスキップ。
+    if not (host and user and pw and mail_to):
+        print("[send_view] SMTP情報が不足のため送信スキップ（HTMLは生成済）")
         return
     if not os.path.exists(VIEW):
         print(f"[send_view] ビューが無い: {VIEW}", file=sys.stderr)
@@ -29,9 +33,6 @@ def main():
         html_str = f.read()
 
     port = int(os.environ.get("SMTP_PORT", "465"))
-    user = os.environ["SMTP_USER"]
-    pw = os.environ["SMTP_PASS"]
-    mail_to = os.environ["MAIL_TO"]
     mail_from = os.environ.get("MAIL_FROM", user)
 
     md = (datetime.now(timezone.utc) + timedelta(hours=9)).strftime("%m/%d")
