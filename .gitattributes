@@ -1,0 +1,10 @@
+# Ubuntuランナーで実行されるスクリプト/ワークフローは必ず LF に固定
+# （CRLF だと bash の行継続 \ が壊れる）
+* text=auto eol=lf
+*.py   text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf
+*.sh   text eol=lf
+*.md   text eol=lf
+*.csv  text eol=lf
+*.html text eol=lf
