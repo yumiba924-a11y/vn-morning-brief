@@ -14,6 +14,7 @@ import os
 import re
 import sys
 import json
+import time
 import html
 import smtplib
 import datetime as dt
@@ -143,24 +144,46 @@ def fetch_news(cfg):
 # ----------------------------------------------------------------------
 # 3) Claudeで翻訳＋要約＋示唆（全記事を1コールでJSON化 = 低コスト）
 # ----------------------------------------------------------------------
+def gtranslate(text, tl="ja"):
+    """Google翻訳のキー不要エンドポイントで翻訳。失敗時は原文を返す（壊さない）。
+    非公式だが無料・キー不要。1日1回・数十件の低頻度用途。"""
+    text = (text or "").strip()
+    if not text:
+        return ""
+    try:
+        r = requests.get(
+            "https://translate.googleapis.com/translate_a/single",
+            params={"client": "gtx", "sl": "auto", "tl": tl, "dt": "t", "q": text[:1500]},
+            headers={"User-Agent": "Mozilla/5.0"}, timeout=15,
+        )
+        data = r.json()
+        out = "".join(seg[0] for seg in data[0] if seg and seg[0])
+        return out or text
+    except Exception as e:
+        print(f"[translate] 失敗（原文使用）: {e}", file=sys.stderr)
+        return text
+
+
 def summarize_with_claude(cfg, items):
     if not items:
         return []
 
-    # 無料モード: ANTHROPIC_API_KEY が無ければ Claude をスキップし、原文見出しのまま通す。
-    # （日本語訳・3行要約・示唆は付かないが、費用ゼロで配信できる）
+    # 無料モード: ANTHROPIC_API_KEY が無ければ Claude を使わず、Google翻訳で日本語化。
+    # （3行要約・示唆は付かないが、費用ゼロ・キー不要で「読める日本語」になる）
     if not os.environ.get("ANTHROPIC_API_KEY"):
-        print("[claude] APIキー未設定 → 無料モード（要約なし・原文見出しのまま）", file=sys.stderr)
+        print("[claude] APIキー未設定 → 無料モード（Google翻訳で日本語化）", file=sys.stderr)
         # <[^>]*>? … 閉じ ">" を任意にして、URLが途中で切れた未完タグ(<a href="…)も除去
         tag_re = re.compile(r"<[^>]*>?")
         for it in items:
-            it["jp_title"] = it["title"]
-            # RSSのsnippetはHTML。二重エスケープ解除 → タグ除去 の順で確実にテキスト化。
+            it["jp_title"] = gtranslate(it["title"])
+            # RSSのsnippetはHTML。二重エスケープ解除 → タグ除去 の順でテキスト化。
             raw = html.unescape(html.unescape(it.get("snippet") or ""))
             txt = re.sub(r"\s+", " ", tag_re.sub(" ", raw)).strip()
-            # 実テキストが無い（リンクだけの）記事は要約空欄＝見出しのみ表示にする。
-            it["summary"] = txt[:160] if len(txt) >= 20 else ""
+            # 見出しの焼き直し（Google News等）は要約を空に。実文があるものだけ日本語化。
+            dup = txt[:20].lower() in it["title"].lower()
+            it["summary"] = gtranslate(txt[:200]) if (len(txt) >= 25 and not dup) else ""
             it["implication"] = ""
+            time.sleep(0.15)
         return items
 
     client = anthropic.Anthropic()  # ANTHROPIC_API_KEY を環境変数から自動取得
@@ -288,7 +311,7 @@ def build_html(cfg, stamp, fx_rows, idx_rows, news):
   <div style="margin-top:22px;padding-top:10px;border-top:1px solid {C['line']};
        font-size:11px;color:{C['sub']};">
     自動生成: 為替は open.er-api.com、指数は Yahoo Finance、ニュースはGoogle News/各RSS、
-    翻訳・要約はClaude API（APIキー設定時）。数値の確定値は原典でご確認ください。
+    翻訳はGoogle翻訳（APIキー設定時はClaudeで要約）。数値の確定値は原典でご確認ください。
   </div>
 </div></body></html>"""
 
