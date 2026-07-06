@@ -86,5 +86,8 @@ jobs:
           git config user.name  "social-collector-bot"
           git config user.email "actions@github.com"
           git add social_history/ output/ docs/
-          git commit -m "social: buzz $(TZ=Asia/Ho_Chi_Minh date +%Y-%m-%d)" || echo "no changes"
-          git push
+          git commit -m "social: buzz $(TZ=Asia/Ho_Chi_Minh date +%Y-%m-%d)" || { echo "no changes"; exit 0; }
+          # 手動push/他ワークフローとの競合に強く（rebase＋最大3回リトライ）
+          for i in 1 2 3; do
+            git pull --rebase --autostash origin main && git push && break || sleep 5
+          done

@@ -12,6 +12,7 @@
 
 import os
 import re
+import csv
 import sys
 import json
 import time
@@ -363,6 +364,127 @@ def send_email(cfg, subject, html_str):
 
 
 # ----------------------------------------------------------------------
+# 6) Gemini編集モード（無料キーがある時だけ）＝5本厳選＋体言止め＋洞察＋Tier2接続
+# ----------------------------------------------------------------------
+def load_buzz_top(n=6):
+    """Tier2バズ観察の最新日 上位を [(symbol, clean), ...] で返す。編集で中型株の話に絡める。"""
+    path = os.path.join(ROOT, "social_history", "buzz_daily.csv")
+    uni = os.path.join(ROOT, "config", "universe.csv")
+    if not os.path.exists(path):
+        return []
+    tier = {}
+    if os.path.exists(uni):
+        with open(uni, encoding="utf-8-sig") as f:
+            for r in csv.DictReader(f):
+                tier[r["symbol"].strip().upper()] = r.get("tier", "").strip()
+    with open(path, encoding="utf-8-sig") as f:
+        rows = list(csv.DictReader(f))
+    if not rows:
+        return []
+    latest = max(r["date"] for r in rows)
+    t2 = [r for r in rows if r["date"] == latest and tier.get(r["symbol"]) == "tier2"]
+    t2.sort(key=lambda r: int(r.get("volume_n_clean") or 0), reverse=True)
+    return [(r["symbol"], int(r.get("volume_n_clean") or 0)) for r in t2[:n]]
+
+
+def editorial_with_gemini(cfg, items, buzz_top):
+    """GEMINI_API_KEY がある時だけ、5本厳選＋編集をGeminiで実施。失敗/未設定はNone。"""
+    key = os.environ.get("GEMINI_API_KEY")
+    if not key or not items:
+        return None
+    model = cfg.get("gemini_model", "gemini-2.0-flash")
+    tag_re = re.compile(r"<[^>]*>?")
+    arts = []
+    for i, it in enumerate(items):
+        raw = html.unescape(html.unescape(it.get("snippet") or ""))
+        txt = re.sub(r"\s+", " ", tag_re.sub(" ", raw)).strip()
+        arts.append({"i": i, "src": it["source"], "cat": it["category"],
+                     "title": it["title"], "text": txt[:300]})
+    buzz_str = "、".join(f"{s}({c}件)" for s, c in buzz_top) if buzz_top else "（データなし）"
+    prompt = (
+        "あなたはベトナム株の朝の市況ブリーフを書く、日系運用会社の投資調査部アナリストです。\n"
+        "下の記事リスト（英語/ベトナム語混在）から、市場に効く5本を厳選し、日本語で編集します。\n"
+        "本文は翻訳ではなく『何が起きて・なぜ効くか』を書くこと。\n\n"
+        "ルール:\n"
+        "- top5: 5本。headline=体言止めの見出し(8〜16字・言い切る。例『外国人売りが重し』『資金は中型株へ』『金利に上昇圧力』)。"
+        "body=3〜4文の日本語(事実→含意)。source=媒体名。\n"
+        "- others: top5以外から3本、一言見出し(日本語)だけ。\n"
+        "- 中型株や物色の話題があれば、本日の掲示板バズ上位と絡めると良い→ " + buzz_str + "\n"
+        "- 記事に無い数字を創作しない。断定しすぎない。読み手はプロのFMと一般マーケター。\n"
+        "出力はJSONのみ(前置き・コードフェンス無し):\n"
+        '{"top5":[{"headline":"","body":"","source":""}],"others":["",""]}\n\n'
+        "記事:\n" + json.dumps(arts, ensure_ascii=False)
+    )
+    try:
+        r = requests.post(
+            f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+            params={"key": key},
+            json={"contents": [{"parts": [{"text": prompt}]}],
+                  "generationConfig": {"temperature": 0.4, "responseMimeType": "application/json"}},
+            timeout=60,
+        )
+        data = r.json()
+        text = data["candidates"][0]["content"]["parts"][0]["text"]
+        obj = json.loads(text)
+        if obj.get("top5"):
+            return obj
+        print(f"[gemini] top5空→フォールバック: {str(data)[:200]}", file=sys.stderr)
+    except Exception as e:
+        print(f"[gemini] 失敗→翻訳版にフォールバック: {e}", file=sys.stderr)
+    return None
+
+
+def build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial):
+    """Bloomberg形式の編集版HTML（sample.html準拠）。"""
+    title = cfg["output"]["title"]
+    snap = fx_rows + idx_rows
+    tiles = "".join(
+        f'<td style="padding:2px 12px 2px 0;vertical-align:top;white-space:nowrap;">'
+        f'<div style="font-size:10px;color:#9db0c8;">{esc(r["label"])}</div>'
+        f'<div style="font-size:16px;color:#fff;font-weight:700;">{esc(r["value"])}</div></td>'
+        for r in snap
+    ) or '<td style="color:#9db0c8;font-size:12px;">数値取得なし</td>'
+
+    def story(s):
+        src = (f'<span style="color:#888;font-size:11px;"> — {esc(s.get("source",""))}</span>'
+               if s.get("source") else "")
+        return (f'<div style="padding:16px 0;border-bottom:1px solid #eee;">'
+                f'<div style="font-size:16px;font-weight:800;">{esc(s.get("headline",""))}</div>'
+                f'<div style="font-size:13.5px;color:#333;line-height:1.85;margin-top:6px;">'
+                f'{esc(s.get("body",""))}{src}</div></div>')
+    stories = "".join(story(s) for s in editorial.get("top5", []))
+    others = "".join(f'・{esc(o)}<br>' for o in editorial.get("others", [])) or "―"
+
+    return f"""<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{esc(title)}</title></head>
+<body style="margin:0;background:#f4f4f4;font-family:'Hiragino Kaku Gothic ProN','Meiryo',sans-serif;color:#111;">
+<div style="max-width:680px;margin:0 auto;background:#fff;">
+  <div style="padding:22px 26px 14px;border-bottom:3px solid #111;">
+    <div style="font-size:11px;letter-spacing:2px;color:#0a7d4b;font-weight:700;">CQC 投資調査部</div>
+    <div style="font-size:23px;font-weight:800;letter-spacing:-.5px;margin-top:3px;">{esc(title)}</div>
+    <div style="font-size:12px;color:#777;margin-top:3px;">{esc(stamp)}　朝の5本</div>
+    <div style="font-size:13px;color:#333;line-height:1.7;margin-top:10px;">
+      昨日のベトナム市場と、今日を始めるにあたって押さえておきたい5本をお届けします。</div>
+  </div>
+  <div style="padding:14px 26px;background:#0f1b2d;">
+    <table style="border-collapse:collapse;"><tr>{tiles}</tr></table>
+    <div style="font-size:10px;color:#6b7c93;margin-top:6px;">指数はYahoo Finance、為替は open.er-api.com。参考値。</div>
+  </div>
+  <div style="padding:6px 26px 4px;">{stories}</div>
+  <div style="padding:14px 26px;background:#fafafa;border-top:1px solid #eee;">
+    <div style="font-size:12px;font-weight:700;color:#666;letter-spacing:1px;margin-bottom:8px;">その他の注目ニュース</div>
+    <div style="font-size:13px;color:#222;line-height:1.9;">{others}</div>
+  </div>
+  <div style="padding:14px 26px 22px;font-size:11px;color:#999;line-height:1.7;">
+    出典: VnExpress／CafeF／Đầu tư Chứng khoán／VnEconomy 等、指数はYahoo Finance、掲示板はFireAnt。
+    本資料は社内参考であり投資助言ではありません。編集はGeminiによる5本厳選・要約。
+  </div>
+</div></body></html>"""
+
+
+# ----------------------------------------------------------------------
 def main():
     cfg = load_config()
     ts = now_jst(cfg)
@@ -375,11 +497,20 @@ def main():
     print("[2/4] ニュース収集…")
     items = fetch_news(cfg)
     print(f"       {len(items)}件収集")
-    print("[3/4] Claudeで翻訳・要約…")
-    news = summarize_with_claude(cfg, items)
-    print(f"       {len(news)}件採用")
+
+    print("[3/4] 編集・要約…")
+    # 優先度: Gemini編集モード（無料キー時・Bloomberg形式） > Claude/翻訳版
+    buzz_top = load_buzz_top()
+    editorial = editorial_with_gemini(cfg, items, buzz_top)
+    if editorial:
+        print(f"       Gemini編集モード（{len(editorial.get('top5', []))}本厳選）")
+        html_str = build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial)
+    else:
+        news = summarize_with_claude(cfg, items)
+        print(f"       翻訳/Claude版 {len(news)}件採用")
+        html_str = build_html(cfg, stamp, fx_rows, idx_rows, news)
+
     print("[4/4] HTML生成・保存・送信…")
-    html_str = build_html(cfg, stamp, fx_rows, idx_rows, news)
     save_html(cfg, stamp_file, html_str)
     subject = f"【朝の市況ブリーフ】{ts.strftime('%m/%d')}"
     send_email(cfg, subject, html_str)

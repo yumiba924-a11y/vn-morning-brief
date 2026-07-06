@@ -25,6 +25,7 @@ jobs:
 
       - name: Build & send brief
         env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           SMTP_HOST: ${{ secrets.SMTP_HOST }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
@@ -39,5 +40,8 @@ jobs:
           git config user.name  "morning-brief-bot"
           git config user.email "actions@github.com"
           git add output/ docs/
-          git commit -m "brief: $(date -u +%Y-%m-%d)" || echo "no changes"
-          git push
+          git commit -m "brief: $(TZ=Asia/Tokyo date +%Y-%m-%d)" || { echo "no changes"; exit 0; }
+          # 手動push/他ワークフローとの競合に強く（rebase＋最大3回リトライ）
+          for i in 1 2 3; do
+            git pull --rebase --autostash origin main && git push && break || sleep 5
+          done
