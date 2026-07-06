@@ -18,13 +18,14 @@ fx:
     - { label: "USD/VND", quote: "VND" }
   # VND/JPY は自動算出して併記。
 
-# 指数・コモディティ。Stooqシンボルを指定。取れたものだけ表示。
-# シンボルは stooq.com で確認して差し替え可。
+# 指数・コモディティ。Yahoo Finance のシンボルを指定。取れたものだけ表示。
+# シンボルは finance.yahoo.com で確認して差し替え可（指数は ^ 始まり・先物は =F）。
 indices:
-  - { label: "日経225",   symbol: "^nkx" }
-  - { label: "S&P500",    symbol: "^spx" }
-  - { label: "WTI原油",   symbol: "cl.f" }
-  # VN-Index は無料での安定取得が難しいため、下のニュース要約側でカバー。
+  - { label: "日経225",   symbol: "^N225" }
+  - { label: "S&P500",    symbol: "^GSPC" }
+  - { label: "WTI原油",   symbol: "CL=F" }
+  - { label: "Brent",     symbol: "BZ=F" }
+  # VN-Index は Yahoo に無い(404)ため、下のニュース要約側でカバー。
 
 # --- ニュース収集 ---
 # category は macro（英語・マクロ枠）/ local（ベトナム語・現地枠）。

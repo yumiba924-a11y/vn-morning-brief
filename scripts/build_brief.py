@@ -72,23 +72,20 @@ def fetch_fx(cfg):
 
 
 def fetch_indices(cfg):
-    """Stooqの無料CSVから指数・コモディティの前日終値を取得。
-    取れなかったものは黙って落とす（壊れない設計）。"""
+    """Yahoo Finance chart API から指数・コモディティの現値を取得。
+    取れなかったものは黙って落とす（壊れない設計）。
+    ※旧Stooq CSVは light-quote エンドポイント廃止で全滅→差し替え(2026-07)。"""
     rows = []
     for it in cfg.get("indices", []):
         try:
-            url = f"https://stooq.com/q/l/?s={it['symbol']}&f=sd2t2ohlcv&h&e=csv"
-            r = requests.get(url, timeout=20)
-            lines = r.text.strip().splitlines()
-            if len(lines) < 2:
+            sym = quote_plus(it["symbol"])
+            url = f"https://query1.finance.yahoo.com/v8/finance/chart/{sym}?range=1d&interval=1d"
+            r = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=20)
+            meta = r.json()["chart"]["result"][0]["meta"]
+            val = meta.get("regularMarketPrice")
+            if val is None:
                 continue
-            cols = lines[1].split(",")
-            close = cols[6] if len(cols) > 6 else "N/D"
-            if close in ("N/D", "", None):
-                continue
-            val = float(close)
-            disp = f"{val:,.2f}"
-            rows.append({"label": it["label"], "value": disp})
+            rows.append({"label": it["label"], "value": f"{val:,.2f}"})
         except Exception as e:
             print(f"[idx] {it.get('label')} 取得失敗: {e}", file=sys.stderr)
     return rows

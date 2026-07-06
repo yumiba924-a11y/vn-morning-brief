@@ -49,6 +49,17 @@ jobs:
       - name: Build observation view
         run: python scripts/social_view.py
 
+      # 観察ビューをメール送信（朝ブリーフと同じSMTPを使い回し・未登録なら自動スキップ）
+      - name: Email observation view
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          MAIL_TO:   ${{ secrets.MAIL_TO }}
+          MAIL_FROM: ${{ secrets.MAIL_FROM }}
+        run: python scripts/send_view.py
+
       # 生投稿は日次アーカイブとして Artifact 保管（repoは膨らませない・90日保持）
       - name: Archive raw posts
         uses: actions/upload-artifact@v4
