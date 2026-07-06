@@ -63,6 +63,6 @@ jobs:
         run: |
           git config user.name  "social-collector-bot"
           git config user.email "actions@github.com"
-          git add social_history/ output/
+          git add social_history/ output/ docs/
           git commit -m "social: buzz $(TZ=Asia/Ho_Chi_Minh date +%Y-%m-%d)" || echo "no changes"
           git push

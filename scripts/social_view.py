@@ -218,7 +218,12 @@ def _write(body, latest):
     dated = os.path.join(OUTDIR, f"social-{str(latest).replace('-','')}.html")
     with open(dated, "w", encoding="utf-8") as f:
         f.write(page)
-    print(f"[social_view] wrote output/social_latest.html (対象日 {latest})")
+    # GitHub Pages 配信用（source=main /docs）。同じ内容を index.html として置く。
+    docs = os.path.join(ROOT, "docs")
+    os.makedirs(docs, exist_ok=True)
+    with open(os.path.join(docs, "index.html"), "w", encoding="utf-8") as f:
+        f.write(page)
+    print(f"[social_view] wrote output/social_latest.html & docs/index.html (対象日 {latest})")
 
 
 if __name__ == "__main__":
