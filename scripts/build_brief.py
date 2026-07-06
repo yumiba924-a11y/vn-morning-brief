@@ -11,6 +11,7 @@
 """
 
 import os
+import re
 import sys
 import json
 import html
@@ -150,9 +151,15 @@ def summarize_with_claude(cfg, items):
     # （日本語訳・3行要約・示唆は付かないが、費用ゼロで配信できる）
     if not os.environ.get("ANTHROPIC_API_KEY"):
         print("[claude] APIキー未設定 → 無料モード（要約なし・原文見出しのまま）", file=sys.stderr)
+        # <[^>]*>? … 閉じ ">" を任意にして、URLが途中で切れた未完タグ(<a href="…)も除去
+        tag_re = re.compile(r"<[^>]*>?")
         for it in items:
             it["jp_title"] = it["title"]
-            it["summary"] = (it.get("snippet") or "")[:180]
+            # RSSのsnippetはHTML。二重エスケープ解除 → タグ除去 の順で確実にテキスト化。
+            raw = html.unescape(html.unescape(it.get("snippet") or ""))
+            txt = re.sub(r"\s+", " ", tag_re.sub(" ", raw)).strip()
+            # 実テキストが無い（リンクだけの）記事は要約空欄＝見出しのみ表示にする。
+            it["summary"] = txt[:160] if len(txt) >= 20 else ""
             it["implication"] = ""
         return items
 
