@@ -1,0 +1,68 @@
+name: social-collector
+
+# ソーシャル収集（Tier2バズのベースライン蓄積用）＝2ソース: FireAnt ＋ F247。
+# 依存ゼロ・Secrets不要（FireAntは公開トークン同梱・F247は認証不要）。
+# 毎営業日 VN 市場クローズ後に走らせ、日次バズ件数を social_history/ に貯める。
+
+on:
+  schedule:
+    # 平日 09:00 UTC = 16:00 ICT（VN大引け15:00の直後） = 18:00 JST
+    - cron: "0 9 * * 1-5"
+  workflow_dispatch: {}   # 手動実行ボタン（テスト用）
+
+permissions:
+  contents: write         # 履歴CSVをコミットするため
+
+concurrency:
+  group: social-collector
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # 標準ライブラリのみ＝ pip install 不要。対象は VN100（config/universe.csv）
+      - name: Collect FireAnt social (quality + volume)
+        run: |
+          python scripts/social_collector.py \
+            --symbols-file config/universe.csv \
+            --hours 24 --max-pages 3 \
+            --history social_history/buzz_daily.csv \
+            --outdir social_out
+
+      # 第2ソース：F247(Discourse) を ticker タグで銘柄別収集
+      - name: Collect F247 social
+        run: |
+          python scripts/f247_collector.py \
+            --symbols-file config/universe.csv \
+            --hours 24 \
+            --history social_history/buzz_f247_daily.csv \
+            --outdir social_out
+
+      # 観察ビュー（Tier2バズ序列＋平常比・2ソース）を output/social_latest.html に生成
+      - name: Build observation view
+        run: python scripts/social_view.py
+
+      # 生投稿は日次アーカイブとして Artifact 保管（repoは膨らませない・90日保持）
+      - name: Archive raw posts
+        uses: actions/upload-artifact@v4
+        with:
+          name: social-posts-${{ github.run_id }}
+          path: |
+            social_out/social_posts.jsonl
+            social_out/f247_topics.jsonl
+          retention-days: 90
+
+      - name: Commit history & view
+        run: |
+          git config user.name  "social-collector-bot"
+          git config user.email "actions@github.com"
+          git add social_history/ output/
+          git commit -m "social: buzz $(TZ=Asia/Ho_Chi_Minh date +%Y-%m-%d)" || echo "no changes"
+          git push

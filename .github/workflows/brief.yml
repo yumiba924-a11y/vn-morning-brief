@@ -1,0 +1,42 @@
+name: morning-brief
+
+on:
+  schedule:
+    # 平日 09:30 JST に実行 = 00:30 UTC。届くのは10時前。
+    - cron: "30 0 * * 1-5"
+  workflow_dispatch: {}   # 手動実行ボタンも有効化（テスト用）
+
+permissions:
+  contents: write         # 生成HTMLをリポジトリにコミットするため
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Build & send brief
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          MAIL_TO:   ${{ secrets.MAIL_TO }}
+          MAIL_FROM: ${{ secrets.MAIL_FROM }}
+        run: python scripts/build_brief.py
+
+      - name: Commit HTML archive
+        run: |
+          git config user.name  "morning-brief-bot"
+          git config user.email "actions@github.com"
+          git add output/
+          git commit -m "brief: $(date -u +%Y-%m-%d)" || echo "no changes"
+          git push

@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+social_out/
+chunk_*
+.DS_Store

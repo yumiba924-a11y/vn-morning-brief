@@ -1,0 +1,63 @@
+# =============================================================
+#  ベトナム朝の市況ブリーフ — ソース設定
+#  ここを編集するだけで、収集対象・言語・指標を変えられます。
+#  コードは触らなくてOK。
+# =============================================================
+
+# --- Claude API（翻訳＋要約に使うモデル）---
+# 利用可能な最新モデルに差し替え可。
+anthropic_model: "claude-sonnet-4-5"
+
+# --- マーケットスナップショット（最上部に横並びで数値表示）---
+# 為替は open.er-api.com、指数は Stooq(無料CSV)から取得。
+# 取れなかった項目は黙って非表示になる（壊れない設計）。
+fx:
+  base: "USD"
+  pairs:
+    - { label: "USD/JPY", quote: "JPY" }
+    - { label: "USD/VND", quote: "VND" }
+  # VND/JPY は自動算出して併記。
+
+# 指数・コモディティ。Stooqシンボルを指定。取れたものだけ表示。
+# シンボルは stooq.com で確認して差し替え可。
+indices:
+  - { label: "日経225",   symbol: "^nkx" }
+  - { label: "S&P500",    symbol: "^spx" }
+  - { label: "WTI原油",   symbol: "cl.f" }
+  # VN-Index は無料での安定取得が難しいため、下のニュース要約側でカバー。
+
+# --- ニュース収集 ---
+# category は macro（英語・マクロ枠）/ local（ベトナム語・現地枠）。
+# type は google_news（キーワード検索RSS）か direct_rss（フィードURL直指定）。
+#   英語  : hl=en gl=US ceid=US:en
+#   ベトナム語: hl=vi gl=VN ceid=VN:vi
+#   日本語: hl=ja gl=JP ceid=JP:ja
+news:
+  # ---- マクロ（英語ソース。市場全体・ベトナムを外から見る枠）----
+  - { name: "Vietnam macro (EN)", category: "macro", type: "google_news",
+      query: "Vietnam economy OR VN-Index OR State Bank of Vietnam",
+      hl: "en", gl: "US", ceid: "US:en", max: 5 }
+  - { name: "VnExpress International", category: "macro", type: "direct_rss",
+      url: "https://e.vnexpress.net/rss/business.rss", max: 4 }
+
+  # ---- 現地（ベトナム語ソース。日英に載る前の一次材料）----
+  - { name: "CafeF (VI)", category: "local", type: "google_news",
+      query: "chứng khoán OR VN-Index OR ngân hàng OR lãi suất",
+      hl: "vi", gl: "VN", ceid: "VN:vi", max: 5 }
+  - { name: "Đầu tư Chứng khoán (VI)", category: "local", type: "google_news",
+      query: "thị trường chứng khoán Việt Nam OR khối ngoại",
+      hl: "vi", gl: "VN", ceid: "VN:vi", max: 4 }
+  - { name: "VnEconomy (VI)", category: "local", type: "google_news",
+      query: "kinh tế vĩ mô OR tỷ giá OR FTSE Việt Nam",
+      hl: "vi", gl: "VN", ceid: "VN:vi", max: 3 }
+
+# --- 収集の絞り込み ---
+filter:
+  hours_lookback: 24     # 直近何時間の記事を対象にするか
+  max_total_items: 30    # Claudeに渡す前の上限（コスト管理）
+
+# --- 出力 ---
+output:
+  title: "ベトナム朝の市況ブリーフ"
+  html_dir: "output"
+  timezone: "Asia/Tokyo"
