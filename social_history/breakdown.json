@@ -1,108 +1,108 @@
 {
-  "date": "2026-07-06",
-  "index_prev": 1862.08,
-  "index_cur": 1843.5,
-  "index_pt": -18.58,
-  "index_ret_pct": -1.0,
+  "date": "2026-07-07",
+  "index_prev": 1843.5,
+  "index_cur": 1848.25,
+  "index_pt": 4.75,
+  "index_ret_pct": 0.26,
   "is_break": false,
-  "vn30_contrib_pt": -8.71,
-  "residual_pt": -9.87,
+  "vn30_contrib_pt": 1.16,
+  "residual_pt": 3.59,
   "culprits": [
     {
+      "symbol": "CRV",
+      "ret_pct": -100.0,
+      "contrib_pt": -3.76,
+      "foreign_net_bn": -0.0,
+      "room_used_pct": 0.0,
+      "in_vn30": false
+    },
+    {
       "symbol": "VHM",
-      "ret_pct": 1.65,
-      "contrib_pt": 2.24,
-      "foreign_net_bn": -67.89,
-      "room_used_pct": 15.2,
+      "ret_pct": -2.6,
+      "contrib_pt": -3.49,
+      "foreign_net_bn": -203.22,
+      "room_used_pct": 15.1,
       "in_vn30": true
     },
     {
-      "symbol": "VCB",
-      "ret_pct": -1.29,
-      "contrib_pt": -1.41,
-      "foreign_net_bn": 15.99,
-      "room_used_pct": 67.4,
+      "symbol": "LGC",
+      "ret_pct": -100.0,
+      "contrib_pt": -2.92,
+      "foreign_net_bn": -0.02,
+      "room_used_pct": 91.8,
+      "in_vn30": false
+    },
+    {
+      "symbol": "LPB",
+      "ret_pct": 4.87,
+      "contrib_pt": 1.59,
+      "foreign_net_bn": 11.66,
+      "room_used_pct": 22.7,
       "in_vn30": true
     },
     {
-      "symbol": "BID",
-      "ret_pct": -2.13,
-      "contrib_pt": -1.37,
-      "foreign_net_bn": -46.86,
-      "room_used_pct": 58.7,
-      "in_vn30": true
+      "symbol": "TMS",
+      "ret_pct": -100.0,
+      "contrib_pt": -1.38,
+      "foreign_net_bn": -0.02,
+      "room_used_pct": 84.1,
+      "in_vn30": false
     },
     {
-      "symbol": "GVR",
-      "ret_pct": -4.62,
-      "contrib_pt": -1.23,
-      "foreign_net_bn": -1.33,
-      "room_used_pct": 4.8,
-      "in_vn30": true
+      "symbol": "HNA",
+      "ret_pct": -100.0,
+      "contrib_pt": -1.08,
+      "foreign_net_bn": 0.0,
+      "room_used_pct": Infinity,
+      "in_vn30": false
     },
     {
       "symbol": "BSR",
-      "ret_pct": -4.86,
-      "contrib_pt": -1.22,
-      "foreign_net_bn": -46.47,
+      "ret_pct": 3.19,
+      "contrib_pt": 0.8,
+      "foreign_net_bn": 22.75,
       "room_used_pct": 2.2,
       "in_vn30": true
     },
     {
-      "symbol": "VPL",
-      "ret_pct": -3.26,
-      "contrib_pt": -1.04,
-      "foreign_net_bn": -2.94,
-      "room_used_pct": 3.8,
-      "in_vn30": true
-    },
-    {
-      "symbol": "GAS",
-      "ret_pct": -1.73,
-      "contrib_pt": -0.66,
-      "foreign_net_bn": -4.89,
-      "room_used_pct": 4.2,
-      "in_vn30": true
-    },
-    {
-      "symbol": "VPB",
-      "ret_pct": -1.26,
-      "contrib_pt": -0.59,
-      "foreign_net_bn": 36.77,
-      "room_used_pct": 80.0,
-      "in_vn30": true
-    },
-    {
       "symbol": "MBB",
-      "ret_pct": -1.17,
-      "contrib_pt": -0.51,
-      "foreign_net_bn": -16.63,
+      "ret_pct": 1.78,
+      "contrib_pt": 0.77,
+      "foreign_net_bn": 7.52,
       "room_used_pct": 95.4,
       "in_vn30": true
     },
     {
-      "symbol": "ACB",
-      "ret_pct": -1.99,
-      "contrib_pt": -0.49,
-      "foreign_net_bn": -3.39,
-      "room_used_pct": 81.9,
-      "in_vn30": true
-    },
-    {
-      "symbol": "STB",
-      "ret_pct": -1.67,
-      "contrib_pt": -0.48,
-      "foreign_net_bn": -50.2,
-      "room_used_pct": 38.3,
-      "in_vn30": true
+      "symbol": "TCX",
+      "ret_pct": 2.87,
+      "contrib_pt": 0.74,
+      "foreign_net_bn": -10.62,
+      "room_used_pct": 9.4,
+      "in_vn30": false
     },
     {
       "symbol": "MSN",
-      "ret_pct": -1.81,
-      "contrib_pt": -0.4,
-      "foreign_net_bn": -69.87,
+      "ret_pct": -2.7,
+      "contrib_pt": -0.58,
+      "foreign_net_bn": -182.69,
       "room_used_pct": 24.4,
       "in_vn30": true
+    },
+    {
+      "symbol": "HDB",
+      "ret_pct": 1.84,
+      "contrib_pt": 0.53,
+      "foreign_net_bn": 54.0,
+      "room_used_pct": 79.4,
+      "in_vn30": true
+    },
+    {
+      "symbol": "BCG",
+      "ret_pct": -100.0,
+      "contrib_pt": -0.47,
+      "foreign_net_bn": -0.21,
+      "room_used_pct": 2.3,
+      "in_vn30": false
     }
   ]
 }
