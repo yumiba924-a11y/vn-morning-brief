@@ -389,22 +389,22 @@ def load_buzz_top(n=6):
     return [(r["symbol"], int(r.get("volume_n_clean") or 0)) for r in t2[:n]]
 
 
-def _gemini_pick_model(key):
-    """このキーで generateContent 可能なモデルを探す（flash優先）。cfg指定が無い時の自動選択。"""
+def _gemini_models(key):
+    """このキーで generateContent 可能なモデルを flash優先で最大4つ返す（503時の切替候補）。"""
     try:
         r = requests.get("https://generativelanguage.googleapis.com/v1beta/models",
                          params={"key": key}, timeout=30)
-        models = r.json().get("models", [])
-        names = [m["name"].split("/")[-1] for m in models
+        names = [m["name"].split("/")[-1] for m in r.json().get("models", [])
                  if "generateContent" in m.get("supportedGenerationMethods", [])]
-        for pref in ("gemini-2.5-flash", "gemini-2.0-flash", "flash-latest", "flash"):
+        ordered = []
+        for pref in ("gemini-2.5-flash", "gemini-2.0-flash", "gemini-flash-latest", "flash"):
             for n in names:
-                if pref in n:
-                    return n
-        return names[0] if names else None
+                if pref in n and n not in ordered:
+                    ordered.append(n)
+        return ordered[:4] or names[:2]
     except Exception as e:
         print(f"[gemini] モデル一覧取得失敗: {e}", file=sys.stderr)
-        return None
+        return ["gemini-2.5-flash", "gemini-2.0-flash"]
 
 
 def load_breakdown():
@@ -462,8 +462,8 @@ def editorial_with_gemini(cfg, items, buzz_top):
     key = os.environ.get("GEMINI_API_KEY")
     if not key or not items:
         return None
-    model = cfg.get("gemini_model") or _gemini_pick_model(key) or "gemini-2.0-flash"
-    print(f"[gemini] 使用モデル: {model}", file=sys.stderr)
+    models = [cfg["gemini_model"]] if cfg.get("gemini_model") else _gemini_models(key)
+    print(f"[gemini] 候補モデル: {models}", file=sys.stderr)
     tag_re = re.compile(r"<[^>]*>?")
     arts = []
     for i, it in enumerate(items):
@@ -486,27 +486,35 @@ def editorial_with_gemini(cfg, items, buzz_top):
         '{"top5":[{"headline":"","body":"","source":""}],"others":["",""]}\n\n'
         "記事:\n" + json.dumps(arts, ensure_ascii=False)
     )
-    try:
-        r = requests.post(
-            f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
-            params={"key": key},
-            json={"contents": [{"parts": [{"text": prompt}]}],
-                  "generationConfig": {"temperature": 0.4, "responseMimeType": "application/json"}},
-            timeout=60,
-        )
-        data = r.json()
-        if "candidates" not in data:
-            # エラー応答の中身をログに出す（モデル名/権限/クォータの切り分け用）
-            print(f"[gemini] 応答にcandidates無し HTTP{r.status_code}: {str(data)[:400]}", file=sys.stderr)
-            return None
-        text = data["candidates"][0]["content"]["parts"][0]["text"]
-        text = text.replace("```json", "").replace("```", "").strip()
-        obj = json.loads(text)
-        if obj.get("top5"):
-            return obj
-        print(f"[gemini] top5空→フォールバック: {text[:200]}", file=sys.stderr)
-    except Exception as e:
-        print(f"[gemini] 失敗→翻訳版にフォールバック: {e}", file=sys.stderr)
+    body = {"contents": [{"parts": [{"text": prompt}]}],
+            "generationConfig": {"temperature": 0.4, "responseMimeType": "application/json"}}
+    # モデル×リトライで 503(高需要)/429(レート) を粘る。全滅で None（翻訳版フォールバック）。
+    for model in models:
+        for attempt in range(3):
+            try:
+                r = requests.post(
+                    f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+                    params={"key": key}, json=body, timeout=60)
+                data = r.json()
+                if "candidates" in data:
+                    text = data["candidates"][0]["content"]["parts"][0]["text"]
+                    text = text.replace("```json", "").replace("```", "").strip()
+                    obj = json.loads(text)
+                    if obj.get("top5"):
+                        print(f"[gemini] 成功: {model}", file=sys.stderr)
+                        return obj
+                    print(f"[gemini] top5空: {text[:150]}", file=sys.stderr)
+                    break  # 応答は来たが中身不正→別モデルへ
+                code = (data.get("error") or {}).get("code")
+                print(f"[gemini] {model} candidates無し HTTP{code}: {str(data)[:200]}", file=sys.stderr)
+                if code in (503, 429):
+                    time.sleep(4 * (attempt + 1))  # 混雑/レート→バックオフして再試行
+                    continue
+                break  # 他のエラー→別モデルへ
+            except Exception as e:
+                print(f"[gemini] {model} 例外: {e}", file=sys.stderr)
+                time.sleep(3)
+    print("[gemini] 全モデル失敗→翻訳版にフォールバック", file=sys.stderr)
     return None
 
 
