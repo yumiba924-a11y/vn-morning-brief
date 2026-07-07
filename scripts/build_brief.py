@@ -246,7 +246,7 @@ def esc(s):
     return html.escape(s or "")
 
 
-def build_html(cfg, stamp, fx_rows, idx_rows, news):
+def build_html(cfg, stamp, fx_rows, idx_rows, news, lead=""):
     macro = [n for n in news if n["category"] == "macro"]
     local = [n for n in news if n["category"] == "local"]
 
@@ -300,6 +300,8 @@ def build_html(cfg, stamp, fx_rows, idx_rows, news):
   <div style="font-size:12px;font-weight:700;color:{C['sub']};letter-spacing:1px;">
        マーケットスナップショット</div>
   <table style="border-collapse:collapse;margin:6px 0 18px;"><tr>{snap_html}</tr></table>
+
+  {lead}
 
   <div style="font-size:12px;font-weight:700;color:{C['sub']};letter-spacing:1px;
        margin:20px 0 2px;">マクロ・市場全体</div>
@@ -405,6 +407,56 @@ def _gemini_pick_model(key):
         return None
 
 
+def load_breakdown():
+    """±ブレイク解剖の最新結果を読む（social_history/breakdown.json）。無ければNone。"""
+    path = os.path.join(ROOT, "social_history", "breakdown.json")
+    if not os.path.exists(path):
+        return None
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return None
+
+
+def breakdown_card_html(bd):
+    """解剖の実数字を直接カード化（LLMに言い換えさせない＝ファクト厳守）。冒頭に置く。"""
+    if not bd or bd.get("index_pt") is None:
+        return ""
+    pt = bd["index_pt"]; ret = bd.get("index_ret_pct", 0)
+    down = pt < 0
+    culp = [c for c in bd.get("culprits", []) if c.get("in_vn30") and ((c["contrib_pt"] < 0) == down)][:3]
+    # 一言の推定（外人主導 or 国内主導＝信用の可能性）
+    fnets = [c.get("foreign_net_bn") for c in culp if c.get("foreign_net_bn") is not None]
+    read = ""
+    if fnets:
+        if sum(1 for x in fnets if x < -10) >= 2:
+            read = "外国人売りが主導。"
+        elif all(abs(x) < 10 for x in fnets):
+            read = "外国人はほぼ中立＝国内主体（信用の動きの可能性）。"
+    resid = bd.get("residual_pt", 0); vn30c = bd.get("vn30_contrib_pt", 0)
+    if abs(resid) > abs(vn30c):
+        read += "下げの過半はVN30外＝広範。" if down else "上げの過半はVN30外＝広範。"
+    rows = "".join(
+        f'<tr><td style="padding:2px 8px;font-weight:700;">{esc(c["symbol"])}</td>'
+        f'<td style="padding:2px 8px;text-align:right;color:{"#c0392b" if c["ret_pct"]<0 else "#0a7d4b"};">{c["ret_pct"]:+.2f}%</td>'
+        f'<td style="padding:2px 8px;text-align:right;">{c["contrib_pt"]:+.2f}pt</td>'
+        f'<td style="padding:2px 8px;text-align:right;color:#555;">'
+        f'{"外人"+format(c["foreign_net_bn"],"+.0f")+"十億" if c.get("foreign_net_bn") is not None else "―"}</td></tr>'
+        for c in culp)
+    brk = "⚑" if bd.get("is_break") else ""
+    color = "#c0392b" if down else "#0a7d4b"
+    return (
+        f'<div style="margin:0 0 14px;padding:14px 16px;background:#fff8f2;border-left:4px solid {color};">'
+        f'<div style="font-size:11px;color:#999;letter-spacing:1px;">なぜ昨日動いたか（自動解剖・{esc(str(bd.get("date","")))}）</div>'
+        f'<div style="font-size:17px;font-weight:800;margin:2px 0 6px;color:{color};">'
+        f'{brk} VN-Index {pt:+.1f}pt（{ret:+.2f}%）</div>'
+        f'<table style="border-collapse:collapse;font-size:12.5px;width:100%;">{rows}</table>'
+        + (f'<div style="font-size:12px;color:#444;margin-top:6px;">▶ {esc(read)}</div>' if read else "")
+        + '<div style="font-size:10px;color:#aaa;margin-top:4px;">寄与度＝時価総額加重（浮動株未補正の近似）。犯人の名前は確度高。</div>'
+        '</div>')
+
+
 def editorial_with_gemini(cfg, items, buzz_top):
     """GEMINI_API_KEY がある時だけ、5本厳選＋編集をGeminiで実施。失敗/未設定はNone。"""
     key = os.environ.get("GEMINI_API_KEY")
@@ -458,8 +510,8 @@ def editorial_with_gemini(cfg, items, buzz_top):
     return None
 
 
-def build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial):
-    """Bloomberg形式の編集版HTML（sample.html準拠）。"""
+def build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial, lead=""):
+    """Bloomberg形式の編集版HTML（sample.html準拠）。lead=解剖カード等を冒頭に。"""
     title = cfg["output"]["title"]
     snap = fx_rows + idx_rows
     tiles = "".join(
@@ -496,6 +548,7 @@ def build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial):
     <table style="border-collapse:collapse;"><tr>{tiles}</tr></table>
     <div style="font-size:10px;color:#6b7c93;margin-top:6px;">指数はYahoo Finance、為替は open.er-api.com。参考値。</div>
   </div>
+  <div style="padding:12px 26px 0;">{lead}</div>
   <div style="padding:6px 26px 4px;">{stories}</div>
   <div style="padding:14px 26px;background:#fafafa;border-top:1px solid #eee;">
     <div style="font-size:12px;font-weight:700;color:#666;letter-spacing:1px;margin-bottom:8px;">その他の注目ニュース</div>
@@ -523,16 +576,20 @@ def main():
     print(f"       {len(items)}件収集")
 
     print("[3/4] 編集・要約…")
+    # ±ブレイク解剖カード（前夜の大引け後に生成された実数字を冒頭に・LLM言い換えなし）
+    lead = breakdown_card_html(load_breakdown())
+    if lead:
+        print("       解剖カードを冒頭に挿入")
     # 優先度: Gemini編集モード（無料キー時・Bloomberg形式） > Claude/翻訳版
     buzz_top = load_buzz_top()
     editorial = editorial_with_gemini(cfg, items, buzz_top)
     if editorial:
         print(f"       Gemini編集モード（{len(editorial.get('top5', []))}本厳選）")
-        html_str = build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial)
+        html_str = build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial, lead)
     else:
         news = summarize_with_claude(cfg, items)
         print(f"       翻訳/Claude版 {len(news)}件採用")
-        html_str = build_html(cfg, stamp, fx_rows, idx_rows, news)
+        html_str = build_html(cfg, stamp, fx_rows, idx_rows, news, lead)
 
     print("[4/4] HTML生成・保存・送信…")
     save_html(cfg, stamp_file, html_str)
