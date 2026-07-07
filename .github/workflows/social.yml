@@ -56,6 +56,12 @@ jobs:
             --history social_history/room_daily.csv \
             --outdir social_out
 
+      # ±ブレイク自動解剖（大引け後・price_board 1コールでその日の犯人＋外人＋Room）。
+      - name: Break decomposition (culprit + foreign + room)
+        continue-on-error: true
+        run: |
+          python scripts/breakdown.py --outdir social_history
+
       # 観察ビュー（Tier2バズ序列＋平常比・2ソース）を output/social_latest.html に生成
       - name: Build observation view
         run: python scripts/social_view.py
