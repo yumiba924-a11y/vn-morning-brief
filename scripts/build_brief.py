@@ -387,12 +387,31 @@ def load_buzz_top(n=6):
     return [(r["symbol"], int(r.get("volume_n_clean") or 0)) for r in t2[:n]]
 
 
+def _gemini_pick_model(key):
+    """このキーで generateContent 可能なモデルを探す（flash優先）。cfg指定が無い時の自動選択。"""
+    try:
+        r = requests.get("https://generativelanguage.googleapis.com/v1beta/models",
+                         params={"key": key}, timeout=30)
+        models = r.json().get("models", [])
+        names = [m["name"].split("/")[-1] for m in models
+                 if "generateContent" in m.get("supportedGenerationMethods", [])]
+        for pref in ("gemini-2.5-flash", "gemini-2.0-flash", "flash-latest", "flash"):
+            for n in names:
+                if pref in n:
+                    return n
+        return names[0] if names else None
+    except Exception as e:
+        print(f"[gemini] モデル一覧取得失敗: {e}", file=sys.stderr)
+        return None
+
+
 def editorial_with_gemini(cfg, items, buzz_top):
     """GEMINI_API_KEY がある時だけ、5本厳選＋編集をGeminiで実施。失敗/未設定はNone。"""
     key = os.environ.get("GEMINI_API_KEY")
     if not key or not items:
         return None
-    model = cfg.get("gemini_model", "gemini-2.0-flash")
+    model = cfg.get("gemini_model") or _gemini_pick_model(key) or "gemini-2.0-flash"
+    print(f"[gemini] 使用モデル: {model}", file=sys.stderr)
     tag_re = re.compile(r"<[^>]*>?")
     arts = []
     for i, it in enumerate(items):
@@ -424,11 +443,16 @@ def editorial_with_gemini(cfg, items, buzz_top):
             timeout=60,
         )
         data = r.json()
+        if "candidates" not in data:
+            # エラー応答の中身をログに出す（モデル名/権限/クォータの切り分け用）
+            print(f"[gemini] 応答にcandidates無し HTTP{r.status_code}: {str(data)[:400]}", file=sys.stderr)
+            return None
         text = data["candidates"][0]["content"]["parts"][0]["text"]
+        text = text.replace("```json", "").replace("```", "").strip()
         obj = json.loads(text)
         if obj.get("top5"):
             return obj
-        print(f"[gemini] top5空→フォールバック: {str(data)[:200]}", file=sys.stderr)
+        print(f"[gemini] top5空→フォールバック: {text[:200]}", file=sys.stderr)
     except Exception as e:
         print(f"[gemini] 失敗→翻訳版にフォールバック: {e}", file=sys.stderr)
     return None
