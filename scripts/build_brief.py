@@ -142,6 +142,41 @@ def fetch_news(cfg):
     return items[: cfg["filter"]["max_total_items"]]
 
 
+def fetch_stock_news(symbols, per=2, days=4):
+    """動いた銘柄の個別ニュースを Google News(越語) から items形式で取得。
+    タイトルにティッカーが語として入り、直近days日のものだけ（誤検知抑制）。"""
+    cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=days)
+    out, seen = [], set()
+    for s in symbols:
+        try:
+            q = quote_plus(f"{s} cổ phiếu")
+            feed = feedparser.parse(f"https://news.google.com/rss/search?q={q}&hl=vi&gl=VN&ceid=VN:vi")
+            cnt = 0
+            for e in feed.entries:
+                if cnt >= per:
+                    break
+                title = e.get("title", "").strip()
+                if not re.search(rf"\b{re.escape(s)}\b", re.sub("<[^>]+>", "", html.unescape(title))):
+                    continue
+                try:
+                    pub = dt.datetime(*e.published_parsed[:6], tzinfo=dt.timezone.utc)
+                    if pub < cutoff:
+                        continue
+                except Exception:
+                    pass
+                link = e.get("link", "")
+                if link in seen:
+                    continue
+                seen.add(link)
+                out.append({"source": f"個別/{s}", "category": "stock", "symbol": s,
+                            "title": title, "link": link,
+                            "snippet": html.unescape(e.get("summary", ""))[:400]})
+                cnt += 1
+        except Exception as ex:
+            print(f"[stock_news] {s}: {ex}", file=sys.stderr)
+    return out
+
+
 # ----------------------------------------------------------------------
 # 3) Claudeで翻訳＋要約＋示唆（全記事を1コールでJSON化 = 低コスト）
 # ----------------------------------------------------------------------
@@ -489,9 +524,12 @@ def editorial_with_gemini(cfg, items, buzz_top):
         "下の記事リスト（英語/ベトナム語混在）から、市場に効く5本を厳選し、日本語で編集します。\n"
         "本文は翻訳ではなく『何が起きて・なぜ効くか』を書くこと。\n\n"
         "ルール:\n"
-        "- top5: 5本。headline=体言止めの見出し(8〜16字・言い切る。例『外国人売りが重し』『資金は中型株へ』『金利に上昇圧力』)。"
+        "- top5: 5本。**構成は「個別株ニュース2〜3本＋マクロ/市場全体2〜3本」でバランス**を取る"
+        "（cat=stockの記事＝個別銘柄、それ以外＝マクロ/市場）。個別株は実際に動いた銘柄を優先。\n"
+        "- headline=体言止めの見出し(8〜16字・言い切る。例『FPTに利益確定売り』『金利に上昇圧力』)。"
         "body=3〜4文の日本語(事実→含意)。source=媒体名。\n"
         "- others: top5以外から3本、一言見出し(日本語)だけ。\n"
+        "- **外国人フローの話は毎回入れない**。顕著な時だけ1本まで。\n"
         "- 中型株や物色の話題があれば、本日の掲示板バズ上位と絡めると良い→ " + buzz_str + "\n"
         "- 記事に無い数字を創作しない。断定しすぎない。読み手はプロのFMと一般マーケター。\n"
         "出力はJSONのみ(前置き・コードフェンス無し):\n"
@@ -593,11 +631,18 @@ def main():
     idx_rows = fetch_indices(cfg)
     print("[2/4] ニュース収集…")
     items = fetch_news(cfg)
-    print(f"       {len(items)}件収集")
+    print(f"       マクロ{len(items)}件収集")
+    # 動いた銘柄（前夜の解剖の犯人）の個別ニュースをプールに追加＝5本に個別株を混ぜる材料
+    bd = load_breakdown()
+    movers = [c["symbol"] for c in (bd.get("culprits") if bd else [])][:6]
+    if movers:
+        stock_items = fetch_stock_news(movers, per=2)
+        items = items + stock_items
+        print(f"       個別株{len(stock_items)}件追加（{', '.join(movers)}）")
 
     print("[3/4] 編集・要約…")
     # ±ブレイク解剖カード（前夜の大引け後に生成された実数字を冒頭に・LLM言い換えなし）
-    lead = breakdown_card_html(load_breakdown())
+    lead = breakdown_card_html(bd)
     if lead:
         print("       解剖カードを冒頭に挿入")
     # 優先度: Gemini編集モード（無料キー時・Bloomberg形式） > Claude/翻訳版
