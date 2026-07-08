@@ -50,7 +50,7 @@ jobs:
       - name: Collect Foreign Room & flow (VCI)
         continue-on-error: true
         run: |
-          pip install --quiet vnstock pandas
+          pip install --quiet vnstock pandas feedparser
           python scripts/room_collector.py \
             --symbols-file config/universe.csv \
             --history social_history/room_daily.csv \

@@ -7,54 +7,32 @@
   "is_break": false,
   "vn30_contrib_pt": 1.16,
   "residual_pt": 3.59,
+  "no_material_movers": [
+    "BSR",
+    "MSN"
+  ],
   "culprits": [
-    {
-      "symbol": "CRV",
-      "ret_pct": -100.0,
-      "contrib_pt": -3.76,
-      "foreign_net_bn": -0.0,
-      "room_used_pct": 0.0,
-      "in_vn30": false
-    },
     {
       "symbol": "VHM",
       "ret_pct": -2.6,
-      "contrib_pt": -3.49,
+      "contrib_pt": -3.48,
       "foreign_net_bn": -203.22,
       "room_used_pct": 15.1,
-      "in_vn30": true
-    },
-    {
-      "symbol": "LGC",
-      "ret_pct": -100.0,
-      "contrib_pt": -2.92,
-      "foreign_net_bn": -0.02,
-      "room_used_pct": 91.8,
-      "in_vn30": false
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Vinhomes (VHM) chốt quyền chia cổ tức 'khủng', vốn điều lệ dự kiến vượ",
+      "material_date": "07/07"
     },
     {
       "symbol": "LPB",
       "ret_pct": 4.87,
-      "contrib_pt": 1.59,
+      "contrib_pt": 1.58,
       "foreign_net_bn": 11.66,
       "room_used_pct": 22.7,
-      "in_vn30": true
-    },
-    {
-      "symbol": "TMS",
-      "ret_pct": -100.0,
-      "contrib_pt": -1.38,
-      "foreign_net_bn": -0.02,
-      "room_used_pct": 84.1,
-      "in_vn30": false
-    },
-    {
-      "symbol": "HNA",
-      "ret_pct": -100.0,
-      "contrib_pt": -1.08,
-      "foreign_net_bn": 0.0,
-      "room_used_pct": Infinity,
-      "in_vn30": false
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Cổ phiếu HDB, VPB, LPB, STB - Có nên mua? - 24HMoney",
+      "material_date": "07/07"
     },
     {
       "symbol": "BSR",
@@ -62,7 +40,10 @@
       "contrib_pt": 0.8,
       "foreign_net_bn": 22.75,
       "room_used_pct": 2.2,
-      "in_vn30": true
+      "in_vn30": true,
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
     },
     {
       "symbol": "MBB",
@@ -70,15 +51,10 @@
       "contrib_pt": 0.77,
       "foreign_net_bn": 7.52,
       "room_used_pct": 95.4,
-      "in_vn30": true
-    },
-    {
-      "symbol": "TCX",
-      "ret_pct": 2.87,
-      "contrib_pt": 0.74,
-      "foreign_net_bn": -10.62,
-      "room_used_pct": 9.4,
-      "in_vn30": false
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "MBB sắp chi hơn 8.000 tỷ đồng trả cổ tức, ngay sau đó huy động lượng t",
+      "material_date": "07/07"
     },
     {
       "symbol": "MSN",
@@ -86,7 +62,10 @@
       "contrib_pt": -0.58,
       "foreign_net_bn": -182.69,
       "room_used_pct": 24.4,
-      "in_vn30": true
+      "in_vn30": true,
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
     },
     {
       "symbol": "HDB",
@@ -94,15 +73,76 @@
       "contrib_pt": 0.53,
       "foreign_net_bn": 54.0,
       "room_used_pct": 79.4,
-      "in_vn30": true
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Cổ phiếu HDB, VPB, LPB, STB - Có nên mua? - 24HMoney",
+      "material_date": "07/07"
     },
     {
-      "symbol": "BCG",
-      "ret_pct": -100.0,
-      "contrib_pt": -0.47,
-      "foreign_net_bn": -0.21,
-      "room_used_pct": 2.3,
-      "in_vn30": false
+      "symbol": "BID",
+      "ret_pct": 0.73,
+      "contrib_pt": 0.46,
+      "foreign_net_bn": -7.23,
+      "room_used_pct": 58.6,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "BID: Thông báo Giấy ủy quyền thực hiện công bố thông tin - Vietstock",
+      "material_date": "07/06"
+    },
+    {
+      "symbol": "ACB",
+      "ret_pct": 1.8,
+      "contrib_pt": 0.44,
+      "foreign_net_bn": 13.06,
+      "room_used_pct": 81.8,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Công ty TNHH Chứng khoán ACB (ACBS) thông báo chào bán trái phiếu ra c",
+      "material_date": "07/08"
+    },
+    {
+      "symbol": "GVR",
+      "ret_pct": 1.45,
+      "contrib_pt": 0.38,
+      "foreign_net_bn": 7.2,
+      "room_used_pct": 4.8,
+      "in_vn30": true,
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
+    },
+    {
+      "symbol": "VPB",
+      "ret_pct": 0.55,
+      "contrib_pt": 0.25,
+      "foreign_net_bn": -15.27,
+      "room_used_pct": 79.9,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "VPBank (VPB) đổi nguồn vốn phát hành 2 tỷ cổ phiếu, chi 3.600 tỷ đồng ",
+      "material_date": "07/07"
+    },
+    {
+      "symbol": "VPL",
+      "ret_pct": -0.72,
+      "contrib_pt": -0.23,
+      "foreign_net_bn": 5.6,
+      "room_used_pct": 3.8,
+      "in_vn30": true,
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
+    },
+    {
+      "symbol": "SSI",
+      "ret_pct": 1.5,
+      "contrib_pt": 0.21,
+      "foreign_net_bn": -4.08,
+      "room_used_pct": 31.4,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Cổ phiếu đáng chú ý ngày 8/7: SSI, STB, GEE - nguoiquansat.vn",
+      "material_date": "07/07"
     }
   ]
 }

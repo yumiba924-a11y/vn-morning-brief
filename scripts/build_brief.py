@@ -437,15 +437,26 @@ def breakdown_card_html(bd):
     resid = bd.get("residual_pt", 0); vn30c = bd.get("vn30_contrib_pt", 0)
     if abs(resid) > abs(vn30c):
         read += "下げの過半はVN30外＝広範。" if down else "上げの過半はVN30外＝広範。"
+    def mat_cell(c):
+        if c.get("has_material"):
+            hd = esc((c.get("material_headline") or "")[:26])
+            return f'<span style="color:#0a7d4b;">材料</span> <span style="color:#888;">{hd}</span>'
+        return '<span style="color:#c0392b;">材料なし</span>'
     rows = "".join(
-        f'<tr><td style="padding:2px 8px;font-weight:700;">{esc(c["symbol"])}</td>'
-        f'<td style="padding:2px 8px;text-align:right;color:{"#c0392b" if c["ret_pct"]<0 else "#0a7d4b"};">{c["ret_pct"]:+.2f}%</td>'
-        f'<td style="padding:2px 8px;text-align:right;">{c["contrib_pt"]:+.2f}pt</td>'
-        f'<td style="padding:2px 8px;text-align:right;color:#555;">'
-        f'{"外人"+format(c["foreign_net_bn"],"+.0f")+"十億" if c.get("foreign_net_bn") is not None else "―"}</td></tr>'
+        f'<tr><td style="padding:3px 8px;font-weight:700;">{esc(c["symbol"])}</td>'
+        f'<td style="padding:3px 8px;text-align:right;color:{"#c0392b" if c["ret_pct"]<0 else "#0a7d4b"};">{c["ret_pct"]:+.2f}%</td>'
+        f'<td style="padding:3px 8px;text-align:right;">{c["contrib_pt"]:+.2f}pt</td>'
+        f'<td style="padding:3px 8px;text-align:right;color:#555;white-space:nowrap;">'
+        f'{"外人"+format(c["foreign_net_bn"],"+.0f")+"十億" if c.get("foreign_net_bn") is not None else "―"}</td>'
+        f'<td style="padding:3px 8px;font-size:11px;">{mat_cell(c)}</td></tr>'
         for c in culp)
     brk = "⚑" if bd.get("is_break") else ""
     color = "#c0392b" if down else "#0a7d4b"
+    nomat = bd.get("no_material_movers") or []
+    nomat_line = (
+        f'<div style="font-size:12px;color:#c0392b;margin-top:6px;font-weight:700;">'
+        f'⚠ 材料なしで動いた: {esc("・".join(nomat))} → 掲示板バズを要確認</div>'
+        if nomat else "")
     return (
         f'<div style="margin:0 0 14px;padding:14px 16px;background:#fff8f2;border-left:4px solid {color};">'
         f'<div style="font-size:11px;color:#999;letter-spacing:1px;">なぜ昨日動いたか（自動解剖・{esc(str(bd.get("date","")))}）</div>'
@@ -453,7 +464,8 @@ def breakdown_card_html(bd):
         f'{brk} VN-Index {pt:+.1f}pt（{ret:+.2f}%）</div>'
         f'<table style="border-collapse:collapse;font-size:12.5px;width:100%;">{rows}</table>'
         + (f'<div style="font-size:12px;color:#444;margin-top:6px;">▶ {esc(read)}</div>' if read else "")
-        + '<div style="font-size:10px;color:#aaa;margin-top:4px;">寄与度＝時価総額加重（浮動株未補正の近似）。犯人の名前は確度高。</div>'
+        + nomat_line
+        + '<div style="font-size:10px;color:#aaa;margin-top:4px;">寄与度＝時価総額加重（浮動株未補正の近似）。材料＝Google News直近。</div>'
         '</div>')
 
 

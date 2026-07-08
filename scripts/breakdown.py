@@ -57,6 +57,36 @@ def index_level():
         return None, None, "?"
 
 
+def fetch_material(symbols, days=3):
+    """各銘柄の直近ニュース有無をGoogle News(越語)で判定。
+    タイトルにティッカーが語として含まれ、かつ days日以内のものだけ採用（誤検知抑制）。
+    返り値: {sym: {"has": bool, "headline": str|None, "date": str|None}}"""
+    import feedparser, urllib.parse, html, re
+    from datetime import datetime, timezone, timedelta
+    cutoff = datetime.now(timezone.utc) - timedelta(days=days)
+    out = {}
+    for s in symbols:
+        has, hd, hdate = False, None, None
+        try:
+            q = urllib.parse.quote(f"{s} cổ phiếu")
+            feed = feedparser.parse(f"https://news.google.com/rss/search?q={q}&hl=vi&gl=VN&ceid=VN:vi")
+            for e in feed.entries[:8]:
+                title = re.sub("<[^>]+>", "", html.unescape(e.get("title", "")))
+                if not re.search(rf"\b{re.escape(s)}\b", title):
+                    continue
+                try:
+                    pub = datetime(*e.published_parsed[:6], tzinfo=timezone.utc)
+                except Exception:
+                    pub = None
+                if pub is None or pub >= cutoff:
+                    has, hd, hdate = True, title[:70], (pub.strftime("%m/%d") if pub else None)
+                    break
+        except Exception as ex:
+            print(f"  material {s}: {ex}")
+        out[s] = {"has": has, "headline": hd, "date": hdate}
+    return out
+
+
 def hist_return(sym):
     for _ in range(2):
         try:
@@ -166,18 +196,33 @@ def main():
         for _, x in out_ext.iterrows():
             print(fmt(x))
 
+    top = df.reindex(df["contrib_pt"].abs().sort_values(ascending=False).index).head(12)
+    # 犯人上位に「材料あり/なし」を付与（材料なし＝ニュースにならない動き＝バズ注視）
+    print("\n[材料] 犯人のニュース有無を Google News で確認中…")
+    mat = fetch_material(list(top["symbol"]))
+    culprits = []
+    for _, x in top.iterrows():
+        m = mat.get(x["symbol"], {})
+        culprits.append({
+            "symbol": x["symbol"], "ret_pct": round(x["ret"]*100, 2),
+            "contrib_pt": round(x["contrib_pt"], 2),
+            "foreign_net_bn": round(x["foreign_net"]/1e9, 2) if pd.notna(x["foreign_net"]) else None,
+            "room_used_pct": x["room_used"] if pd.notna(x["room_used"]) else None,
+            "in_vn30": bool(x["in_vn30"]),
+            "has_material": m.get("has", False), "material_headline": m.get("headline"),
+            "material_date": m.get("date"),
+        })
+    # 「材料なしで大きく動いた犯人」＝バズ注視候補を明示
+    no_mat = [c for c in culprits[:6] if not c["has_material"] and abs(c["contrib_pt"]) >= 0.5]
+    for c in no_mat:
+        print(f"   ⚠ {c['symbol']} {c['ret_pct']:+.2f}%（寄与{c['contrib_pt']:+.2f}pt）材料なし→バズ注視")
+
     payload = {
         "date": idate, "index_prev": iprev, "index_cur": icur, "index_pt": round(idx_pt, 2),
         "index_ret_pct": round(idx_ret, 2), "is_break": abs(idx_ret) >= BREAK_THRESHOLD,
         "vn30_contrib_pt": round(vn30_pt, 2), "residual_pt": round(resid, 2),
-        "culprits": [
-            {"symbol": x["symbol"], "ret_pct": round(x["ret"]*100, 2),
-             "contrib_pt": round(x["contrib_pt"], 2),
-             "foreign_net_bn": round(x["foreign_net"]/1e9, 2) if pd.notna(x["foreign_net"]) else None,
-             "room_used_pct": x["room_used"] if pd.notna(x["room_used"]) else None,
-             "in_vn30": bool(x["in_vn30"])}
-            for _, x in df.reindex(df["contrib_pt"].abs().sort_values(ascending=False).index).head(12).iterrows()
-        ],
+        "no_material_movers": [c["symbol"] for c in no_mat],
+        "culprits": culprits,
     }
     with open(os.path.join(args.outdir, "breakdown.json"), "w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
