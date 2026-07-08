@@ -520,18 +520,26 @@ def editorial_with_gemini(cfg, items, buzz_top):
                      "title": it["title"], "text": txt[:300]})
     buzz_str = "、".join(f"{s}({c}件)" for s, c in buzz_top) if buzz_top else "（データなし）"
     prompt = (
-        "あなたはベトナム株の朝の市況ブリーフを書く、日系運用会社の投資調査部アナリストです。\n"
-        "下の記事リスト（英語/ベトナム語混在）から、市場に効く5本を厳選し、日本語で編集します。\n"
-        "本文は翻訳ではなく『何が起きて・なぜ効くか』を書くこと。\n\n"
+        "あなたはベトナム株の朝ブリーフを書く、日系運用会社の投資調査部アナリストです。\n"
+        "読み手はプロのFMと営業。**唯一の基準は『これ、人に話したくなるか？』**。\n\n"
+        "【採用する＝話したくなるニュース】\n"
+        "① 驚きの数字・事実（例『新規証券口座が半期で1,340万』）\n"
+        "② 具体的イベントで示唆が明確（例『BSRがVN30指数に採用→パッシブ買いが入る』）\n"
+        "③ 意外性・ドラマ・転換（誰かが動いた／流れが変わった／初めて／過去最大）\n"
+        "④ 営業がFMとの会話の口火にできる・明日の売買判断に効く\n\n"
+        "【落とす＝『ふーん』で終わる記事】\n"
+        "・ありきたりな見通し/予測（『下期は銘柄選別が鍵』『上昇に期待』等、中身の無い願望）\n"
+        "・角度の無い定型の配当発表（サプライズや影響が無ければ不採用）\n"
+        "・どの日でも書ける一般論、既知の繰り返し\n\n"
         "ルール:\n"
-        "- top5: 5本。**構成は「個別株ニュース2〜3本＋マクロ/市場全体2〜3本」でバランス**を取る"
-        "（cat=stockの記事＝個別銘柄、それ以外＝マクロ/市場）。個別株は実際に動いた銘柄を優先。\n"
-        "- headline=体言止めの見出し(8〜16字・言い切る。例『FPTに利益確定売り』『金利に上昇圧力』)。"
-        "body=3〜4文の日本語(事実→含意)。source=媒体名。**i=元記事の番号を必ず付ける**(主たる1本)。\n"
-        "- others: top5以外から3本、一言見出し(日本語)だけ。\n"
-        "- **外国人フローの話は毎回入れない**。顕著な時だけ1本まで。\n"
-        "- 中型株や物色の話題があれば、本日の掲示板バズ上位と絡めると良い→ " + buzz_str + "\n"
-        "- 記事に無い数字を創作しない。断定しすぎない。読み手はプロのFMと一般マーケター。\n"
+        "- **強い5本が揃わなければ4本でよい**（弱い1本を足して薄めるな）。質＞本数。\n"
+        "- 可能なら「個別株2〜3本＋マクロ2〜3本」。個別株は実際に動いた銘柄(cat=stock)を優先。\n"
+        "- **外国人フローの話は毎回入れない**（顕著な時だけ1本）。\n"
+        "- headline=フックを効かせた体言止め(8〜18字・数字や意外性を前に)。\n"
+        "  body=3〜4文。1文目で『何が起きたか』、最後に『だから何か(so what)＝どう効く/どう動く』。\n"
+        "- 中型株の話題は本日の掲示板バズ上位と絡めてよい→ " + buzz_str + "\n"
+        "- 記事に無い数字は創作しない。source=媒体名。**i=元記事の番号を必ず**(主たる1本)。\n"
+        "- others: top5に入らなかったが一応拾う小ネタ3本、一言見出しだけ。\n"
         "出力はJSONのみ(前置き・コードフェンス無し):\n"
         '{"top5":[{"i":番号,"headline":"","body":"","source":""}],"others":["",""]}\n\n'
         "記事:\n" + json.dumps(arts, ensure_ascii=False)
@@ -598,7 +606,9 @@ def build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial, lead="", item
                 f'<div style="font-size:16px;font-weight:800;">{head}</div>'
                 f'<div style="font-size:13.5px;color:#333;line-height:1.85;margin-top:6px;">'
                 f'{esc(s.get("body",""))}{src}</div></div>')
-    stories = "".join(story(s) for s in editorial.get("top5", []))
+    top5 = editorial.get("top5", [])
+    n_top = len(top5)
+    stories = "".join(story(s) for s in top5)
     others = "".join(f'・{esc(o)}<br>' for o in editorial.get("others", [])) or "―"
 
     return f"""<!DOCTYPE html>
@@ -610,9 +620,9 @@ def build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial, lead="", item
   <div style="padding:22px 26px 14px;border-bottom:3px solid #111;">
     <div style="font-size:11px;letter-spacing:2px;color:#0a7d4b;font-weight:700;">CQC 投資調査部</div>
     <div style="font-size:23px;font-weight:800;letter-spacing:-.5px;margin-top:3px;">{esc(title)}</div>
-    <div style="font-size:12px;color:#777;margin-top:3px;">{esc(stamp)}　朝の5本</div>
+    <div style="font-size:12px;color:#777;margin-top:3px;">{esc(stamp)}　朝の注目{n_top}本</div>
     <div style="font-size:13px;color:#333;line-height:1.7;margin-top:10px;">
-      昨日のベトナム市場と、今日を始めるにあたって押さえておきたい5本をお届けします。</div>
+      昨日のベトナム市場と、今日を始めるにあたって押さえておきたい注目ニュースをお届けします。</div>
   </div>
   <div style="padding:14px 26px;background:#0f1b2d;">
     <table style="border-collapse:collapse;"><tr>{tiles}</tr></table>
