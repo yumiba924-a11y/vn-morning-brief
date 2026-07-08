@@ -413,19 +413,38 @@ def load_vn_symbols():
     return set(l.strip().upper() for l in open(p, encoding="utf-8") if l.strip())
 
 
-def rank_hot_stocks(items, symset, top=8):
-    """記事(特にホット株ソース)のタイトル/本文からVN株コードを拾い、言及数でランキング。
-    誤検知はsymset(実在コード)で除外。各銘柄に代表見出しを保持。"""
+HOT_STOP = {"USD", "VND", "EUR", "JPY", "CNY", "GDP", "CPI", "FDI", "ETF", "IPO",
+            "ESG", "CEO", "CFO", "HOSE", "HNX", "SBV", "SSC", "FED", "USA", "TOP", "NEW"}
+
+
+def rank_hot_stocks(symset, top=8, hours=36):
+    """ホット株メディア（推奨/注目コラム＋nhadautu）を独自取得し、言及数でランキング。
+    誤検知は symset(実在VN株コード)∩(除外語) で潰す。各銘柄に代表見出しを保持。"""
     from collections import Counter
+    cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(hours=hours)
+    feeds = [
+        "https://news.google.com/rss/search?q=" + quote_plus("cổ phiếu cần quan tâm") + "&hl=vi&gl=VN&ceid=VN:vi",
+        "https://news.google.com/rss/search?q=" + quote_plus("cổ phiếu đáng chú ý") + "&hl=vi&gl=VN&ceid=VN:vi",
+        "https://news.google.com/rss/search?q=" + quote_plus("khuyến nghị cổ phiếu") + "&hl=vi&gl=VN&ceid=VN:vi",
+        "https://nhadautu.vn/trang-chu.rss",
+    ]
     tag_re = re.compile(r"<[^>]*>?")
     cnt, rep = Counter(), {}
-    for it in items:
-        text = (it.get("title", "") or "") + " " + tag_re.sub(" ", html.unescape(it.get("snippet", "") or ""))
-        found = {m for m in re.findall(r"\b([A-Z]{3})\b", text) if m in symset}
-        for s in found:
-            cnt[s] += 1
-            if s not in rep:
-                rep[s] = (it.get("title", "") or "").strip()
+    for url in feeds:
+        try:
+            feed = feedparser.parse(url)
+        except Exception as e:
+            print(f"[hot] {e}", file=sys.stderr)
+            continue
+        for e in feed.entries:
+            if not within_lookback(e, cutoff):
+                continue
+            title = e.get("title", "").strip()
+            text = title + " " + tag_re.sub(" ", html.unescape(e.get("summary", "") or ""))
+            for s in {m for m in re.findall(r"\b([A-Z]{3})\b", text) if m in symset and m not in HOT_STOP}:
+                cnt[s] += 1
+                if s not in rep and re.search(rf"\b{s}\b", title):
+                    rep[s] = title
     return [{"symbol": s, "count": n, "headline": rep.get(s, "")} for s, n in cnt.most_common(top)]
 
 
@@ -728,7 +747,7 @@ def main():
     buzz_top = load_buzz_top()
     buzz_syms = {s for s, _ in buzz_top}
     culprit_syms = {c["symbol"] for c in (bd.get("culprits") if bd else [])}
-    hot = rank_hot_stocks(items, load_vn_symbols(), top=8)
+    hot = rank_hot_stocks(load_vn_symbols(), top=8)
     hot_html = hot_stocks_section_html(hot, buzz_syms, culprit_syms)
     if hot:
         print(f"       注目銘柄ランキング: {', '.join(h['symbol']+'('+str(h['count'])+')' for h in hot[:6])}")
