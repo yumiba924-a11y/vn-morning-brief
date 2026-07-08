@@ -39,7 +39,7 @@ jobs:
         run: |
           git config user.name  "morning-brief-bot"
           git config user.email "actions@github.com"
-          git add output/ docs/
+          git add output/ docs/ social_history/covered.jsonl
           git commit -m "brief: $(TZ=Asia/Tokyo date +%Y-%m-%d)" || { echo "no changes"; exit 0; }
           # 手動push/他ワークフローとの競合に強く（rebase＋最大3回リトライ）
           for i in 1 2 3; do

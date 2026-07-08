@@ -580,11 +580,51 @@ def breakdown_card_html(bd):
         '</div>')
 
 
-def editorial_with_gemini(cfg, items, buzz_top):
-    """GEMINI_API_KEY がある時だけ、5本厳選＋編集をGeminiで実施。失敗/未設定はNone。"""
+COVERED = os.path.join(ROOT, "social_history", "covered.jsonl")
+
+
+def load_covered(days=6):
+    """直近days日で既に扱った見出しリスト（既視感回避用）。"""
+    if not os.path.exists(COVERED):
+        return []
+    cutoff = ((dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=7)) - dt.timedelta(days=days)).strftime("%Y-%m-%d")
+    out = []
+    for line in open(COVERED, encoding="utf-8"):
+        try:
+            r = json.loads(line)
+        except Exception:
+            continue
+        if str(r.get("date", "")) >= cutoff:
+            out += r.get("headlines", [])
+    return out
+
+
+def record_covered(headlines, symbols):
+    """本日出した見出し・銘柄を記録（同日再実行は上書き）。"""
+    d = (dt.datetime.now(dt.timezone.utc) + dt.timedelta(hours=7)).strftime("%Y-%m-%d")
+    os.makedirs(os.path.dirname(COVERED), exist_ok=True)
+    lines = []
+    if os.path.exists(COVERED):
+        for l in open(COVERED, encoding="utf-8"):
+            if not l.strip():
+                continue
+            try:
+                if json.loads(l).get("date") != d:
+                    lines.append(l if l.endswith("\n") else l + "\n")
+            except Exception:
+                pass
+    lines.append(json.dumps({"date": d, "headlines": headlines, "symbols": symbols}, ensure_ascii=False) + "\n")
+    with open(COVERED, "w", encoding="utf-8") as f:
+        f.writelines(lines)
+
+
+def editorial_with_gemini(cfg, items, buzz_top, covered=None):
+    """GEMINI_API_KEY がある時だけ、5本厳選＋編集をGeminiで実施。失敗/未設定はNone。
+    covered=直近の既出見出し（既視感回避）。"""
     key = os.environ.get("GEMINI_API_KEY")
     if not key or not items:
         return None
+    covered = covered or []
     models = [cfg["gemini_model"]] if cfg.get("gemini_model") else _gemini_models(key)
     print(f"[gemini] 候補モデル: {models}", file=sys.stderr)
     tag_re = re.compile(r"<[^>]*>?")
@@ -612,9 +652,15 @@ def editorial_with_gemini(cfg, items, buzz_top):
         "- 可能なら「個別株2〜3本＋マクロ2〜3本」。個別株は実際に動いた銘柄(cat=stock)を優先。\n"
         "- **外国人フローの話は毎回入れない**（顕著な時だけ1本）。\n"
         "- headline=フックを効かせた体言止め(8〜18字・数字や意外性を前に)。\n"
-        "  body=3〜4文。1文目で『何が起きたか』、最後に『だから何か(so what)＝市場/銘柄への具体的影響』。\n"
-        "  ★body内に『営業が話せる』『会話の口火』『注目される』等のメタ発言・願望は書かない"
-        "（選定基準であって本文の中身ではない）。淡々と事実と示唆だけ。\n"
+        "  **body=4〜6文・約250〜300字のしっかりした本文**（Bloomberg日本語版の厚み）。"
+        "1文目で『何が起きたか』、中で背景/数字、最後に『だから何か(so what)＝市場/銘柄への具体的影響』。\n"
+        "  ★body内に『営業が話せる』『会話の口火』『注目される』等のメタ発言・願望は書かない。淡々と事実と示唆だけ。\n"
+        "【★既視感回避（ベトナムは小さい市場でネタが循環する。最重要）】\n"
+        "・下記『直近数日の既出見出し』と同じテーマ・銘柄は、明確な新展開が無い限り選ばない。\n"
+        "・進行中の話に新章がある場合だけ、headlineに『続報』を付けて出す（反復でなく連載として）。\n"
+        "・FTSE昇格ウォッチ/信用拡大/ドン安 等の恒常テーマは、判定日や新水準など変化がある時だけ。\n"
+        "・新規性の高いネタを優先。既視感のある1本より、新しい1本。\n"
+        "  直近の既出見出し: " + json.dumps(covered[:30], ensure_ascii=False) + "\n"
         "- 中型株の話題は本日の掲示板バズ上位と絡めてよい→ " + buzz_str + "\n"
         "- 記事に無い数字は創作しない。source=媒体名。**i=元記事の番号を必ず**(主たる1本)。\n"
         "- others: top5に入らなかったが一応拾う小ネタ3本、一言見出しだけ。\n"
@@ -755,9 +801,15 @@ def main():
     if hot:
         print(f"       注目銘柄ランキング: {', '.join(h['symbol']+'('+str(h['count'])+')' for h in hot[:6])}")
     # 優先度: Gemini編集モード（無料キー時・Bloomberg形式） > Claude/翻訳版
-    editorial = editorial_with_gemini(cfg, items, buzz_top)
+    covered = load_covered()
+    editorial = editorial_with_gemini(cfg, items, buzz_top, covered)
     if editorial:
-        print(f"       Gemini編集モード（{len(editorial.get('top5', []))}本厳選）")
+        print(f"       Gemini編集モード（{len(editorial.get('top5', []))}本厳選・既出{len(covered)}件回避）")
+        # 既視感回避: 本日の見出し・銘柄を記録
+        hs = [s.get("headline", "") for s in editorial.get("top5", []) if s.get("headline")]
+        syms = [items[s["i"]].get("symbol", "") for s in editorial.get("top5", [])
+                if isinstance(s.get("i"), int) and 0 <= s["i"] < len(items) and items[s["i"]].get("symbol")]
+        record_covered(hs, syms)
         html_str = build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial, lead, items, hot_html)
     else:
         news = summarize_with_claude(cfg, items)
