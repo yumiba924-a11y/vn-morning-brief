@@ -471,7 +471,10 @@ def hot_stocks_section_html(hot, buzz_syms, culprit_syms):
         '<div style="font-size:12px;font-weight:700;color:#1a3a6b;letter-spacing:1px;margin-bottom:6px;">'
         '📌 本日の注目銘柄（メディア言及ランキング）</div>'
         f'<table style="border-collapse:collapse;width:100%;font-size:12.5px;">{"".join(rows)}</table>'
-        '<div style="font-size:10px;color:#aaa;margin-top:5px;">'
+        '<div style="font-size:11px;margin-top:6px;">'
+        '<a href="https://yumiba924-a11y.github.io/vn-morning-brief/" style="color:#1a3a6b;font-weight:700;">'
+        '▶ VN100全銘柄は別紙「注目度モニター」で（言及×バズ×寄与×外人×Room×マージン）↗</a></div>'
+        '<div style="font-size:10px;color:#aaa;margin-top:3px;">'
         'アナリスト推奨/注目コラム＋nhadautu の言及数。◎=掲示板バズ上位／●=昨日の指数寄与犯人と一致。</div>'
         '</div>')
 
