@@ -527,13 +527,13 @@ def editorial_with_gemini(cfg, items, buzz_top):
         "- top5: 5本。**構成は「個別株ニュース2〜3本＋マクロ/市場全体2〜3本」でバランス**を取る"
         "（cat=stockの記事＝個別銘柄、それ以外＝マクロ/市場）。個別株は実際に動いた銘柄を優先。\n"
         "- headline=体言止めの見出し(8〜16字・言い切る。例『FPTに利益確定売り』『金利に上昇圧力』)。"
-        "body=3〜4文の日本語(事実→含意)。source=媒体名。\n"
+        "body=3〜4文の日本語(事実→含意)。source=媒体名。**i=元記事の番号を必ず付ける**(主たる1本)。\n"
         "- others: top5以外から3本、一言見出し(日本語)だけ。\n"
         "- **外国人フローの話は毎回入れない**。顕著な時だけ1本まで。\n"
         "- 中型株や物色の話題があれば、本日の掲示板バズ上位と絡めると良い→ " + buzz_str + "\n"
         "- 記事に無い数字を創作しない。断定しすぎない。読み手はプロのFMと一般マーケター。\n"
         "出力はJSONのみ(前置き・コードフェンス無し):\n"
-        '{"top5":[{"headline":"","body":"","source":""}],"others":["",""]}\n\n'
+        '{"top5":[{"i":番号,"headline":"","body":"","source":""}],"others":["",""]}\n\n'
         "記事:\n" + json.dumps(arts, ensure_ascii=False)
     )
     body = {"contents": [{"parts": [{"text": prompt}]}],
@@ -568,9 +568,11 @@ def editorial_with_gemini(cfg, items, buzz_top):
     return None
 
 
-def build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial, lead=""):
-    """Bloomberg形式の編集版HTML（sample.html準拠）。lead=解剖カード等を冒頭に。"""
+def build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial, lead="", items=None):
+    """Bloomberg形式の編集版HTML（sample.html準拠）。lead=解剖カード等を冒頭に。
+    items=元記事プール（s['i']→リンク解決に使う）。"""
     title = cfg["output"]["title"]
+    items = items or []
     snap = fx_rows + idx_rows
     tiles = "".join(
         f'<td style="padding:2px 12px 2px 0;vertical-align:top;white-space:nowrap;">'
@@ -579,11 +581,21 @@ def build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial, lead=""):
         for r in snap
     ) or '<td style="color:#9db0c8;font-size:12px;">数値取得なし</td>'
 
+    def link_of(s):
+        i = s.get("i")
+        if isinstance(i, int) and 0 <= i < len(items):
+            return items[i].get("link", "")
+        return ""
+
     def story(s):
-        src = (f'<span style="color:#888;font-size:11px;"> — {esc(s.get("source",""))}</span>'
-               if s.get("source") else "")
+        hd = esc(s.get("headline", ""))
+        url = link_of(s)
+        head = (f'<a href="{esc(url)}" style="color:#111;text-decoration:none;">{hd}</a>'
+                if url else hd)
+        src = (f'<span style="color:#888;font-size:11px;"> — {esc(s.get("source",""))}'
+               + (' ↗' if url else '') + '</span>' if s.get("source") else "")
         return (f'<div style="padding:16px 0;border-bottom:1px solid #eee;">'
-                f'<div style="font-size:16px;font-weight:800;">{esc(s.get("headline",""))}</div>'
+                f'<div style="font-size:16px;font-weight:800;">{head}</div>'
                 f'<div style="font-size:13.5px;color:#333;line-height:1.85;margin-top:6px;">'
                 f'{esc(s.get("body",""))}{src}</div></div>')
     stories = "".join(story(s) for s in editorial.get("top5", []))
@@ -650,7 +662,7 @@ def main():
     editorial = editorial_with_gemini(cfg, items, buzz_top)
     if editorial:
         print(f"       Gemini編集モード（{len(editorial.get('top5', []))}本厳選）")
-        html_str = build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial, lead)
+        html_str = build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial, lead, items)
     else:
         news = summarize_with_claude(cfg, items)
         print(f"       翻訳/Claude版 {len(news)}件採用")
