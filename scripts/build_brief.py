@@ -74,6 +74,31 @@ def fetch_fx(cfg):
     return rows
 
 
+def jpy_per_vnd():
+    """1ドンあたりの円（VND→JPY換算係数）。er-api(USDベース)から算出。失敗時 None。"""
+    try:
+        r = requests.get("https://open.er-api.com/v6/latest/USD", timeout=15)
+        rates = r.json().get("rates", {})
+        if rates.get("VND") and rates.get("JPY"):
+            return rates["JPY"] / rates["VND"]
+    except Exception as e:
+        print(f"[fx] VND/JPY算出失敗: {e}", file=sys.stderr)
+    return None
+
+
+def yen_conversion(stamp):
+    """ドン建て金額の円併記用に、換算目安ヒントと注釈文を返す。
+    ★暗算でなく係数を渡す（大桁の算術ミス回避・自前計算優先）。"""
+    jpv = jpy_per_vnd()
+    if not jpv:
+        return "", ""
+    oku_per_tril = 1e12 * jpv / 1e8  # 1兆ドン → 億円
+    hint = (f"1兆ドン≈約{oku_per_tril:.0f}億円、1000億ドン≈約{oku_per_tril/10:.1f}億円、"
+            f"100億ドン≈約{oku_per_tril/100:.2f}億円")
+    note = f"円換算は1円={1/jpv:,.0f}ドン（{stamp}時点）で算出。数値は概算。"
+    return hint, note
+
+
 def fetch_indices(cfg):
     """Yahoo Finance chart API から指数・コモディティの現値を取得。
     取れなかったものは黙って落とす（壊れない設計）。
@@ -281,7 +306,7 @@ def esc(s):
     return html.escape(s or "")
 
 
-def build_html(cfg, stamp, fx_rows, idx_rows, news, lead="", hot_html=""):
+def build_html(cfg, stamp, fx_rows, idx_rows, news, lead="", hot_html="", rate_note=""):
     macro = [n for n in news if n["category"] == "macro"]
     local = [n for n in news if n["category"] == "local"]
 
@@ -350,8 +375,8 @@ def build_html(cfg, stamp, fx_rows, idx_rows, news, lead="", hot_html=""):
 
   <div style="margin-top:22px;padding-top:10px;border-top:1px solid {C['line']};
        font-size:11px;color:{C['sub']};">
-    自動生成: 為替は open.er-api.com、指数は Yahoo Finance、ニュースはGoogle News/各RSS、
-    翻訳はGoogle翻訳（APIキー設定時はClaudeで要約）。数値の確定値は原典でご確認ください。
+    自動生成: 為替は open.er-api.com（{esc(stamp)}時点）、指数は Yahoo Finance、ニュースはGoogle News/各RSS、
+    翻訳はGoogle翻訳（APIキー設定時はClaudeで要約）。{esc(rate_note)}数値の確定値は原典でご確認ください。
   </div>
 </div></body></html>"""
 
@@ -618,9 +643,9 @@ def record_covered(headlines, symbols):
         f.writelines(lines)
 
 
-def editorial_with_gemini(cfg, items, buzz_top, covered=None):
+def editorial_with_gemini(cfg, items, buzz_top, covered=None, conv_hint=""):
     """GEMINI_API_KEY がある時だけ、5本厳選＋編集をGeminiで実施。失敗/未設定はNone。
-    covered=直近の既出見出し（既視感回避）。"""
+    covered=直近の既出見出し（既視感回避）。conv_hint=ドン→円 換算目安。"""
     key = os.environ.get("GEMINI_API_KEY")
     if not key or not items:
         return None
@@ -655,6 +680,8 @@ def editorial_with_gemini(cfg, items, buzz_top, covered=None):
         "  **body=4〜6文・約250〜300字のしっかりした本文**（Bloomberg日本語版の厚み）。"
         "1文目で『何が起きたか』、中で背景/数字、最後に『だから何か(so what)＝市場/銘柄への具体的影響』。\n"
         "  ★body内に『営業が話せる』『会話の口火』『注目される』等のメタ発言・願望は書かない。淡々と事実と示唆だけ。\n"
+        "- **★ドン建ての金額が出たら直後に日本円を（約◯円）で併記**（ドンは桁が掴みにくいため）。"
+        "換算目安→ " + (conv_hint or "（換算係数なし・併記省略可）") + "。桁を大きく外さない。\n"
         "【★既視感回避（ベトナムは小さい市場でネタが循環する。最重要）】\n"
         "・下記『直近数日の既出見出し』と同じテーマ・銘柄は、明確な新展開が無い限り選ばない。\n"
         "・進行中の話に新章がある場合だけ、headlineに『続報』を付けて出す（反復でなく連載として）。\n"
@@ -700,7 +727,7 @@ def editorial_with_gemini(cfg, items, buzz_top, covered=None):
     return None
 
 
-def build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial, lead="", items=None, hot_html=""):
+def build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial, lead="", items=None, hot_html="", rate_note=""):
     """Bloomberg形式の編集版HTML（sample.html準拠）。lead=解剖カード等を冒頭に。
     items=元記事プール（s['i']→リンク解決に使う）。"""
     title = cfg["output"]["title"]
@@ -750,7 +777,7 @@ def build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial, lead="", item
   </div>
   <div style="padding:14px 26px;background:#0f1b2d;">
     <table style="border-collapse:collapse;"><tr>{tiles}</tr></table>
-    <div style="font-size:10px;color:#6b7c93;margin-top:6px;">指数はYahoo Finance、為替は open.er-api.com。参考値。</div>
+    <div style="font-size:10px;color:#6b7c93;margin-top:6px;">指数はYahoo Finance、為替は open.er-api.com（{esc(stamp)}時点）。参考値。{esc(rate_note)}</div>
   </div>
   <div style="padding:12px 26px 0;">{lead}</div>
   <div style="padding:6px 26px 4px;">{stories}</div>
@@ -800,9 +827,11 @@ def main():
     hot_html = hot_stocks_section_html(hot, buzz_syms, culprit_syms)
     if hot:
         print(f"       注目銘柄ランキング: {', '.join(h['symbol']+'('+str(h['count'])+')' for h in hot[:6])}")
+    # ドン→円 換算目安と為替注釈（as-of込み）
+    conv_hint, rate_note = yen_conversion(stamp)
     # 優先度: Gemini編集モード（無料キー時・Bloomberg形式） > Claude/翻訳版
     covered = load_covered()
-    editorial = editorial_with_gemini(cfg, items, buzz_top, covered)
+    editorial = editorial_with_gemini(cfg, items, buzz_top, covered, conv_hint)
     if editorial:
         print(f"       Gemini編集モード（{len(editorial.get('top5', []))}本厳選・既出{len(covered)}件回避）")
         # 既視感回避: 本日の見出し・銘柄を記録
@@ -810,11 +839,11 @@ def main():
         syms = [items[s["i"]].get("symbol", "") for s in editorial.get("top5", [])
                 if isinstance(s.get("i"), int) and 0 <= s["i"] < len(items) and items[s["i"]].get("symbol")]
         record_covered(hs, syms)
-        html_str = build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial, lead, items, hot_html)
+        html_str = build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial, lead, items, hot_html, rate_note)
     else:
         news = summarize_with_claude(cfg, items)
         print(f"       翻訳/Claude版 {len(news)}件採用")
-        html_str = build_html(cfg, stamp, fx_rows, idx_rows, news, lead, hot_html)
+        html_str = build_html(cfg, stamp, fx_rows, idx_rows, news, lead, hot_html, rate_note)
 
     print("[4/4] HTML生成・保存・送信…")
     save_html(cfg, stamp_file, html_str)
