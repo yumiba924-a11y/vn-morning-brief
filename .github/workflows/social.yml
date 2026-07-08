@@ -62,9 +62,11 @@ jobs:
         run: |
           python scripts/breakdown.py --outdir social_history
 
-      # 観察ビュー（Tier2バズ序列＋平常比・2ソース）を output/social_latest.html に生成
-      - name: Build observation view
-        run: python scripts/social_view.py
+      # VN100注目度モニター（別紙）を docs/index.html に生成（メディア言及取得にfeedparser）
+      - name: Build VN100 monitor
+        run: |
+          pip install --quiet feedparser
+          python scripts/social_view.py
 
       # 観察ビューをメール送信（朝ブリーフと同じSMTPを使い回し・未登録なら自動スキップ）
       - name: Email observation view
