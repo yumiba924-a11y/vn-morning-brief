@@ -281,7 +281,7 @@ def esc(s):
     return html.escape(s or "")
 
 
-def build_html(cfg, stamp, fx_rows, idx_rows, news, lead=""):
+def build_html(cfg, stamp, fx_rows, idx_rows, news, lead="", hot_html=""):
     macro = [n for n in news if n["category"] == "macro"]
     local = [n for n in news if n["category"] == "local"]
 
@@ -346,6 +346,8 @@ def build_html(cfg, stamp, fx_rows, idx_rows, news, lead=""):
        margin:20px 0 2px;">現地材料（ベトナム）</div>
   {news_block(local)}
 
+  {hot_html}
+
   <div style="margin-top:22px;padding-top:10px;border-top:1px solid {C['line']};
        font-size:11px;color:{C['sub']};">
     自動生成: 為替は open.er-api.com、指数は Yahoo Finance、ニュースはGoogle News/各RSS、
@@ -403,6 +405,58 @@ def send_email(cfg, subject, html_str):
 # ----------------------------------------------------------------------
 # 6) Gemini編集モード（無料キーがある時だけ）＝5本厳選＋体言止め＋洞察＋Tier2接続
 # ----------------------------------------------------------------------
+def load_vn_symbols():
+    """全VN株コード集合（誤検知フィルタ用・config/vn_symbols.txt）。"""
+    p = os.path.join(ROOT, "config", "vn_symbols.txt")
+    if not os.path.exists(p):
+        return set()
+    return set(l.strip().upper() for l in open(p, encoding="utf-8") if l.strip())
+
+
+def rank_hot_stocks(items, symset, top=8):
+    """記事(特にホット株ソース)のタイトル/本文からVN株コードを拾い、言及数でランキング。
+    誤検知はsymset(実在コード)で除外。各銘柄に代表見出しを保持。"""
+    from collections import Counter
+    tag_re = re.compile(r"<[^>]*>?")
+    cnt, rep = Counter(), {}
+    for it in items:
+        text = (it.get("title", "") or "") + " " + tag_re.sub(" ", html.unescape(it.get("snippet", "") or ""))
+        found = {m for m in re.findall(r"\b([A-Z]{3})\b", text) if m in symset}
+        for s in found:
+            cnt[s] += 1
+            if s not in rep:
+                rep[s] = (it.get("title", "") or "").strip()
+    return [{"symbol": s, "count": n, "headline": rep.get(s, "")} for s, n in cnt.most_common(top)]
+
+
+def hot_stocks_section_html(hot, buzz_syms, culprit_syms):
+    """本日の注目銘柄セクション。メディア言及×バズ×解剖の三点一致をフラグ。"""
+    if not hot:
+        return ""
+    rows = []
+    for h in hot:
+        s = h["symbol"]
+        flags = ""
+        if s in buzz_syms:
+            flags += '<span style="color:#c0392b;">◎バズ</span> '
+        if s in culprit_syms:
+            flags += '<span style="color:#0a7d4b;">●解剖</span> '
+        jp = gtranslate(h["headline"][:60]) if h["headline"] else ""
+        rows.append(
+            f'<tr><td style="padding:3px 8px;font-weight:700;">{esc(s)}</td>'
+            f'<td style="padding:3px 8px;text-align:right;color:#888;">言及{h["count"]}</td>'
+            f'<td style="padding:3px 8px;font-size:11px;">{flags}</td>'
+            f'<td style="padding:3px 8px;font-size:11.5px;color:#444;">{esc(jp[:38])}</td></tr>')
+    return (
+        '<div style="margin:14px 0;padding:12px 16px;background:#f4f7fb;border-left:4px solid #1a3a6b;">'
+        '<div style="font-size:12px;font-weight:700;color:#1a3a6b;letter-spacing:1px;margin-bottom:6px;">'
+        '📌 本日の注目銘柄（メディア言及ランキング）</div>'
+        f'<table style="border-collapse:collapse;width:100%;font-size:12.5px;">{"".join(rows)}</table>'
+        '<div style="font-size:10px;color:#aaa;margin-top:5px;">'
+        'アナリスト推奨/注目コラム＋nhadautu の言及数。◎=掲示板バズ上位／●=昨日の指数寄与犯人と一致。</div>'
+        '</div>')
+
+
 def load_buzz_top(n=6):
     """Tier2バズ観察の最新日 上位を [(symbol, clean), ...] で返す。編集で中型株の話に絡める。"""
     path = os.path.join(ROOT, "social_history", "buzz_daily.csv")
@@ -578,7 +632,7 @@ def editorial_with_gemini(cfg, items, buzz_top):
     return None
 
 
-def build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial, lead="", items=None):
+def build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial, lead="", items=None, hot_html=""):
     """Bloomberg形式の編集版HTML（sample.html準拠）。lead=解剖カード等を冒頭に。
     items=元記事プール（s['i']→リンク解決に使う）。"""
     title = cfg["output"]["title"]
@@ -632,6 +686,7 @@ def build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial, lead="", item
   </div>
   <div style="padding:12px 26px 0;">{lead}</div>
   <div style="padding:6px 26px 4px;">{stories}</div>
+  <div style="padding:0 26px;">{hot_html}</div>
   <div style="padding:14px 26px;background:#fafafa;border-top:1px solid #eee;">
     <div style="font-size:12px;font-weight:700;color:#666;letter-spacing:1px;margin-bottom:8px;">その他の注目ニュース</div>
     <div style="font-size:13px;color:#222;line-height:1.9;">{others}</div>
@@ -669,16 +724,23 @@ def main():
     lead = breakdown_card_html(bd)
     if lead:
         print("       解剖カードを冒頭に挿入")
-    # 優先度: Gemini編集モード（無料キー時・Bloomberg形式） > Claude/翻訳版
+    # 本日の注目銘柄（メディア言及ランキング × バズ × 解剖の三点一致）
     buzz_top = load_buzz_top()
+    buzz_syms = {s for s, _ in buzz_top}
+    culprit_syms = {c["symbol"] for c in (bd.get("culprits") if bd else [])}
+    hot = rank_hot_stocks(items, load_vn_symbols(), top=8)
+    hot_html = hot_stocks_section_html(hot, buzz_syms, culprit_syms)
+    if hot:
+        print(f"       注目銘柄ランキング: {', '.join(h['symbol']+'('+str(h['count'])+')' for h in hot[:6])}")
+    # 優先度: Gemini編集モード（無料キー時・Bloomberg形式） > Claude/翻訳版
     editorial = editorial_with_gemini(cfg, items, buzz_top)
     if editorial:
         print(f"       Gemini編集モード（{len(editorial.get('top5', []))}本厳選）")
-        html_str = build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial, lead, items)
+        html_str = build_editorial_html(cfg, stamp, fx_rows, idx_rows, editorial, lead, items, hot_html)
     else:
         news = summarize_with_claude(cfg, items)
         print(f"       翻訳/Claude版 {len(news)}件採用")
-        html_str = build_html(cfg, stamp, fx_rows, idx_rows, news, lead)
+        html_str = build_html(cfg, stamp, fx_rows, idx_rows, news, lead, hot_html)
 
     print("[4/4] HTML生成・保存・送信…")
     save_html(cfg, stamp_file, html_str)
