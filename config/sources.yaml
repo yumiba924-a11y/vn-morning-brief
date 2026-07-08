@@ -52,10 +52,22 @@ news:
       query: "kinh tế vĩ mô OR tỷ giá OR FTSE Việt Nam",
       hl: "vi", gl: "VN", ceid: "VN:vi", max: 3 }
 
+  # ---- ホット株/注目銘柄（アナリスト推奨・話題株の宝庫。個別株枠を厚くする）----
+  - { name: "注目銘柄コラム", category: "stock", type: "google_news",
+      query: "cổ phiếu cần quan tâm OR cổ phiếu đáng chú ý OR khuyến nghị cổ phiếu",
+      hl: "vi", gl: "VN", ceid: "VN:vi", max: 5 }
+  - { name: "Nhà Đầu Tư", category: "stock", type: "direct_rss",
+      url: "https://nhadautu.vn/trang-chu.rss", max: 6 }
+
+  # ---- 信用過熱シグナル（02.docx: 過熱→締め→急落の前触れ。マージン締めニュースを監視）----
+  - { name: "マージン監視", category: "stock", type: "google_news",
+      query: "siết margin OR căng margin OR cắt margin cổ phiếu",
+      hl: "vi", gl: "VN", ceid: "VN:vi", max: 3 }
+
 # --- 収集の絞り込み ---
 filter:
   hours_lookback: 24     # 直近何時間の記事を対象にするか
-  max_total_items: 30    # Claudeに渡す前の上限（コスト管理）
+  max_total_items: 40    # Geminiに渡す前の上限（ソース増につき拡大）
 
 # --- 出力 ---
 output:
