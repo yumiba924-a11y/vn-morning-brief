@@ -430,6 +430,29 @@ def send_email(cfg, subject, html_str):
 # ----------------------------------------------------------------------
 # 6) Gemini編集モード（無料キーがある時だけ）＝5本厳選＋体言止め＋洞察＋Tier2接続
 # ----------------------------------------------------------------------
+_NAMES = None
+
+
+def load_names():
+    """ティッカー→日本語社名（config/names.csv）。無い銘柄はティッカーのまま。"""
+    global _NAMES
+    if _NAMES is None:
+        _NAMES = {}
+        p = os.path.join(ROOT, "config", "names.csv")
+        if os.path.exists(p):
+            with open(p, encoding="utf-8-sig") as f:
+                for r in csv.DictReader(f):
+                    if r.get("symbol") and r.get("jp_name"):
+                        _NAMES[r["symbol"].strip().upper()] = r["jp_name"].strip()
+    return _NAMES
+
+
+def named(sym):
+    """『社名（TICKER）』表記。対応表に無ければ TICKER のみ。"""
+    nm = load_names().get(str(sym).upper())
+    return f"{nm}（{sym}）" if nm else str(sym)
+
+
 def load_vn_symbols():
     """全VN株コード集合（誤検知フィルタ用・config/vn_symbols.txt）。"""
     p = os.path.join(ROOT, "config", "vn_symbols.txt")
@@ -487,7 +510,7 @@ def hot_stocks_section_html(hot, buzz_syms, culprit_syms):
             flags += '<span style="color:#0a7d4b;">●解剖</span> '
         jp = gtranslate(h["headline"][:60]) if h["headline"] else ""
         rows.append(
-            f'<tr><td style="padding:3px 8px;font-weight:700;">{esc(s)}</td>'
+            f'<tr><td style="padding:3px 8px;font-weight:700;">{esc(named(s))}</td>'
             f'<td style="padding:3px 8px;text-align:right;color:#888;">言及{h["count"]}</td>'
             f'<td style="padding:3px 8px;font-size:11px;">{flags}</td>'
             f'<td style="padding:3px 8px;font-size:11.5px;color:#444;">{esc(jp[:38])}</td></tr>')
@@ -579,7 +602,7 @@ def breakdown_card_html(bd):
             return f'<span style="color:#0a7d4b;">材料</span> <span style="color:#888;">{hd}</span>'
         return '<span style="color:#c0392b;">材料なし</span>'
     rows = "".join(
-        f'<tr><td style="padding:3px 8px;font-weight:700;">{esc(c["symbol"])}</td>'
+        f'<tr><td style="padding:3px 8px;font-weight:700;">{esc(named(c["symbol"]))}</td>'
         f'<td style="padding:3px 8px;text-align:right;color:{"#c0392b" if c["ret_pct"]<0 else "#0a7d4b"};">{c["ret_pct"]:+.2f}%</td>'
         f'<td style="padding:3px 8px;text-align:right;">{c["contrib_pt"]:+.2f}pt</td>'
         f'<td style="padding:3px 8px;text-align:right;color:#555;white-space:nowrap;">'
@@ -682,6 +705,9 @@ def editorial_with_gemini(cfg, items, buzz_top, covered=None, conv_hint=""):
         "  ★body内に『営業が話せる』『会話の口火』『注目される』等のメタ発言・願望は書かない。淡々と事実と示唆だけ。\n"
         "- **★ドン建ての金額が出たら直後に日本円を（約◯円）で併記**（ドンは桁が掴みにくいため）。"
         "換算目安→ " + (conv_hint or "（換算係数なし・併記省略可）") + "。桁を大きく外さない。\n"
+        "- **★銘柄は必ず『日本語社名（ティッカー）』で初出表記**（読者はティッカーに不慣れ）。"
+        "例『ビンソン製油（BSR）』『フーニャン宝飾（PNJ）』『ビングループ（VIC）』。"
+        "社名が不確かな場合のみ通称＋ティッカー。2回目以降はティッカー可。\n"
         "【★既視感回避（ベトナムは小さい市場でネタが循環する。最重要）】\n"
         "・下記『直近数日の既出見出し』と同じテーマ・銘柄は、明確な新展開が無い限り選ばない。\n"
         "・進行中の話に新章がある場合だけ、headlineに『続報』を付けて出す（反復でなく連載として）。\n"
