@@ -2,9 +2,10 @@ name: morning-brief
 
 on:
   schedule:
-    # 平日 08:00 JST に実行 = 前日 23:00 UTC（JST月〜金＝UTC日〜木）。
-    # 出社時には机にある想定。VNオープン(11:00 JST)まで3時間の余裕。
-    - cron: "0 23 * * 0-4"
+    # ★GitHubのcronは2〜3時間遅延する実測。8:00 JST着を狙い"早出し"で吸収する。
+    # 20:00 UTC = 定刻なら5:00 JST／+3h遅延でも8:00 JST。中身は昨日終値＋前夜の海外で早出し可。
+    # (JST月〜金 = UTC日〜木)
+    - cron: "0 20 * * 0-4"
   workflow_dispatch: {}   # 手動実行ボタンも有効化（テスト用）
 
 permissions:
