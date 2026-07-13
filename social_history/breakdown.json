@@ -1,28 +1,28 @@
 {
-  "date": "2026-07-10",
-  "index_prev": 1840.7,
-  "index_cur": 1828.34,
-  "index_pt": -12.36,
-  "index_ret_pct": -0.67,
-  "is_break": false,
-  "vn30_contrib_pt": -7.58,
-  "residual_pt": -4.78,
+  "date": "2026-07-13",
+  "index_prev": 1828.34,
+  "index_cur": 1800.54,
+  "index_pt": -27.8,
+  "index_ret_pct": -1.52,
+  "is_break": true,
+  "vn30_contrib_pt": -20.9,
+  "residual_pt": -6.9,
   "no_material_movers": [
     "LGC",
-    "PDN",
-    "HNA"
+    "VCB",
+    "VIC"
   ],
   "culprits": [
     {
-      "symbol": "VIC",
-      "ret_pct": 0.9,
-      "contrib_pt": 3.27,
-      "foreign_net_bn": 1679.29,
-      "room_used_pct": 6.6,
+      "symbol": "VHM",
+      "ret_pct": -2.72,
+      "contrib_pt": -3.48,
+      "foreign_net_bn": 129.23,
+      "room_used_pct": 15.1,
       "in_vn30": true,
       "has_material": true,
-      "material_headline": "Cổ phiếu bất động sản \"xanh vỏ đỏ lòng\", VIC trở thành điểm tựa duy nh",
-      "material_date": "07/10"
+      "material_headline": "VHM bị ‘đè giá’ sát ván dù chia cổ tức hơn 4,1 tỉ cổ phiếu tỉ lệ 1:1? ",
+      "material_date": "07/11"
     },
     {
       "symbol": "LGC",
@@ -36,114 +36,114 @@
       "material_date": null
     },
     {
-      "symbol": "VHM",
-      "ret_pct": -1.14,
-      "contrib_pt": -1.48,
-      "foreign_net_bn": -8.42,
-      "room_used_pct": 15.0,
-      "in_vn30": true,
-      "has_material": true,
-      "material_headline": "Cập nhật cổ phiếu VHM – Các tuyến metro: Vốn đầu tư lớn hơn dự kiến - ",
-      "material_date": "07/10"
-    },
-    {
-      "symbol": "PDN",
-      "ret_pct": -100.0,
-      "contrib_pt": -1.19,
-      "foreign_net_bn": -0.22,
-      "room_used_pct": Infinity,
-      "in_vn30": false,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "TCB",
-      "ret_pct": -2.26,
-      "contrib_pt": -1.13,
-      "foreign_net_bn": -33.78,
-      "room_used_pct": 95.7,
-      "in_vn30": true,
-      "has_material": true,
-      "material_headline": "Cổ phiếu đáng chú ngày 9/7: TCB, PVT, ACB - nguoiquansat.vn",
-      "material_date": "07/08"
-    },
-    {
-      "symbol": "HNA",
-      "ret_pct": -100.0,
-      "contrib_pt": -1.07,
-      "foreign_net_bn": 0.0,
-      "room_used_pct": Infinity,
-      "in_vn30": false,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
       "symbol": "VCB",
-      "ret_pct": -0.98,
-      "contrib_pt": -1.06,
-      "foreign_net_bn": -45.64,
+      "ret_pct": -2.64,
+      "contrib_pt": -2.83,
+      "foreign_net_bn": -92.26,
       "room_used_pct": 67.4,
       "in_vn30": true,
-      "has_material": true,
-      "material_headline": "Vietcombank (VCB) chi hơn 3.700 tỷ đồng trả cổ tức tiền mặt, lên kế ho",
-      "material_date": "07/09"
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
     },
     {
-      "symbol": "VPB",
-      "ret_pct": -2.02,
-      "contrib_pt": -0.92,
-      "foreign_net_bn": -82.25,
-      "room_used_pct": 79.9,
+      "symbol": "VIC",
+      "ret_pct": -0.67,
+      "contrib_pt": -2.45,
+      "foreign_net_bn": 49.56,
+      "room_used_pct": 6.6,
       "in_vn30": true,
       "has_material": false,
       "material_headline": null,
       "material_date": null
     },
     {
-      "symbol": "GAS",
-      "ret_pct": -2.34,
-      "contrib_pt": -0.92,
-      "foreign_net_bn": -3.33,
-      "room_used_pct": 4.2,
-      "in_vn30": true,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "BSR",
-      "ret_pct": -3.23,
-      "contrib_pt": -0.9,
-      "foreign_net_bn": -3.02,
-      "room_used_pct": 2.3,
+      "symbol": "CTG",
+      "ret_pct": -3.26,
+      "contrib_pt": -1.81,
+      "foreign_net_bn": -120.08,
+      "room_used_pct": 82.3,
       "in_vn30": true,
       "has_material": true,
-      "material_headline": "Cổ phiếu đáng chú ý ngày 10/7: BSR, GMD, ANV - nguoiquansat.vn",
-      "material_date": "07/09"
+      "material_headline": "Viettinbank (CTG) chi gần 3.500 tỷ đồng chia cổ tức, tỷ lệ 4,5% - Tin ",
+      "material_date": "07/13"
     },
     {
-      "symbol": "TCX",
-      "ret_pct": -3.32,
-      "contrib_pt": -0.85,
-      "foreign_net_bn": -19.93,
-      "room_used_pct": 9.4,
+      "symbol": "BID",
+      "ret_pct": -2.56,
+      "contrib_pt": -1.62,
+      "foreign_net_bn": -23.93,
+      "room_used_pct": 58.5,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "BID: Ngày GDKHQ trả cổ tức năm 2025 bằng tiền (4,5%) - Tin nhanh chứng",
+      "material_date": "07/13"
+    },
+    {
+      "symbol": "TMS",
+      "ret_pct": -100.0,
+      "contrib_pt": -1.38,
+      "foreign_net_bn": -0.02,
+      "room_used_pct": 84.1,
       "in_vn30": false,
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
+    },
+    {
+      "symbol": "LPB",
+      "ret_pct": -3.37,
+      "contrib_pt": -1.14,
+      "foreign_net_bn": -1.94,
+      "room_used_pct": 22.4,
+      "in_vn30": true,
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
+    },
+    {
+      "symbol": "HPG",
+      "ret_pct": -2.4,
+      "contrib_pt": -0.98,
+      "foreign_net_bn": -109.12,
+      "room_used_pct": 43.5,
+      "in_vn30": true,
       "has_material": true,
-      "material_headline": "VCK, TCX và SSI dẫn đầu thị phần môi giới cổ phiếu trên HNX - Thời báo",
-      "material_date": "07/07"
+      "material_headline": "Lợi nhuận vẫn được kỳ vọng tăng mạnh, vì sao cổ phiếu HPG vẫn giảm? - ",
+      "material_date": "07/13"
     },
     {
       "symbol": "GVR",
-      "ret_pct": -2.86,
-      "contrib_pt": -0.76,
-      "foreign_net_bn": -5.45,
+      "ret_pct": -3.59,
+      "contrib_pt": -0.93,
+      "foreign_net_bn": 8.47,
       "room_used_pct": 4.8,
       "in_vn30": true,
-      "has_material": true,
-      "material_headline": "Cao su Tây Ninh trả cổ tức 30%, cổ đông lớn GVR dự thu 54 tỷ đồng - Ng",
-      "material_date": "07/10"
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
+    },
+    {
+      "symbol": "STB",
+      "ret_pct": -2.28,
+      "contrib_pt": -0.64,
+      "foreign_net_bn": -18.18,
+      "room_used_pct": 38.0,
+      "in_vn30": true,
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
+    },
+    {
+      "symbol": "BCM",
+      "ret_pct": -5.54,
+      "contrib_pt": -0.59,
+      "foreign_net_bn": 0.14,
+      "room_used_pct": 2.3,
+      "in_vn30": false,
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
     }
   ]
 }
