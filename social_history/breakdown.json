@@ -1,31 +1,27 @@
 {
-  "date": "2026-07-14",
-  "index_prev": 1800.54,
-  "index_cur": 1806.63,
-  "index_pt": 6.09,
-  "index_ret_pct": 0.34,
-  "is_break": false,
-  "vn30_contrib_pt": 1.4,
-  "residual_pt": 4.69,
+  "date": "2026-07-15",
+  "index_prev": 1806.63,
+  "index_cur": 1782.12,
+  "index_pt": -24.51,
+  "index_ret_pct": -1.36,
+  "is_break": true,
+  "vn30_contrib_pt": -18.86,
+  "residual_pt": -5.65,
   "no_material_movers": [
-    "VIC",
     "CRV",
-    "LGC",
-    "VSH",
-    "VHM",
-    "VCF"
+    "LGC"
   ],
   "culprits": [
     {
-      "symbol": "VIC",
-      "ret_pct": -1.13,
-      "contrib_pt": -4.08,
-      "foreign_net_bn": -92.25,
-      "room_used_pct": 6.6,
+      "symbol": "VHM",
+      "ret_pct": -3.41,
+      "contrib_pt": -4.18,
+      "foreign_net_bn": -56.85,
+      "room_used_pct": 15.1,
       "in_vn30": true,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
+      "has_material": true,
+      "material_headline": "Chứng khoán hôm nay: VN-index đảo chiều mạnh, cổ phiếu VHM - VIC có \"l",
+      "material_date": "07/15"
     },
     {
       "symbol": "CRV",
@@ -39,6 +35,17 @@
       "material_date": null
     },
     {
+      "symbol": "VIC",
+      "ret_pct": -0.91,
+      "contrib_pt": -3.27,
+      "foreign_net_bn": -67.99,
+      "room_used_pct": 6.6,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Chứng khoán hôm nay: VN-index đảo chiều mạnh, cổ phiếu VHM - VIC có \"l",
+      "material_date": "07/15"
+    },
+    {
       "symbol": "LGC",
       "ret_pct": -100.0,
       "contrib_pt": -2.91,
@@ -50,103 +57,92 @@
       "material_date": null
     },
     {
-      "symbol": "VSH",
-      "ret_pct": -100.0,
-      "contrib_pt": -2.13,
-      "foreign_net_bn": 0.03,
-      "room_used_pct": 2.4,
-      "in_vn30": false,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "VHM",
-      "ret_pct": -1.54,
-      "contrib_pt": -1.91,
-      "foreign_net_bn": 23.62,
-      "room_used_pct": 15.1,
-      "in_vn30": true,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "VCF",
-      "ret_pct": -100.0,
-      "contrib_pt": -1.65,
-      "foreign_net_bn": 0.15,
-      "room_used_pct": 1.0,
-      "in_vn30": false,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "MCH",
-      "ret_pct": 4.4,
-      "contrib_pt": 1.62,
-      "foreign_net_bn": 19.57,
-      "room_used_pct": 15.5,
-      "in_vn30": false,
-      "has_material": true,
-      "material_headline": "Đón lực cầu từ giao dịch ký quỹ và rổ chỉ số lớn, doanh thu Masan Cons",
-      "material_date": "07/14"
-    },
-    {
-      "symbol": "GAS",
-      "ret_pct": 4.11,
-      "contrib_pt": 1.58,
-      "foreign_net_bn": 23.8,
-      "room_used_pct": 4.2,
-      "in_vn30": true,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "BSR",
-      "ret_pct": 5.63,
-      "contrib_pt": 1.54,
-      "foreign_net_bn": 73.37,
-      "room_used_pct": 2.4,
-      "in_vn30": true,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "GVR",
-      "ret_pct": 3.39,
-      "contrib_pt": 0.85,
-      "foreign_net_bn": 8.72,
-      "room_used_pct": 4.9,
-      "in_vn30": true,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "STB",
-      "ret_pct": 2.77,
-      "contrib_pt": 0.76,
-      "foreign_net_bn": 59.77,
-      "room_used_pct": 38.1,
+      "symbol": "FPT",
+      "ret_pct": -4.98,
+      "contrib_pt": -1.26,
+      "foreign_net_bn": -346.05,
+      "room_used_pct": 56.3,
       "in_vn30": true,
       "has_material": true,
-      "material_headline": "STB: Khuyến nghị NẮM GIỮ với giá mục tiêu 72,200 đồng/cổ phiếu - Viets",
+      "material_headline": "Chuyện gì đang xảy ra với FPT? - CafeF",
+      "material_date": "07/15"
+    },
+    {
+      "symbol": "VPB",
+      "ret_pct": -2.64,
+      "contrib_pt": -1.18,
+      "foreign_net_bn": -54.5,
+      "room_used_pct": 79.4,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "VPBank (VPB): Bầu tân Phó Chủ tịch Hội đồng quản trị - Báo Pháp Luật V",
+      "material_date": "07/12"
+    },
+    {
+      "symbol": "BID",
+      "ret_pct": -1.86,
+      "contrib_pt": -1.16,
+      "foreign_net_bn": -25.97,
+      "room_used_pct": 58.5,
+      "in_vn30": true,
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
+    },
+    {
+      "symbol": "HNA",
+      "ret_pct": -100.0,
+      "contrib_pt": -1.07,
+      "foreign_net_bn": 0.0,
+      "room_used_pct": Infinity,
+      "in_vn30": false,
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
+    },
+    {
+      "symbol": "TCB",
+      "ret_pct": -2.17,
+      "contrib_pt": -1.05,
+      "foreign_net_bn": -65.02,
+      "room_used_pct": 95.3,
+      "in_vn30": true,
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
+    },
+    {
+      "symbol": "MBB",
+      "ret_pct": -2.44,
+      "contrib_pt": -1.02,
+      "foreign_net_bn": -42.42,
+      "room_used_pct": 95.7,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Chứng khoán Yuanta: VN-Index kiểm định lực cầu, điểm sáng dòng tiền hư",
       "material_date": "07/13"
     },
     {
-      "symbol": "TMP",
-      "ret_pct": -100.0,
-      "contrib_pt": -0.67,
-      "foreign_net_bn": -0.0,
-      "room_used_pct": 1.1,
-      "in_vn30": false,
+      "symbol": "BSR",
+      "ret_pct": -3.31,
+      "contrib_pt": -0.95,
+      "foreign_net_bn": -46.6,
+      "room_used_pct": 2.4,
+      "in_vn30": true,
       "has_material": false,
       "material_headline": null,
       "material_date": null
+    },
+    {
+      "symbol": "CTG",
+      "ret_pct": -1.38,
+      "contrib_pt": -0.74,
+      "foreign_net_bn": -55.91,
+      "room_used_pct": 82.2,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Cổ phiếu CTG được định giá lại nhờ đâu? - diendandoanhnghiep.vn",
+      "material_date": "07/13"
     }
   ]
 }
