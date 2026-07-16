@@ -1,49 +1,51 @@
 {
-  "date": "2026-07-15",
-  "index_prev": 1806.63,
-  "index_cur": 1782.12,
-  "index_pt": -24.51,
-  "index_ret_pct": -1.36,
+  "date": "2026-07-16",
+  "index_prev": 1782.12,
+  "index_cur": 1804.24,
+  "index_pt": 22.12,
+  "index_ret_pct": 1.24,
   "is_break": true,
-  "vn30_contrib_pt": -18.86,
-  "residual_pt": -5.65,
+  "vn30_contrib_pt": 21.12,
+  "residual_pt": 1.0,
   "no_material_movers": [
+    "VHM",
     "CRV",
-    "LGC"
+    "LGC",
+    "BHN"
   ],
   "culprits": [
     {
-      "symbol": "VHM",
-      "ret_pct": -3.41,
-      "contrib_pt": -4.18,
-      "foreign_net_bn": -56.85,
-      "room_used_pct": 15.1,
+      "symbol": "VIC",
+      "ret_pct": 2.76,
+      "contrib_pt": 9.8,
+      "foreign_net_bn": 252.77,
+      "room_used_pct": 6.6,
       "in_vn30": true,
       "has_material": true,
-      "material_headline": "Chứng khoán hôm nay: VN-index đảo chiều mạnh, cổ phiếu VHM - VIC có \"l",
-      "material_date": "07/15"
+      "material_headline": "Nếu dự báo này thành hiện thực, VIC có thể đón gần 1.600 tỷ đồng từ cá",
+      "material_date": "07/16"
+    },
+    {
+      "symbol": "VHM",
+      "ret_pct": 5.0,
+      "contrib_pt": 5.92,
+      "foreign_net_bn": 153.66,
+      "room_used_pct": 15.1,
+      "in_vn30": true,
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
     },
     {
       "symbol": "CRV",
       "ret_pct": -100.0,
-      "contrib_pt": -3.71,
+      "contrib_pt": -3.72,
       "foreign_net_bn": -0.0,
       "room_used_pct": 0.0,
       "in_vn30": false,
       "has_material": false,
       "material_headline": null,
       "material_date": null
-    },
-    {
-      "symbol": "VIC",
-      "ret_pct": -0.91,
-      "contrib_pt": -3.27,
-      "foreign_net_bn": -67.99,
-      "room_used_pct": 6.6,
-      "in_vn30": true,
-      "has_material": true,
-      "material_headline": "Chứng khoán hôm nay: VN-index đảo chiều mạnh, cổ phiếu VHM - VIC có \"l",
-      "material_date": "07/15"
     },
     {
       "symbol": "LGC",
@@ -57,92 +59,92 @@
       "material_date": null
     },
     {
-      "symbol": "FPT",
-      "ret_pct": -4.98,
-      "contrib_pt": -1.26,
-      "foreign_net_bn": -346.05,
-      "room_used_pct": 56.3,
-      "in_vn30": true,
-      "has_material": true,
-      "material_headline": "Chuyện gì đang xảy ra với FPT? - CafeF",
-      "material_date": "07/15"
-    },
-    {
-      "symbol": "VPB",
-      "ret_pct": -2.64,
-      "contrib_pt": -1.18,
-      "foreign_net_bn": -54.5,
-      "room_used_pct": 79.4,
-      "in_vn30": true,
-      "has_material": true,
-      "material_headline": "VPBank (VPB): Bầu tân Phó Chủ tịch Hội đồng quản trị - Báo Pháp Luật V",
-      "material_date": "07/12"
-    },
-    {
-      "symbol": "BID",
-      "ret_pct": -1.86,
-      "contrib_pt": -1.16,
-      "foreign_net_bn": -25.97,
-      "room_used_pct": 58.5,
-      "in_vn30": true,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "HNA",
+      "symbol": "BHN",
       "ret_pct": -100.0,
-      "contrib_pt": -1.07,
-      "foreign_net_bn": 0.0,
-      "room_used_pct": Infinity,
+      "contrib_pt": -1.45,
+      "foreign_net_bn": -0.0,
+      "room_used_pct": 35.8,
       "in_vn30": false,
       "has_material": false,
       "material_headline": null,
       "material_date": null
     },
     {
+      "symbol": "HDB",
+      "ret_pct": 3.04,
+      "contrib_pt": 0.85,
+      "foreign_net_bn": 74.93,
+      "room_used_pct": 79.9,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Cổ phiếu ngân hàng hồi phục ngoạn mục phiên 16/7: HDB, STB, ACB dẫn đầ",
+      "material_date": "07/16"
+    },
+    {
+      "symbol": "ACB",
+      "ret_pct": 2.81,
+      "contrib_pt": 0.8,
+      "foreign_net_bn": 217.51,
+      "room_used_pct": 82.4,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Cổ phiếu ngân hàng hồi phục ngoạn mục phiên 16/7: HDB, STB, ACB dẫn đầ",
+      "material_date": "07/16"
+    },
+    {
+      "symbol": "STB",
+      "ret_pct": 2.87,
+      "contrib_pt": 0.8,
+      "foreign_net_bn": -9.98,
+      "room_used_pct": 38.3,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Cổ phiếu ngân hàng hồi phục ngoạn mục phiên 16/7: HDB, STB, ACB dẫn đầ",
+      "material_date": "07/16"
+    },
+    {
       "symbol": "TCB",
-      "ret_pct": -2.17,
-      "contrib_pt": -1.05,
-      "foreign_net_bn": -65.02,
+      "ret_pct": 1.27,
+      "contrib_pt": 0.6,
+      "foreign_net_bn": -60.0,
       "room_used_pct": 95.3,
       "in_vn30": true,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "MBB",
-      "ret_pct": -2.44,
-      "contrib_pt": -1.02,
-      "foreign_net_bn": -42.42,
-      "room_used_pct": 95.7,
-      "in_vn30": true,
       "has_material": true,
-      "material_headline": "Chứng khoán Yuanta: VN-Index kiểm định lực cầu, điểm sáng dòng tiền hư",
-      "material_date": "07/13"
+      "material_headline": "Cổ phiếu SHB, TCB, DXG, KDH - Có nên mua? Tăng lãi suất ảnh hưởng đến ",
+      "material_date": "07/16"
     },
     {
-      "symbol": "BSR",
-      "ret_pct": -3.31,
-      "contrib_pt": -0.95,
-      "foreign_net_bn": -46.6,
-      "room_used_pct": 2.4,
+      "symbol": "VJC",
+      "ret_pct": 2.16,
+      "contrib_pt": 0.46,
+      "foreign_net_bn": -3.69,
+      "room_used_pct": 20.9,
       "in_vn30": true,
       "has_material": false,
       "material_headline": null,
       "material_date": null
     },
     {
-      "symbol": "CTG",
-      "ret_pct": -1.38,
-      "contrib_pt": -0.74,
-      "foreign_net_bn": -55.91,
-      "room_used_pct": 82.2,
+      "symbol": "FPT",
+      "ret_pct": 1.8,
+      "contrib_pt": 0.43,
+      "foreign_net_bn": -95.76,
+      "room_used_pct": 56.4,
       "in_vn30": true,
       "has_material": true,
-      "material_headline": "Cổ phiếu CTG được định giá lại nhờ đâu? - diendandoanhnghiep.vn",
-      "material_date": "07/13"
+      "material_headline": "Cổ phiếu chạm đáy 2 năm, FPT đang làm ăn ra sao? - Znews",
+      "material_date": "07/16"
+    },
+    {
+      "symbol": "TCX",
+      "ret_pct": 1.64,
+      "contrib_pt": 0.41,
+      "foreign_net_bn": 16.95,
+      "room_used_pct": 9.4,
+      "in_vn30": false,
+      "has_material": true,
+      "material_headline": "TCX vào rổ chỉ số VN30, kỳ vọng gia tăng thanh khoản thị trường - dien",
+      "material_date": "07/15"
     }
   ]
 }
