@@ -1,0 +1,35 @@
+name: weekly-digest
+
+# 日次ブリーフの1週間分(covered.jsonl)を集約→「今週のニュース」に編集(Gemini)。
+# 金曜夜に実行、月曜のウィークリーが weekly_digest.json を読む。
+on:
+  schedule:
+    - cron: "0 13 * * 5"   # 金 13:00 UTC = 22:00 JST（金曜の全データ確定後）
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build weekly digest
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          pip install --quiet requests
+          python scripts/weekly_digest.py
+      - name: Commit weekly digest
+        run: |
+          git config user.name  "weekly-digest-bot"
+          git config user.email "actions@github.com"
+          git add docs/weekly.html social_history/weekly_digest.json
+          git commit -m "weekly: $(TZ=Asia/Tokyo date +%Y-%m-%d)" || { echo "no changes"; exit 0; }
+          for i in 1 2 3; do
+            git pull --rebase --autostash origin main && git push && break || sleep 5
+          done
