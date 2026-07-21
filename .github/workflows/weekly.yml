@@ -28,7 +28,7 @@ jobs:
         run: |
           git config user.name  "weekly-digest-bot"
           git config user.email "actions@github.com"
-          git add docs/weekly.html social_history/weekly_digest.json
+          git add docs/weekly.html docs/weekly_raw.html social_history/weekly_digest.json social_history/weekly_raw.json
           git commit -m "weekly: $(TZ=Asia/Tokyo date +%Y-%m-%d)" || { echo "no changes"; exit 0; }
           for i in 1 2 3; do
             git pull --rebase --autostash origin main && git push && break || sleep 5
