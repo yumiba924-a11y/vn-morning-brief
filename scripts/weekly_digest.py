@@ -125,6 +125,63 @@ def render_html(dg, week):
 </div></body></html>"""
 
 
+def _clean(x):
+    return re.sub(r"\s+", " ", html.unescape(re.sub("<[^>]+>", " ", x))).strip()
+
+
+def build_raw(week):
+    """今週の日次ブリーフHTML(output/brief-YYYYMMDD.html)から全ニュースを丸ごと集約(編集なし)。
+    5本(見出し＋本文＋リンク)＋その他 を日付別に。ウィークリー執筆の"素材"用。"""
+    days = []
+    for d, _ in week:
+        ymd = d.replace("-", "")
+        p = os.path.join(ROOT, "output", f"brief-{ymd}.html")
+        if not os.path.exists(p):
+            continue
+        h = open(p, encoding="utf-8").read()
+        stories = []
+        # 見出し(＋任意リンク)＋本文 を取る
+        for m in re.finditer(r'font-size:16px;font-weight:800;">(.*?)</div>\s*<div style="font-size:13\.5px[^>]*>(.*?)</div>', h, re.S):
+            head_raw, body_raw = m.group(1), m.group(2)
+            link = ""
+            lm = re.search(r'href="([^"]+)"', head_raw)
+            if lm:
+                link = lm.group(1)
+            stories.append({"headline": _clean(head_raw), "body": _clean(body_raw), "link": link})
+        others = ""
+        om = re.search(r'その他の注目ニュース.*?line-height:1\.9;">(.*?)</div>', h, re.S)
+        if om:
+            others = _clean(om.group(1).replace("<br>", " / "))
+        days.append({"date": d, "stories": stories, "others": others})
+    return days
+
+
+def render_raw_html(days, label):
+    blocks = []
+    for day in days:
+        arts = "".join(
+            f'<div style="margin:10px 0;padding-bottom:8px;border-bottom:1px solid #f0f0f0;">'
+            f'<div style="font-size:14px;font-weight:700;">'
+            + (f'<a href="{esc(a["link"])}" style="color:#111;">{esc(a["headline"])}</a> ↗' if a["link"] else esc(a["headline"]))
+            + f'</div><div style="font-size:12.5px;color:#333;line-height:1.75;margin-top:3px;">{esc(a["body"])}</div></div>'
+            for a in day["stories"])
+        oth = f'<div style="font-size:12px;color:#666;margin-top:6px;">その他: {esc(day["others"])}</div>' if day["others"] else ""
+        blocks.append(
+            f'<div style="margin:16px 0;"><div style="font-size:15px;font-weight:800;color:#0a7d4b;'
+            f'border-bottom:2px solid #0a7d4b;padding-bottom:3px;">{esc(day["date"])}</div>{arts}{oth}</div>')
+    return f"""<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"><title>今週の素材 {esc(label)}</title></head>
+<body style="margin:0;background:#f4f4f4;font-family:'Hiragino Kaku Gothic ProN','Meiryo',sans-serif;color:#111;">
+<div style="max-width:760px;margin:0 auto;background:#fff;">
+  <div style="padding:20px 26px 12px;border-bottom:3px solid #111;">
+    <div style="font-size:11px;letter-spacing:2px;color:#0a7d4b;font-weight:700;">CQC 投資調査部 ｜ 今週の素材（編集前・全件）</div>
+    <div style="font-size:21px;font-weight:800;margin-top:2px;">今週の材料まるごと</div>
+    <div style="font-size:12px;color:#777;margin-top:2px;">{esc(label)}／日次ブリーフの全ニュースを無編集で集約</div>
+  </div>
+  <div style="padding:8px 26px 22px;">{"".join(blocks)}</div>
+</div></body></html>"""
+
+
 def main():
     week = load_week()[-5:]  # 直近5営業日(月〜金)
     if not week:
@@ -138,7 +195,14 @@ def main():
         json.dump(dg, f, ensure_ascii=False, indent=2)
     with open(os.path.join(ROOT, "docs", "weekly.html"), "w", encoding="utf-8") as f:
         f.write(render_html(dg, week))
-    print(f"[weekly] {dg.get('week_label')} テーマ{len(dg.get('themes', []))}本 → docs/weekly.html + weekly_digest.json")
+    # 素材まるごと版（編集前・全ニュース）
+    raw = build_raw(week)
+    with open(os.path.join(ROOT, "docs", "weekly_raw.html"), "w", encoding="utf-8") as f:
+        f.write(render_raw_html(raw, dg.get("week_label", "")))
+    with open(os.path.join(ROOT, "social_history", "weekly_raw.json"), "w", encoding="utf-8") as f:
+        json.dump({"week_label": dg.get("week_label"), "days": raw}, f, ensure_ascii=False, indent=2)
+    n = sum(len(d["stories"]) for d in raw)
+    print(f"[weekly] digest テーマ{len(dg.get('themes', []))}本 ＋ 素材 {n}本({len(raw)}日) → weekly.html / weekly_raw.html")
 
 
 if __name__ == "__main__":
