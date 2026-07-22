@@ -1,30 +1,49 @@
 {
-  "date": "2026-07-21",
-  "index_prev": 1743.51,
-  "index_cur": 1730.56,
-  "index_pt": -12.95,
-  "index_ret_pct": -0.74,
-  "is_break": false,
-  "vn30_contrib_pt": -9.75,
-  "residual_pt": -3.2,
+  "date": "2026-07-22",
+  "index_prev": 1730.56,
+  "index_cur": 1668.53,
+  "index_pt": -62.03,
+  "index_ret_pct": -3.58,
+  "is_break": true,
+  "vn30_contrib_pt": -53.35,
+  "residual_pt": -8.68,
   "no_material_movers": [
     "CRV",
-    "LGC",
-    "GAS",
-    "BSR",
-    "HNA"
+    "LGC"
   ],
   "culprits": [
     {
       "symbol": "VIC",
-      "ret_pct": -1.23,
-      "contrib_pt": -4.41,
-      "foreign_net_bn": -132.91,
+      "ret_pct": -6.99,
+      "contrib_pt": -24.81,
+      "foreign_net_bn": -207.79,
       "room_used_pct": 6.6,
       "in_vn30": true,
       "has_material": true,
-      "material_headline": "Tự doanh mạnh tay mua ròng cổ phiếu VIC - VietnamBiz",
-      "material_date": "07/21"
+      "material_headline": "Nhịp đập Thị trường 22/07: VIC và VHM giảm mạnh, mốc 1,700 điểm bị đe ",
+      "material_date": "07/22"
+    },
+    {
+      "symbol": "VHM",
+      "ret_pct": -6.96,
+      "contrib_pt": -8.27,
+      "foreign_net_bn": -64.76,
+      "room_used_pct": 15.1,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Nhịp đập Thị trường 22/07: VIC và VHM giảm mạnh, mốc 1,700 điểm bị đe ",
+      "material_date": "07/22"
+    },
+    {
+      "symbol": "VCB",
+      "ret_pct": -3.88,
+      "contrib_pt": -3.89,
+      "foreign_net_bn": -201.72,
+      "room_used_pct": 67.2,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Vì sao cổ phiếu ngân hàng VCB, CTG, BID, VPB, EIB lao dốc vào sáng nay",
+      "material_date": "07/22"
     },
     {
       "symbol": "CRV",
@@ -49,103 +68,81 @@
       "material_date": null
     },
     {
+      "symbol": "CTG",
+      "ret_pct": -3.88,
+      "contrib_pt": -1.97,
+      "foreign_net_bn": -14.49,
+      "room_used_pct": 81.8,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Vì sao cổ phiếu ngân hàng VCB, CTG, BID, VPB, EIB lao dốc vào sáng nay",
+      "material_date": "07/22"
+    },
+    {
       "symbol": "GAS",
+      "ret_pct": -5.29,
+      "contrib_pt": -1.84,
+      "foreign_net_bn": -32.31,
+      "room_used_pct": 4.3,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Petrovietnam điều động lãnh đạo PVGas, cổ phiếu GAS về đáy 6 tháng - N",
+      "material_date": "07/21"
+    },
+    {
+      "symbol": "MWG",
       "ret_pct": -6.98,
-      "contrib_pt": -2.61,
-      "foreign_net_bn": -67.22,
-      "room_used_pct": 4.2,
-      "in_vn30": true,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "BSR",
-      "ret_pct": -6.49,
-      "contrib_pt": -1.7,
-      "foreign_net_bn": -51.61,
-      "room_used_pct": 2.3,
-      "in_vn30": true,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "HNA",
-      "ret_pct": -100.0,
-      "contrib_pt": -1.05,
-      "foreign_net_bn": 0.0,
-      "room_used_pct": Infinity,
-      "in_vn30": false,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "FPT",
-      "ret_pct": -3.43,
-      "contrib_pt": -0.83,
-      "foreign_net_bn": -109.88,
-      "room_used_pct": 55.3,
+      "contrib_pt": -1.65,
+      "foreign_net_bn": -8.45,
+      "room_used_pct": 100.0,
       "in_vn30": true,
       "has_material": true,
-      "material_headline": "FPT mất hơn 100.000 tỷ đồng vốn hóa, cổ phiếu hàng không diễn biến trá",
+      "material_headline": "Chuyện gì đang xảy ra với MWG? - CafeF",
+      "material_date": "07/22"
+    },
+    {
+      "symbol": "VPL",
+      "ret_pct": -5.28,
+      "contrib_pt": -1.56,
+      "foreign_net_bn": 0.03,
+      "room_used_pct": 3.9,
+      "in_vn30": true,
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
+    },
+    {
+      "symbol": "BID",
+      "ret_pct": -2.58,
+      "contrib_pt": -1.46,
+      "foreign_net_bn": -9.85,
+      "room_used_pct": 58.4,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Vì sao cổ phiếu ngân hàng VCB, CTG, BID, VPB, EIB lao dốc vào sáng nay",
+      "material_date": "07/22"
+    },
+    {
+      "symbol": "HDB",
+      "ret_pct": -4.27,
+      "contrib_pt": -1.22,
+      "foreign_net_bn": -71.14,
+      "room_used_pct": 80.3,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Ngân hàng HDBank (HDB): Lãi năm nay dự báo tăng 32%, chờ chất xúc tác ",
       "material_date": "07/21"
     },
     {
-      "symbol": "STG",
-      "ret_pct": -100.0,
-      "contrib_pt": -0.74,
-      "foreign_net_bn": -0.0,
-      "room_used_pct": 88.4,
-      "in_vn30": false,
+      "symbol": "TCB",
+      "ret_pct": -2.68,
+      "contrib_pt": -1.2,
+      "foreign_net_bn": -66.56,
+      "room_used_pct": 94.8,
+      "in_vn30": true,
       "has_material": false,
       "material_headline": null,
       "material_date": null
-    },
-    {
-      "symbol": "LPB",
-      "ret_pct": 2.06,
-      "contrib_pt": 0.7,
-      "foreign_net_bn": 0.55,
-      "room_used_pct": 23.4,
-      "in_vn30": true,
-      "has_material": true,
-      "material_headline": "Cổ phiếu LPB bùng nổ, sang tay gần 6.500 tỷ đồng - thuonghieucongluan.",
-      "material_date": "07/21"
-    },
-    {
-      "symbol": "MCH",
-      "ret_pct": 1.85,
-      "contrib_pt": 0.69,
-      "foreign_net_bn": 22.24,
-      "room_used_pct": 15.5,
-      "in_vn30": false,
-      "has_material": true,
-      "material_headline": "MCH, TCX vào VN30: Cơ hội mới hay hiệu ứng dòng tiền? - 24HMoney",
-      "material_date": "07/20"
-    },
-    {
-      "symbol": "GEE",
-      "ret_pct": -6.58,
-      "contrib_pt": -0.68,
-      "foreign_net_bn": -12.34,
-      "room_used_pct": 2.0,
-      "in_vn30": false,
-      "has_material": true,
-      "material_headline": "Cổ phiếu công nghệ bị bán tháo, FPT, GEE, ELC đồng loạt lao dốc - Báo ",
-      "material_date": "07/21"
-    },
-    {
-      "symbol": "VPB",
-      "ret_pct": 1.4,
-      "contrib_pt": 0.59,
-      "foreign_net_bn": -17.94,
-      "room_used_pct": 79.0,
-      "in_vn30": true,
-      "has_material": true,
-      "material_headline": "Cổ phiếu VPB, thấy gì từ báo cáo tài chính Q2/2026? - 24HMoney",
-      "material_date": "07/19"
     }
   ]
 }
