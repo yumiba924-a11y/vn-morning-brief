@@ -1,18 +1,51 @@
 {
-  "date": "2026-08-03",
-  "index_prev": 1735.78,
-  "index_cur": 1762.84,
-  "index_pt": 27.06,
-  "index_ret_pct": 1.56,
-  "is_break": true,
-  "vn30_contrib_pt": 18.45,
-  "residual_pt": 8.61,
+  "date": "2026-08-04",
+  "index_prev": 1762.84,
+  "index_cur": 1777.23,
+  "index_pt": 14.39,
+  "index_ret_pct": 0.82,
+  "is_break": false,
+  "vn30_contrib_pt": 11.7,
+  "residual_pt": 2.69,
   "no_material_movers": [
+    "CRV",
     "LGC",
-    "VCB",
-    "CTG"
+    "TMS"
   ],
   "culprits": [
+    {
+      "symbol": "VIC",
+      "ret_pct": 2.35,
+      "contrib_pt": 8.2,
+      "foreign_net_bn": 438.45,
+      "room_used_pct": 6.7,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "VIC, VHM kéo VN-Index tăng hơn 14 điểm, khối ngoại mua ròng gần 890 tỷ",
+      "material_date": "08/04"
+    },
+    {
+      "symbol": "VHM",
+      "ret_pct": 3.31,
+      "contrib_pt": 4.25,
+      "foreign_net_bn": 283.84,
+      "room_used_pct": 13.9,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "VIC, VHM kéo VN-Index tăng hơn 14 điểm, khối ngoại mua ròng gần 890 tỷ",
+      "material_date": "08/04"
+    },
+    {
+      "symbol": "CRV",
+      "ret_pct": -100.0,
+      "contrib_pt": -3.88,
+      "foreign_net_bn": -0.0,
+      "room_used_pct": 0.0,
+      "in_vn30": false,
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
+    },
     {
       "symbol": "LGC",
       "ret_pct": -100.0,
@@ -26,80 +59,14 @@
     },
     {
       "symbol": "VCB",
-      "ret_pct": 2.53,
-      "contrib_pt": 2.65,
-      "foreign_net_bn": 136.37,
-      "room_used_pct": 67.1,
-      "in_vn30": true,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "MBB",
-      "ret_pct": 6.67,
-      "contrib_pt": 2.55,
-      "foreign_net_bn": 89.42,
-      "room_used_pct": 95.1,
+      "ret_pct": -1.32,
+      "contrib_pt": -1.41,
+      "foreign_net_bn": 42.08,
+      "room_used_pct": 67.2,
       "in_vn30": true,
       "has_material": true,
-      "material_headline": "MB sắp nâng vốn điều lệ vượt 100.000 tỷ đồng, cổ phiếu MBB tăng chạm t",
-      "material_date": "08/03"
-    },
-    {
-      "symbol": "VIC",
-      "ret_pct": -0.51,
-      "contrib_pt": -1.8,
-      "foreign_net_bn": -40.25,
-      "room_used_pct": 6.6,
-      "in_vn30": true,
-      "has_material": true,
-      "material_headline": "FTSE GEIS có thể mang hơn 1,5 tỷ USD vào chứng khoán Việt, MBS dự báo ",
-      "material_date": "08/03"
-    },
-    {
-      "symbol": "FPT",
-      "ret_pct": 6.86,
-      "contrib_pt": 1.66,
-      "foreign_net_bn": 524.28,
-      "room_used_pct": 56.5,
-      "in_vn30": true,
-      "has_material": true,
-      "material_headline": "FPT “tái sinh” - cafef.vn",
-      "material_date": "08/03"
-    },
-    {
-      "symbol": "CTG",
-      "ret_pct": 3.25,
-      "contrib_pt": 1.64,
-      "foreign_net_bn": 79.04,
-      "room_used_pct": 81.9,
-      "in_vn30": true,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "HPG",
-      "ret_pct": 3.92,
-      "contrib_pt": 1.52,
-      "foreign_net_bn": 283.36,
-      "room_used_pct": 44.4,
-      "in_vn30": true,
-      "has_material": true,
-      "material_headline": "Gần 1.100 tỷ đồng tiền ngoại nhập cuộc, trợ giúp cổ phiếu FPT, HPG, MB",
-      "material_date": "08/03"
-    },
-    {
-      "symbol": "TCB",
-      "ret_pct": 3.45,
-      "contrib_pt": 1.5,
-      "foreign_net_bn": -71.53,
-      "room_used_pct": 93.7,
-      "in_vn30": true,
-      "has_material": true,
-      "material_headline": "Cập nhật kết quả kinh doanh TCB - cafef.vn",
-      "material_date": "08/03"
+      "material_headline": "Cổ phiếu HPG, VCB, VCI, CTD - Có nên mua? Lãi suất liên ngân hàng qua ",
+      "material_date": "08/04"
     },
     {
       "symbol": "TMS",
@@ -113,10 +80,54 @@
       "material_date": null
     },
     {
+      "symbol": "STB",
+      "ret_pct": 3.64,
+      "contrib_pt": 1.04,
+      "foreign_net_bn": -19.67,
+      "room_used_pct": 37.3,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "SHB, STB, HDB... sẽ được quỹ ETF mua mạnh khi thị trường nâng hạng - n",
+      "material_date": "08/03"
+    },
+    {
+      "symbol": "HDB",
+      "ret_pct": 2.69,
+      "contrib_pt": 0.74,
+      "foreign_net_bn": 36.89,
+      "room_used_pct": 79.8,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "HDBank (HDB) sẽ chia cổ tức, cổ phiếu thưởng tổng tỷ lệ 30%? - 24HMone",
+      "material_date": "08/04"
+    },
+    {
+      "symbol": "HPG",
+      "ret_pct": -1.77,
+      "contrib_pt": -0.71,
+      "foreign_net_bn": 34.22,
+      "room_used_pct": 44.4,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Cập nhật cổ phiếu HPG – Q2/2026: Lợi nhuận thuần tăng 51% svck, sát vớ",
+      "material_date": "08/04"
+    },
+    {
+      "symbol": "MBB",
+      "ret_pct": 1.67,
+      "contrib_pt": 0.68,
+      "foreign_net_bn": 171.63,
+      "room_used_pct": 95.3,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Cổ phiếu tâm điểm 4/8: Khuyến nghị mua MBB, REE và PVS - bnews.vn",
+      "material_date": "08/04"
+    },
+    {
       "symbol": "GAS",
-      "ret_pct": 3.79,
-      "contrib_pt": 1.33,
-      "foreign_net_bn": 28.62,
+      "ret_pct": -1.83,
+      "contrib_pt": -0.66,
+      "foreign_net_bn": 2.9,
       "room_used_pct": 4.2,
       "in_vn30": true,
       "has_material": false,
@@ -124,26 +135,15 @@
       "material_date": null
     },
     {
-      "symbol": "VPB",
-      "ret_pct": 2.82,
-      "contrib_pt": 1.17,
-      "foreign_net_bn": -56.63,
-      "room_used_pct": 77.8,
+      "symbol": "VRE",
+      "ret_pct": 4.76,
+      "contrib_pt": 0.59,
+      "foreign_net_bn": -22.19,
+      "room_used_pct": 23.4,
       "in_vn30": true,
       "has_material": true,
-      "material_headline": "SZC, VPB và NT2 có gì hấp dẫn ? - Vietstock",
+      "material_headline": "VRE: Khuyến nghị MUA với giá mục tiêu 32,200 đồng/cổ phiếu - Vietstock",
       "material_date": "08/03"
-    },
-    {
-      "symbol": "HNA",
-      "ret_pct": -100.0,
-      "contrib_pt": -1.08,
-      "foreign_net_bn": 0.0,
-      "room_used_pct": Infinity,
-      "in_vn30": false,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
     }
   ]
 }
