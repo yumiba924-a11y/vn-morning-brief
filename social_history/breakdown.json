@@ -1,44 +1,22 @@
 {
-  "date": "2026-08-05",
-  "index_prev": 1777.23,
-  "index_cur": 1776.46,
-  "index_pt": -0.77,
-  "index_ret_pct": -0.04,
+  "date": "2026-08-06",
+  "index_prev": 1776.46,
+  "index_cur": 1764.78,
+  "index_pt": -11.68,
+  "index_ret_pct": -0.66,
   "is_break": false,
-  "vn30_contrib_pt": -0.09,
-  "residual_pt": -0.68,
+  "vn30_contrib_pt": -9.0,
+  "residual_pt": -2.68,
   "no_material_movers": [
-    "CRV",
     "LGC",
+    "TMS",
     "STG"
   ],
   "culprits": [
     {
-      "symbol": "CRV",
-      "ret_pct": -100.0,
-      "contrib_pt": -4.31,
-      "foreign_net_bn": -0.0,
-      "room_used_pct": 0.0,
-      "in_vn30": false,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "VIC",
-      "ret_pct": 0.92,
-      "contrib_pt": 3.65,
-      "foreign_net_bn": 147.88,
-      "room_used_pct": 6.7,
-      "in_vn30": true,
-      "has_material": true,
-      "material_headline": "Cổ phiếu PNJ tăng trần 3 phiên, tiền ngoại tiếp tục đổ vào VIC - VHM -",
-      "material_date": "08/05"
-    },
-    {
       "symbol": "LGC",
       "ret_pct": -100.0,
-      "contrib_pt": -3.23,
+      "contrib_pt": -2.98,
       "foreign_net_bn": -0.02,
       "room_used_pct": 91.8,
       "in_vn30": false,
@@ -47,9 +25,31 @@
       "material_date": null
     },
     {
+      "symbol": "VIC",
+      "ret_pct": -0.55,
+      "contrib_pt": -2.02,
+      "foreign_net_bn": 228.97,
+      "room_used_pct": 6.7,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Sau VIC, VHM cũng tăng mạnh ngay ngày chia cổ phiếu, kịch bản cũ đang ",
+      "material_date": "08/06"
+    },
+    {
+      "symbol": "TMS",
+      "ret_pct": -100.0,
+      "contrib_pt": -1.37,
+      "foreign_net_bn": -0.01,
+      "room_used_pct": 84.1,
+      "in_vn30": false,
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
+    },
+    {
       "symbol": "STG",
       "ret_pct": -100.0,
-      "contrib_pt": -0.94,
+      "contrib_pt": -0.87,
       "foreign_net_bn": -0.02,
       "room_used_pct": 88.4,
       "in_vn30": false,
@@ -58,10 +58,54 @@
       "material_date": null
     },
     {
+      "symbol": "CTG",
+      "ret_pct": -1.57,
+      "contrib_pt": -0.84,
+      "foreign_net_bn": 54.24,
+      "room_used_pct": 82.1,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "CTG: Báo cáo cập nhật KQKD Q2/2026 - VietstockFinance",
+      "material_date": "08/06"
+    },
+    {
+      "symbol": "MBB",
+      "ret_pct": -1.65,
+      "contrib_pt": -0.7,
+      "foreign_net_bn": 17.78,
+      "room_used_pct": 95.6,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Vì sao khối ngoại đổ tiền mua cổ phiếu MBB? - diendandoanhnghiep.vn",
+      "material_date": "08/03"
+    },
+    {
+      "symbol": "TCB",
+      "ret_pct": -1.52,
+      "contrib_pt": -0.69,
+      "foreign_net_bn": -29.39,
+      "room_used_pct": 93.2,
+      "in_vn30": true,
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
+    },
+    {
+      "symbol": "LPB",
+      "ret_pct": -1.89,
+      "contrib_pt": -0.65,
+      "foreign_net_bn": 19.8,
+      "room_used_pct": 26.9,
+      "in_vn30": true,
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
+    },
+    {
       "symbol": "HVN",
-      "ret_pct": 4.63,
-      "contrib_pt": 0.8,
-      "foreign_net_bn": 39.68,
+      "ret_pct": -3.62,
+      "contrib_pt": -0.61,
+      "foreign_net_bn": -1.45,
       "room_used_pct": 28.6,
       "in_vn30": false,
       "has_material": true,
@@ -69,81 +113,37 @@
       "material_date": "08/05"
     },
     {
-      "symbol": "LPB",
-      "ret_pct": -1.49,
-      "contrib_pt": -0.56,
-      "foreign_net_bn": 7.45,
-      "room_used_pct": 26.8,
+      "symbol": "VPB",
+      "ret_pct": -1.37,
+      "contrib_pt": -0.6,
+      "foreign_net_bn": -120.65,
+      "room_used_pct": 77.5,
       "in_vn30": true,
       "has_material": true,
-      "material_headline": "5 cổ phiếu LPB, ACB, HCM, POW và VNM đang ở vùng nào: Có nên xuống tiề",
-      "material_date": "08/03"
+      "material_headline": "Cổ phiếu đáng chú ý ngày 6/8: GAS, VPB được đánh giá tích cực, PC1 đối",
+      "material_date": "08/05"
     },
     {
-      "symbol": "FPT",
-      "ret_pct": -1.68,
-      "contrib_pt": -0.48,
-      "foreign_net_bn": 63.1,
-      "room_used_pct": 56.7,
+      "symbol": "VRE",
+      "ret_pct": -4.35,
+      "contrib_pt": -0.58,
+      "foreign_net_bn": 4.67,
+      "room_used_pct": 23.4,
       "in_vn30": true,
-      "has_material": true,
-      "material_headline": "Công ty chứng khoán nào 'ôm' nhiều cổ phiếu FPT nhất? - Tuổi Trẻ",
-      "material_date": "08/04"
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
     },
     {
-      "symbol": "DMC",
-      "ret_pct": -100.0,
-      "contrib_pt": -0.47,
-      "foreign_net_bn": -0.16,
-      "room_used_pct": 56.7,
+      "symbol": "DMX",
+      "ret_pct": 2.5,
+      "contrib_pt": 0.55,
+      "foreign_net_bn": -21.68,
+      "room_used_pct": 17.4,
       "in_vn30": false,
       "has_material": true,
-      "material_headline": "Stifel nâng mục tiêu giá cổ phiếu DMC Global lên $8 nhờ kết quả khả qu",
-      "material_date": "08/03"
-    },
-    {
-      "symbol": "VNM",
-      "ret_pct": -1.51,
-      "contrib_pt": -0.44,
-      "foreign_net_bn": -72.37,
-      "room_used_pct": 49.6,
-      "in_vn30": true,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "MSN",
-      "ret_pct": -1.75,
-      "contrib_pt": -0.41,
-      "foreign_net_bn": -40.05,
-      "room_used_pct": 24.3,
-      "in_vn30": true,
-      "has_material": true,
-      "material_headline": "Cổ phiếu MSN, VIB và PVD lọt ’tầm ngắm’ khuyến nghị mua nhờ đâu? - bne",
-      "material_date": "08/03"
-    },
-    {
-      "symbol": "STB",
-      "ret_pct": -1.21,
-      "contrib_pt": -0.4,
-      "foreign_net_bn": -13.42,
-      "room_used_pct": 37.3,
-      "in_vn30": true,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "GAS",
-      "ret_pct": 0.86,
-      "contrib_pt": 0.34,
-      "foreign_net_bn": -7.32,
-      "room_used_pct": 4.2,
-      "in_vn30": true,
-      "has_material": true,
-      "material_headline": "Cập nhật cổ phiếu GAS – Q2/2026: Lợi nhuận thuần tăng 23% so với cùng ",
-      "material_date": "08/05"
+      "material_headline": "Cổ phiếu DMX chính thức niêm yết HOSE, vốn hóa đạt hơn 101.000 tỷ đồng",
+      "material_date": "08/06"
     }
   ]
 }
