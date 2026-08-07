@@ -1,155 +1,160 @@
 {
-  "week_label": "2026-07-27〜2026-07-31",
+  "week_label": "2026-08-03〜2026-08-07",
   "days": [
     {
-      "date": "2026-07-27",
+      "date": "2026-08-03",
       "stories": [
         {
-          "headline": "外国人、約1.98兆円売り越し",
-          "body": "ベトナム株式市場で、外国人投資家が319,000億ドン（約1.98兆円）という巨額の売り越しを記録した。この売り越しは、グローバルな金利上昇や地政学的リスクの高まりを背景に、新興国市場からの資金引き揚げが加速していることを示唆する。特に、ベトナム市場は過去数ヶ月間、外国人投資家の売り圧力を受けており、これがVN指数の上値を抑える要因となっている。今後も外国人投資家の動向は市場の重要なテーマとなり、国内機関投資家や個人投資家の買い意欲が試される展開が予想される。 — Đầu tư Chứng khoán (VI) ↗",
-          "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPUHN5bTJFb2swdHVEOEpGLTR3ZFUxMkdnTHpoMEdJLU1wbFVaUUJHZHF3SHZTZ2RmeGhBdUFVTFZKdG93UDNTZi0tZHQxNl90UWVhRHJMNDZfdTlMbGdTMXhCMi1RZXpIRm1kVjBKbTh4cVNSdE5jalR4VktYQUZya1VDWnlHSXF4RkFOYXM1eC1kc3k0SHVzX2xlMU90NFBMVS0tMGhmYkVDazd2MFFWaVhIVWx6T2Jma1hXRm54bWU1UQ?oc=5"
+          "headline": "IDICO、Q2利益130%増 未実現収益342億円",
+          "body": "工業団地開発を手掛けるIDICOの第2四半期利益が前年同期比130%超増加し、市場の注目を集めています。工業団地からの収益回復と利益率改善が主な要因として挙げられます。特に、未実現収益が5.7兆ドン（約342億円）に達しており、これは将来の安定的な収益源として期待されるでしょう。同社は広大な商業用地も保有しており、今後数四半期にわたる成長持続が見込まれています。この好業績は、工業団地開発セクターへの投資妙味を高めるシグナルとなり、関連銘柄への関心も高まる可能性があります。 — Nhà Đầu Tư ↗",
+          "link": "https://nhadautu.vn/loi-nhuan-idico-quy-ii-tang-toc-co-hon-5700-ty-cua-de-danh-d106727.html"
         },
         {
-          "headline": "中国脱出FDI、ベトナムが絶対的チャンピオン",
-          "body": "中国からの直接投資（FDI）流出が1700億ドル（約26兆円）に達する中、ベトナムがその受け入れ先として「絶対的チャンピオン」の地位を確立している。これは、米中対立の激化やサプライチェーンの多様化を背景に、多くの企業が生産拠点を中国からベトナムへ移転していることを明確に示唆する。ベトナムの安定した政治環境、若い労働力、そして政府の積極的な投資誘致策が評価されており、今後も製造業を中心にFDI流入が加速する見込みだ。これにより、工業団地開発企業や輸出関連企業への恩恵が期待される。 — VnEconomy (VI) ↗",
-          "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPVGppSVJKYXlibk1tam5VS0pLRWtwdExGMEROUzYyZmZPRFlpM3Q0VXRleW5NOWFWa3NIM2NoN2V3dVB0UzAwM0NLV0pYdjlaYkVxQy1Gc2tNMUpueV8welhqOERhVnBTY0cxM0YxY3FiQWhUSE9Ja2FmcDdwTFVOaFFTUnl1NnNvYTBhNzVuTkYzSjdOU2x1cXpRekF4XzNNSEk3bk1TTXkzWW1TbFFFTmQzWEMtVXBqUkNBQXpxb0s3Y2s?oc=5"
+          "headline": "バクニン市、中央直轄市昇格案を政府承認",
+          "body": "ベトナム政府は、バクニン市を中央直轄市とする提案書を承認し、内務省に国会への提出を指示しました。この昇格は、バクニン省の経済発展と都市化を加速させる重要なステップとなるでしょう。中央直轄市となることで、インフラ投資の増加や行政権限の強化が期待され、地域の不動産市場や建設セクターに大きな影響を与える可能性があります。特に、バクニン省に工業団地や住宅プロジェクトを持つ企業にとっては、事業機会の拡大につながるポジティブな材料となるでしょう。 — Nhà Đầu Tư ↗",
+          "link": "https://nhadautu.vn/chinh-phu-thong-qua-ho-so-de-an-thanh-lap-tp-bac-ninh-truc-thuoc-trung-uong-d106725.html"
         },
         {
-          "headline": "米国12.5%関税、輸出10産業に明暗",
-          "body": "米国がベトナム製品に対し12.5%の関税を適用する動きが、ベトナムの主要輸出10産業に明暗を分けている。この関税措置は、一部の産業にとっては競争力低下を招く一方で、特定の製品分野では他国からの代替需要を呼び込む可能性も指摘されている。特に、繊維・アパレルや家具などの労働集約型産業は影響を受けやすいと見られるが、電子部品やハイテク製品など付加価値の高い分野では影響が限定的である可能性もある。市場は、この関税が各企業の業績に与える具体的な影響を精査し、輸出依存度の高い銘柄の選別を進めるだろう。 — VnEconomy (VI) ↗",
-          "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPWFVxVFN6enB6UndBa1ZQbVBEclR6OWdrSzRhSnVzT2lCNEkyOUFQVGJ3Q3F6RERnbFRlQWhrMW9FVm1rbjN4R3gya25rbVREVWx5aHF5SVZuM3NsYXpxQ3lodkY5Wks2R25wMW5SQkNENXNMZUlXamFRckpmOHdDZ0JtS3B0RGJkSGV4V1FnM2h1S0tPQmd6SnhSaktGQ2Y0VmJj?oc=5"
+          "headline": "ベトナム投資開発銀行、Q2業績好調で株価上昇",
+          "body": "ベトナム投資開発銀行（BID）の株価が、好調な第2四半期業績を背景に上昇しています。同行は堅調な貸出成長と不良債権比率の改善により、市場予想を上回る利益を計上したとみられます。特に、銀行セクター全体が厳しい環境にある中で、ベトナム投資開発銀行（BID）の安定した収益力は投資家の信頼を高めているでしょう。この業績は、同行のファンダメンタルズの強さを示しており、銀行セクターにおける優良銘柄としての地位を確固たるものにする可能性があります。今後の金利環境の変化にも適応できる強靭なバランスシートが評価され、引き続き注目されるでしょう。 — diendandoanhnghiep.vn ↗",
+          "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPNE5jeTloZkZHQk11c3hvOG1rNGFUaWpKYUwxOHpmZTBVcl9wWTBmVGRScEg5ckxyVmVPVVRNM1E3YUV6ZmJxVHY4NzNvVGR3SzRCOU5XcWdlU3hINlQ5VFJSa1ZVcno0NFhFQ09LZk1oeFNhTGE4cktWcDREanFibHMtSm9Jbm1VbDlmTVZ2T3drTkx5UG5YREt2MTdFMkU0U3hWeWdhZw?oc=5"
         },
         {
-          "headline": "VSIP、ダナンに210億円の工業団地投資",
-          "body": "ベトナム・シンガポール工業団地（VSIP）が、ダナン市に総額1.38億ドル（約210億円）を投じて新たな工業団地を開発する。このプロジェクトは、ベトナム中部地域の産業発展を促進し、国内外からの投資誘致を強化する狙いがある。特に、中国からのサプライチェーン移転の動きが加速する中で、ダナン地域の戦略的な立地が評価されており、新たな製造業の集積地となる可能性を秘めている。工業団地開発企業の業績に好影響を与えるほか、周辺のインフラ関連企業や物流企業にも恩恵が波及するだろう。 — Nhà Đầu Tư ↗",
-          "link": "https://nhadautu.vn/vsip-dau-tu-khu-cong-nghiep-138-trieu-usd-o-da-nang-d106580.html"
+          "headline": "ベトナム、カシューナッツ輸入30億ドル超",
+          "body": "ベトナムは今年7月中旬までに、生カシューナッツの輸入に30億ドル（約4,500億円）以上を費やしました。これは、ベトナムが世界最大のカシューナッツ加工・輸出国の地位を維持するために、原料調達に巨額を投じている実態を示しています。国内での生産不足を補うため、アフリカ諸国などからの輸入が不可欠となっている状況です。この巨額な輸入は、カシューナッツ加工産業の規模と、その国際競争力を維持するためのコストの大きさを浮き彫りにします。関連する農業・食品加工企業にとっては、安定的な原料確保が引き続き重要な経営課題となるでしょう。 — VnExpress International ↗",
+          "link": "https://e.vnexpress.net/news/business/economy/vietnam-raw-cashew-imports-exceed-3b-in-almost-7-months-5104307.html"
         },
         {
-          "headline": "乳製品業界好調、ビナミルク過去最高益",
-          "body": "ベトナムの乳製品業界が第2四半期に好調を記録し、特にビナミルク（VNM）が過去最高益を達成した。また、IDPは前年同期の360億ドン（約2.2億円）の赤字から、2260億ドン（約14億円）の黒字へと劇的な転換を遂げた。これは、国内消費の回復と製品ポートフォリオの最適化が奏功した結果と見られる。消費者の健康志向の高まりも乳製品需要を後押ししており、今後も業界全体の成長が期待される。ビナミルク（VNM）やその他の乳製品関連銘柄は、引き続き投資家の注目を集めるだろう。 — Nhà Đầu Tư ↗",
-          "link": "https://nhadautu.vn/nganh-sua-khoi-sac-vinamilk-lai-ky-luc-idp-thoat-lo-ngoan-muc-d106585.html"
+          "headline": "VN指数3%近く回復、8月市場に期待感",
+          "body": "VN指数は直近で3%近く回復し、市場では8月相場への期待感が高まっています。これは、前週の急落からの反動に加え、企業業績の底打ち期待や政府の景気刺激策への思惑が背景にあるとみられます。多くの証券会社は、指数が短期的な底を打ち、今後はレンジ相場での推移を予想しています。ただし、依然として外部環境の不確実性や利益確定売り圧力は存在するため、投資家は引き続き慎重な銘柄選別が求められるでしょう。この回復は、市場センチメントの改善を示唆するものの、本格的な上昇トレンドへの転換にはさらなる材料が必要となりそうです。 — CafeF (VI) ↗",
+          "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOX1hyRzBaeVlFMllXNW9JSGVQdmJiam5NbXpoUUJtM0g3WkZzTXB3VDBfZlRJR0dGY2c5anl5ZXJPVGYwXzFtT0pLc0o3VWY4Q2lSbzBuMXREQUVvOUxtR1RmM3Eyb0E0LXNpaDVSWjVhY0taSmVRVzhVbWxRd2hPeGNvZGJlalp3VVdYYWF1a29rY3AyMWxQTFQzbHJQYTNrTGVDa3pjc2VFU3lsLV9UbGxPdw?oc=5"
         }
       ],
-      "others": "―"
+      "others": "・VIX証券（VIX）、ビングループ（VIC）とビンホームズ（VHM）購入計画でストップ高 / ・ベトコムバンク（VCB）、VN指数を支える / ・外国人投資家、ホアファットグループ（HPG）とヴィエティンバンク（CTG）を買い越し /"
     },
     {
-      "date": "2026-07-28",
+      "date": "2026-08-04",
       "stories": [
         {
-          "headline": "預金残高10.8京ドン、過去最高を更新",
-          "body": "ベトナムの銀行預金残高が2024年6月末時点で10.826京ドン（約67.1兆円）に達し、過去最高を更新した。これは前月比で49.1兆ドン（約3043億円）増加したもので、預金金利の低下にもかかわらず、家計からの資金流入が続いていることを示している。特に、株式市場の調整局面において、安全資産への資金シフトが顕著になっている。この巨額な預金は、経済の不確実性が高まる中で、投資家や一般市民がリスクを回避し、流動性を確保しようとする動きを反映している。将来的に市場環境が改善すれば、この資金が株式市場や不動産市場に回帰する可能性を秘めている。 — DTiNews ↗",
-          "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPUHVnbzVyMF8xOUdyOWtnT0tTV1lEWEZrT2g3eHpqUlc4XzNYdmxaZW5pbGtOM1hyNEg5TjRwZTRVTW9KalU4bzFGLWhySjNFdk83QnVVcXNuSlFpUWFFN0R4NF82c1pLSnRHaUJ0ZENaR21oa2hvclJITDNULU1kYmZWNkdJMFZWMnFJaTVOc1pNdzlianFQUUJ1ajFvQ2hmVlNsRjBESEpPNnN2a2EwaUhBVU5iU1FOa0xJSXQ5NkxMemc?oc=5"
+          "headline": "MBB、定款資本100兆ドン超へ増資計画",
+          "body": "軍隊銀行（MBB）が定款資本を100兆ドン（約6000億円）超に引き上げる計画を発表し、これを受けて株価はストップ高を記録した。同行は過去数年にわたり高い成長率を維持しており、今回の増資は事業拡大と競争力強化を目的としている。特に、デジタル変革への投資や海外展開の加速が期待される。この動きは、ベトナムの銀行セクターにおける成長意欲の高さと、資本市場からの評価の高さを示すものと言える。 — thitruongtaichinhtiente.vn ↗",
+          "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQY2xLVDdpckNEV0NNbzg4aFdMNnBlc1l4aTRwRFl6TjVKaVJVNFJaajFHS3ozX1hidjdCNk5NUHBDdmZncHlyZ2JCQnNCOWhVSVlDMTZjOUFxV3dhcHJnbFZ3UmlJdDF0X29ZNVJsZVZSSUtQOUNCWDlmVEIyWTNHTE5fWmFGNk1WQ0xmNjE4TWE3d1pEdjRHRjRVcXU2OFQxOFc1WjJCRmUtdlF3TjduSkdVbHZtRk5jWnc?oc=5"
         },
         {
-          "headline": "銀行間金利、年内最低2.5%に低下",
-          "body": "ベトナムの銀行間金利が2.5%まで低下し、今年最低水準を記録した。これは中央銀行が市場に潤沢な流動性を供給していること、および銀行システム全体の資金需要が落ち着いていることを示唆している。銀行間金利の低下は、銀行の資金調達コストを削減し、貸出金利のさらなる引き下げ余地を生み出す可能性がある。これにより、企業の資金調達が容易になり、経済活動の活性化に寄与することが期待される。金融政策が緩和的なスタンスを維持する中で、株式市場にとってはポジティブな材料となり得る。 — DTiNews ↗",
-          "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOUWpWeWpMdUlRUXkySnpsdEhjbGYzZXJQTTZLazNaMXZDSVhrTW9Pb3Y4LWZXamxRXzlKQnlsUmFlY0ZiZVRadWFqU0luQklZNW9YYWJlaFBFODNFTzJ4eW1YNXFwaHJtQUZvbWc3clZsT25TckpUUDZvQ1FwaGZSUTV0ZFhEWlp3LTdhN212cFcxdWFpVzRTRzBrOE5rQmluTVN1MEJXQVUydmFXOFI4MkZUeHR1b01Bc3ktUFpRWQ?oc=5"
+          "headline": "ジェマディプト、3年ぶり最高益と現金5.3兆ドン",
+          "body": "ジェマディプトグループ（GMD）が第2四半期決算で過去3年近くで最高の利益を計上し、現金および預金が5.3兆ドン（約318億円）を超えたと発表した。同社の売上高は堅調に推移し、投資の再構築から生じた金融収益が利益を押し上げた。物流および港湾事業の好調が背景にあり、特にベトナム経済の回復に伴う貿易量の増加が寄与している。潤沢な手元資金は、今後の事業拡大やM&A戦略に柔軟性をもたらし、株価にもポジティブな影響を与える可能性がある。 — Nhà Đầu Tư ↗",
+          "link": "https://nhadautu.vn/gemadept-lai-cao-nhat-trong-gan-3-nam-tien-va-tien-gui-vuot-5300-ty-dong-d106751.html"
         },
         {
-          "headline": "マサングループ、26年利益目標を大幅上方修正",
-          "body": "マサングループ（MSN）は、2026年の税引き後純利益目標を従来の10兆ドンから11.5兆ドン（約620億円から713億円）へと、最大で46%も上方修正することを提案した。これは、2024年第2四半期の税引き後純利益が3.8兆ドン（約236億円）と過去最高を記録したことを受けたもの。同社は、消費財部門の好調な業績と、傘下の各事業会社の成長が寄与したと説明している。この大幅な目標引き上げは、同社の経営陣が今後の成長に対して非常に強い自信を持っていることを示しており、投資家にとってポジティブなサプライズとなるだろう。同社の株価は、この上方修正を好感し、上昇基調を強める可能性がある。 — Nhà Đầu Tư ↗",
-          "link": "https://nhadautu.vn/lai-quy-ii-lap-ky-luc-masan-de-xuat-nang-muc-tieu-loi-nhuan-nam-2026-them-toi-46-d106599.html"
+          "headline": "FRTが3連騰、FPT・PNJもストップ高",
+          "body": "FPTリテール（FRT）が3営業日連続でストップ高を記録し、FPT情報通信（FPT）やフーニュアン・ジュエリー（PNJ）といった主要銘柄もストップ高となった。FRTは小売セクターの回復期待、FPTはITサービス需要の堅調さ、PNJは消費回復による宝飾品販売の好調が背景にあると見られる。特にPNJは掲示板でのバズ上位銘柄であり、個人投資家の関心も高い。これらの銘柄の急騰は、市場が特定の成長テーマや消費回復の恩恵を受ける企業に資金を集中させていることを示唆している。 — CafeF, Tuổi Trẻ ↗",
+          "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQcUVqWHlhRl9pQUpTOS1BaG43b1lVZm9NY1NGNVd4OWd3RUs5c001VnJuY0Y4UFJ5dklxSmNCV0VDRU9KbFlDT0lJUXJLQy1ERGJIdWh5eGNQV1BSRlRfbTVLYy1fY1oxM0hqcWl1aHp6Z0IxYVlJcUdDeU96TzBRZ1V6UnZfTE5qeGJOOU1QWnZTV2lJTlJ3b19YOGt6bHM?oc=5"
         },
         {
-          "headline": "ブオン氏、LPバンク株約10%保有",
-          "body": "ビングループ（VIC）のファム・ニャット・ブオン会長と関連会社が、LPバンク（LPB）の株式約10%を保有していることが明らかになった。これは、最近のLPバンク株の急騰の背景にある可能性があり、大物実業家が銀行セクターに積極的に投資していることを示唆している。ブオン氏のLPバンクへの関与は、同行の経営戦略や将来的な成長に大きな影響を与える可能性があり、市場からの注目度を高めるだろう。また、ビングループのエコシステムとの連携による新たなビジネスチャンスも期待され、LPバンクの株価にとって長期的な支援材料となり得る。 — Tin nhanh chứng khoán ↗",
-          "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOUGtHaGptR0tOOE43RHl3a3dCWXFXc05JU0lGVERTZEo2bEpZNlVmWmpfQTZzUzkwV3pEOVpaU19NdlNlN0pweEVtNXBuV2p0S3llZFQtRXdVZkRwdkx4Vm56TTNpLXFIdzlublpIYWVMbjdPV2pYWFBOMXVMay1vUUNKSXhVTXVxdjJqUFY0V3Y1aTExNW9YcnJYRER3VjdnbFVZYjQ3ZURUTXkyUzU5OHRDN1JUR2hnYVQ0WGFETTRvSW_SAb8BQVVfeXFMTVhTWXB5djkxdHp0RHlpZnp4aGM4VUZoWXlESlR4SndWbVktSERSS0pVMDdpR2EyOS1fZFBLQTJQVGN6MWxrUFBzUkNKY3A1SUZ3X3RlNF9yOGU2XzRZbklIYk8tTlVKSHEwbXpMaHJ4Z1EtaFl0OFdDQkR5cWhoRVNHdzVwVy1tbjlZdGlJU2tNenJnVldOTXZKOGl3YjdpZW5iNV82QWNNbUR1VFVrTHVRUHkzakVJRjd2cFF1VFU?oc=5"
+          "headline": "農業会社、VIC株に2200億ドン投資",
+          "body": "ある農業会社が、半年間の利益がわずか270億ドン（約1.6億円）に過ぎないにもかかわらず、手元資金2200億ドン（約13.2億円）以上を投じてビングループ（VIC）株を購入したことが明らかになった。この異例の投資は、VICの将来性に対する強い期待感を示唆している。VICはベトナム最大のコングロマリットであり、不動産、自動車、テクノロジーなど多角的な事業を展開している。農業会社による大規模な株式投資は、市場に意外感を与え、VIC株への新たな関心を引き起こす可能性がある。 — Vietstock ↗",
+          "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNNjRpem9CaDlSVzNlblJtQnhMU0g1RDBXdnF5djhNQUU5WFVuVkduRC0xWFp2OWVSN2NwRG5ZN0hqMlpVNUZIREFuMDlLWmt4LVo0dVU1dC10VUdyN25YSndoWFItV2dBME1UcEFMU0pWV053ZTBGdldEMGJYZjFKcDBTWHhuMjZZbWRyZ3lJbTFEZlJNNUp3R1pCSnNnc1E4TGozc19wM3hTaldVZHR6V1E4OWpqV1cwczJNRDVyeENuSTJSdG4wYVQxWkExRzU3MTRjTXhrTXc?oc=5"
         },
         {
-          "headline": "フーニュアン・ジュエリー、ストップ高",
-          "body": "フーニュアン・ジュエリー（PNJ）が取引中にストップ高を記録し、市場の注目を集めた。同社は最近、一部証券会社による信用取引規制の対象となっていたが、この日の急騰は、規制による売り圧力が一巡したことや、貴金属価格の上昇、あるいは今後の業績回復への期待が背景にあると見られる。特に、金価格の国際的な上昇が同社の収益性を押し上げるという見方が強まっている。信用規制下でのストップ高は、投資家の強い買い意欲を示しており、短期的な株価のモメンタムを維持する可能性がある。 — thuonghieucongluan.com.vn ↗",
-          "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNUVZpT202VmdSVGVLLWVneUwxQjVITW1YNnRSRm1kSUNOandtbmJvaXExY25MVlJjb3ZxOFNJcmdWajBsOFVLRHk2aWZqV0ViZ0lBNV9RYkZZLVdfbXZEcEJiODRKS08zVkFzb0xOaEhtemtRczAweTNPSWN0amR6OWthM0hOSVVCNzBCYnh1NVpoOVd2RUlZZkdJR1BmMU1EQ2Y4TkRqNGlWUXZYN196U3JfRGFHN1NYSnR0akdnUmdYdlVSbTNIaWdJOA?oc=5"
+          "headline": "VN指数27点超上昇、外国人買い越し再開",
+          "body": "ベトナム株式市場のVN-Indexは27ポイント以上急騰し、外国人投資家も1,000億ドン（約6億円）を超える買い越しに転じた。この上昇は主に銀行株が牽引しており、特にベトコムバンク（VCB）、ベトナム投資開発銀行（BID）、ヴィエティンバンク（CTG）などが好調な第2四半期決算を発表した後、株価を大きく伸ばした。外国人投資家の買い越しは、ベトナム市場への信頼感回復と、今後の資金流入への期待を高める。市場全体としては、マクロ経済の安定と企業業績の改善が投資家のリスクオン姿勢を後押ししている。 — Laodong.vn, Vietnam+ (VietnamPlus), Thời Báo Ngân Hàng ↗",
+          "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOcVpnOUkyUURLaXl5aFd2T001QnVoQUZTdEppTUxHdFdRZ01lbkRIdElqX0tKUXp2VnhlWjdiaVBJV1R1eU5KUk5ZYUI2MnBtZE5fSEhrQkgwRk13TmxfMDNlWUtBYldjOXBBT1pYcXoxOWtfRDJWMThoQzN1QWQ2TGstUjJieTJycS1ZUGloZ1dKVEVXeDhXQzhXbF9VbkhG?oc=5"
         }
       ],
-      "others": "・ドン安進行、対ドルで一時下落 / ・ベトナム投資開発銀行・ヴィエティンバンク、火力発電所へ大型融資 / ・モバイルワールド、売り圧力で下落 /"
+      "others": "・ドルがドンに対し下落 / ・金価格、世界市場に連動し上昇 / ・Sun Group、フーコック空港地上サービス開始 /"
     },
     {
-      "date": "2026-07-29",
+      "date": "2026-08-05",
       "stories": [
         {
-          "headline": "ドン中央為替レート、過去最高値更新",
-          "body": "ベトナム国家銀行（SBV）が発表する中央為替レートが、対米ドルで過去最高値を更新しました。これは、米国の利上げ継続観測や世界的なドル高基調が背景にあり、ベトナムドン（VND）の対ドルでの下落圧力が強まっていることを示しています。ドン安は輸出企業にとっては競争力向上に繋がる一方、輸入コストの増加や外国人投資家にとってはベトナム資産のドル建て価値の目減りを意味します。市場では、SBVが為替安定のために介入する可能性も指摘されており、今後の動向が注目されます。 — Vietnam macro (EN) ↗",
-          "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNUGVEdnBIck5kT0ZjeFhrUHlTd20zSFR4REhGZ3ZIQTNvOV84NXVaRjRjeEIxZkI0a2lZVzlPNExDVGxJS003UnNIaFRsR2NqeWhtS2hyLWg2YldDNUpiV2x0WUlVRkw3M3hvQ1NBSm9XWG1sSEZ5OWJuTkhoY19yaWIyZU5EdjdJaWI0WHVPWTd5OVhRb3ZuamhWM1pUMHNGcHJ6ekVSOWpsR2JPMUg1emRQMDRJZXV2TEdSbmZBbElUSlNmZWctbg?oc=5"
+          "headline": "7ヶ月でFDI380億ドル、58%増",
+          "body": "ベトナムへの外国直接投資（FDI）が、今年1月から7月までの累計で登録ベースで380億ドルを超え、前年同期比58%増を記録した。実行ベースでも152億ドルに達し、過去5年間で最高水準となった。これは、世界経済の不確実性が高まる中でも、ベトナムが製造業のサプライチェーン再編における魅力的な投資先としての地位を確立していることを示唆する。特に、製造業や不動産分野への投資が活発であり、今後も経済成長の重要な牽引役となるだろう。 — Nhà Đầu Tư ↗",
+          "link": "https://nhadautu.vn/viet-nam-hut-38-ty-usd-von-fdi-trong-7-thang-d106768.html"
         },
         {
-          "headline": "韓国からのFDI、950億ドル規模の連携",
-          "body": "ベトナムと韓国の間で、総額950億ドルに上る大規模な経済協力が進行中です。これは、韓国企業がベトナムを重要な生産拠点および投資先と見なしていることを明確に示しており、特に製造業やハイテク分野での投資が加速すると予想されます。質の高いFDIの流入は、ベトナムの産業構造の高度化を促進し、雇用創出や技術移転を通じて経済成長をさらに押し上げるでしょう。関連する工業団地開発企業やインフラ関連銘柄に恩恵が及ぶ可能性があります。 — VnEconomy (VI) ↗",
-          "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPOXdMVU1yNTVaeDI3LXoweVp2amd3UktXOWpsaEMwLVRwbXlXYnFyd1QwYl9aMXNLZGdZWEQwWkpxRDRQOWthQzhaX04zVGlVQWU1NEp1VXJsS1dXWEltMnIwYW9tVEtvc0xLRTBLVG9PbnZtUGg2b09SOHZYOUg1RTN5UDRIaU91MUhGcmtDdl9NUjhPYUdORG1tTFZ1aFRJb0Vscy1SNFpQc2ZpMDBKd2k2ZnhXbk9Vd0lLaFQ3S1FIVkRySUNz?oc=5"
+          "headline": "国庫が780兆ドン供給、市場流動性強化",
+          "body": "ベトナム国庫は市場の流動性強化のため、780兆ドン（約4.68兆円）を供給した。これは、金利の安定化と経済成長支援を目的とした中央銀行の金融政策と連動する動きである。この大規模な資金供給は、銀行間の短期金利に影響を与え、企業の資金調達コストを抑制する効果が期待される。市場全体としては、資金供給の増加が株価を押し上げる要因となり得るため、投資家は金融市場の動向に注目する必要がある。 — SGGP English Edition ↗",
+          "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQWF9jcFdTWGNJVlVIbXNCajB6M3V4TFExWURiSGZZUHBQZ3hib3pxaVd0YTdMcDNQbVF5Ui1HZUxEUGE3V1ZzWTUwRHIzbFhwSjFVRnZ2SHM1OFNSVkFvblZKenVNS2FSclpCSnVHQkY4M2ZRbnJqZ05JUENYT1c2TDdBLTlfaDQ3UllKS2U3VFJUb1FyZThzSW54Y3pYd05lRncyMHREaw?oc=5"
         },
         {
-          "headline": "銀行、預金証書で金利9%まで引き上げ",
-          "body": "ベトナムの一部の銀行が、預金証書（CD）の金利を年9%まで引き上げています。これは、市場の流動性逼迫を背景に、銀行が資金調達競争を激化させていることを示唆しています。高金利での資金調達は銀行のコスト増に繋がり、貸出金利にも影響を与える可能性があります。一方で、預金者にとっては魅力的な選択肢となり、株式市場から資金が流出するリスクも考えられます。金融セクター全体の収益性や、今後の金利政策の動向に注目が集まります。 — CafeF (VI) ↗",
-          "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNODV5Y3dXRWZPWFNVdFNPTzFRMXM1eTlvelJ2eGZuX1FzdE1XaHpDZjRJbGFaN0ZtcjlBa0k4cDZQd1FpRW5neVktcE1lNEpYeUcxS3lZcDNhQ2VjalRGUDRLUHFaZjBrSnFidFdNOUQ0RHF2NDM3WjVqSHFMUnlOcjVjMlFpZXdwdEx1X0JDUzYzZVVHeU9DeWI5MWZtZzFBUDhjR1RB?oc=5"
+          "headline": "短期銀行間金利、突如6.3%に急騰",
+          "body": "ベトナムの短期銀行間金利（翌日物）が突如として6.3%に急騰した。これは、市場における一時的な流動性逼迫を示唆しており、通常は中央銀行の介入や大規模な資金移動によって引き起こされる。金利の急騰は、銀行の資金調達コストを押し上げ、最終的には企業の借り入れコストにも影響を及ぼす可能性がある。投資家は、この金利上昇が一時的なものか、あるいはより広範な金融引き締めサイクルの兆候であるかを注意深く見極める必要がある。 — CafeF (VI) ↗",
+          "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQRjBNRWxBZjUtajFoVmpQQTVOR2hkVlRyYmtoNmZBM25oZXhCWUZPN0lNRlJ2RktnZFAwTTJpaU5DNVE2RGdvOFlzS2lSSGJSZ1Jpbk5sbXJIUTFGQjZKOW5JeHZUSzl1akIydkxuWllmTXZlRno1cTFYeXJVcGlDSkU1dHBLWHE1R2xPTFNIMWtOZkVhc1pJLTl3?oc=5"
         },
         {
-          "headline": "ベトキャップ証券、CEOの大量買いでストップ高",
-          "body": "ベトキャップ証券（VCI）のトー・ハイCEOが、3,100万株を超える自社株の購入を登録したと報じられ、これを受けて同社株はストップ高となりました。この大規模なインサイダー買いは、経営陣が現在の株価水準を割安と判断し、将来の業績に強い自信を持っていることの表れと解釈できます。市場はこれをポジティブなシグナルと受け止め、証券セクター全体への投資家の関心が高まる可能性があります。VCIの株価は、今後もCEOの買い付け動向に影響されるでしょう。 — Nhà Đầu Tư ↗",
-          "link": "https://nhadautu.vn/ong-to-hai-dang-ky-mua-hon-31-trieu-co-phieu-vci-tang-kich-tran-d106616.html"
+          "headline": "外国人投資家、4日間で120億円買い越し",
+          "body": "外国人投資家がベトナム株式市場に買い越しで回帰し、過去4営業日で約2兆ドン（約120億円）の純購入を記録した。特にビングループ（VIC）とビンホームズ（VHM）に買いが集中しており、市場の主要銘柄に対する関心の高さを示している。この動きは、最近の市場回復を後押しする重要な要因となっており、外国人投資家のセンチメント改善が継続すれば、VN指数の一段の上昇に繋がる可能性がある。特に大型株への資金流入は、市場全体の安定感をもたらすだろう。 — Đầu tư Chứng khoán (VI) ↗",
+          "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQV2tQRHJfY3ZwSWJqTnlrcHE4bmxHU0ZWLXpUX2VPUkE5TGpYRHJDZm5ZZF9sXzJlZHhBZ3d6bk5QNVEyc0VnZWNJU1ZPT29POVZoQ1Q4VmNkX2E1R3RENjdocHRyZnhMa2R4eW9VcnRjTlFidXhzdE01c1JRWVRaVkE2STJXM3dKQ1RmUkkydHdDUVh1bWFOalN5ZEpicWtmc2h3V3paLW5FQTdURUhZ?oc=5"
         },
         {
-          "headline": "ビンホームズ、外国人2.1兆ドン超売り越し",
-          "body": "不動産大手ビンホームズ（VHM）の株式が、外国人投資家によって2.1兆ドン（約1300億円）を超える大規模な売り越しに見舞われました。これは、外国人投資家によるベトナム市場全体の売り越しトレンドの中でも特に顕著な動きであり、特定のファンドによるポートフォリオ調整や、同社の事業見通しに対する懸念が背景にある可能性があります。VHMはVN30指数構成銘柄の中でも時価総額が大きく、この売り圧力は指数全体にも影響を及ぼす可能性があります。不動産セクターの動向と外国人投資家のセンチメントが引き続き焦点となります。 — 個別/VHM ↗",
-          "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNakIzUFh2ZFNScS01N1RGSXh0QVlFcUs4TU83czhPWkR3YVdkZzVXNnJ3emRKcEh2M3htOGdzSGFadHZzVzRPUnJ6NXp2TUFKT3BBMmx6UTE3WEtvVGRMSDJEbllpY3FPdDYyQzlhWkpaOE8tbVUzY3VYMUh0TkNPZ3VhU2xGM1ZoRUZybnVpR2g3cWVfdVhmMlZWdVBSeG9nenFsMnFCa3c5dUN5NnlCd3RtVE85NjRM?oc=5"
+          "headline": "偽造品対策でMWG・FRTが過去最高益",
+          "body": "偽造品や粗悪品に対する政府の取り締まり強化が、現代的な小売業者に追い風となり、モバイルワールド（MWG）とFPTリテール（FRT）が過去最高の利益を記録した。両社は潤沢な手元資金も蓄積しており、市場での競争優位性をさらに高めている。この動きは、消費者の信頼が正規販売店に集まる傾向を加速させ、品質を重視する大手小売企業の成長を後押しする。今後も、このトレンドはMWGやFRTのような優良小売株にとってポジティブな材料となるだろう。 — Nhà Đầu Tư ↗",
+          "link": "https://nhadautu.vn/siet-hang-gia-tao-cu-hich-cho-ban-le-hien-dai-mwg-va-fpt-retail-lai-ky-luc-tich-luy-tien-khung-d106764.html"
         }
       ],
-      "others": "・ドリアン輸出、7月末までに20億ドル超え / ・クアンニン省、中央直轄市設立案を承認 / ・AML強化、ベトナムが特別政策導入 /"
+      "others": "・7ヶ月貿易額6590億ドル、28%増 / ・公共投資関連株、割安圏と評価 / ・ドル安、対ドンで下落 /"
     },
     {
-      "date": "2026-07-30",
+      "date": "2026-08-06",
       "stories": [
         {
-          "headline": "バンガード、ベトナム株20億ドル購入へ",
-          "body": "米国の資産運用大手バンガードが、9月からベトナム株式市場で約20億ドル（約3100億円）相当の株式を購入する計画が報じられた。SSI証券のアナリストによると、このうちビングループ（VIC）には約7.7億ドル（約1200億円）が投じられる見込み。これは、バンガードがベトナム市場への配分を大幅に増やすことを示唆しており、特にVICのような大型株には大きなパッシブ買い需要が発生する可能性がある。市場全体の流動性向上と、特定の大型銘柄への資金流入が期待され、今後の株価動向に注目が集まる。 — VnEconomy ↗",
-          "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNV0xVN244QThuRjZKc3RxRFp1N1VBV18tRlh5SmJYTm9hTy1iRjBMLU9sQ1pGaUd5MktRV1MwTWthTEUxcklVUDZVNmhsWkNtTmVUakpzNk1wWWtuTkxDbFFqbllYYUtPeFNQZXp2QW9SQWpTYmphZHhoQ0ZvaFhiTmQ1RXVXelRFUmJ5S2piVWtudDdNOWhOS3l6aG9RaFNFeGVuWlVjcGJqQnI5U1BwMlhpT3V5ZUk0Q2sw?oc=5"
+          "headline": "テクコムバンク、10億ドル調達を模索",
+          "body": "ベトナムの大手民間銀行であるテクコムバンク（TCB）が、事業拡大と成長戦略の資金として最大10億ドル（約1440億円）の資金調達を模索していると報じられました。これは、ベトナムの銀行セクターにおける競争激化と、経済成長を背景とした貸出需要の増加に対応するための動きと見られます。同行は過去にも大規模な資金調達を実施しており、資本基盤の強化を通じて市場での優位性を確立しようとしています。この資金調達が実現すれば、テクコムバンクのさらなる成長ドライバーとなるだけでなく、ベトナムの金融セクター全体への投資家の関心を引き付ける可能性があります。 — Vietnam macro (EN) ↗",
+          "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPcTY5SmlReE45YVVaa3pSQWNldnU1Nk0tb1U0SU9URDgzWFJta0ZHYXZwN0pFZTBhV3IxUWxYMkZDeGd1MlZYS3Z5dUZDZW9TTDhBVTZnOVpINXdYRTJtd1dZanNCRFRwc3p4OFBHTENkLV9vVWYydDViLWlwQTdHcnhWY1dJTnpZSHhWU3dtbjI2ZkRHLVUySEF2ZWNkbkhwS0VTeHpiR0ZGS2Vz?oc=5"
         },
         {
-          "headline": "外国人売越額、95%減で大幅縮小",
-          "body": "ベトナム株式市場における外国人投資家の売越額が、直近の取引で前日比95%以上減少した。これは、これまで継続していた大規模な売り越し基調が大幅に減速したことを示唆する。FDI（海外直接投資）が過去最高水準で流入しているにもかかわらず、株式市場では外国人売りが続いていたため、この変化は注目に値する。売越額の急減は、外国人投資家の売り圧力が一服し、市場のセンチメント改善に繋がる可能性がある。今後の外国人動向が市場の短期的な方向性を左右する要因となるだろう。 — Đầu tư Chứng khoán (VI) ↗",
-          "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNbWJha0FDNUduWjRVUFN1dlJkY2dxUU1TeTVrQi1OazNZSVUyc2ZiNVRMWTVJdDdYMmh4VXB1TjYzS2oya3JrdF9WUUZvVnNZUng3bXRJcnlJMU1rR0xOaGF5Q0kxR25yVmNrOEh6TVc0Qy13N0V1UWEtZGV3S0hvSnpWYlZuRVRsLXNXb2VGRFI2UkVQT0pEWGJ2Wkp4UkpTSnhYMU5OYWhXbnRtSHJtMEdpcWF1Mmt50gG4AUFVX3lxTE1tYmFrQUM1R25aNFVQU3V2UmRjZ3FRTVN5NWtCLU5rM1lJVTJzZmI1VExZNUl0N1gyaHhVcHVONjNLajJrcmt0X1ZRRm9Wc1lSeDdtdElyeUkxTWtHTE5oYXlDSTFHbnJWY2s4SHpNVzRDLXc3RXVRYS1kZXdLSG9KelZiVm5FVGwtc1dvZUZEUjZSRVBPSkRYYnZaSnhSSlNKeFgxTk5haFdudG1Icm0wR2lxYXUya3k?oc=5"
+          "headline": "VPバンク、年4.99%融資で中小企業を支援",
+          "body": "VPバンク（VPB）が、生産・事業活動向けの融資パッケージを年率4.99%という低金利で提供開始しました。この優遇金利は、特に中小企業（SME）の資金繰りを支援し、経済回復を後押しすることを目的としています。ベトナム政府が経済成長目標達成のために企業活動の活性化を促す中、銀行セクターもこれに応える形で積極的な融資姿勢を見せています。VPバンクによる今回の動きは、銀行間の金利競争を激化させる可能性があり、他の銀行も追随することで、企業にとっては資金調達コストの低減につながるでしょう。 — CafeF (VI) ↗",
+          "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPOXZJRndzaTdFZThiQmVCTVNiYTVaWldxNG5SaHA5dmlTVlNhcUZsUXphV1hRNXFrbllNS2thMENuQWlYLW5xNF9nTHpDSVI1blhHUXMxSDVrckttR1hXUS1BUDdDeDFSYmhNQ2NFME43bkVGbE56Wm91Nmgya2FVME1XLWl4QlhiVloyYlNDaUEwOHgyREM3NnRFUU1yeUJSUVE2cFRnN21EUWZlZUtUSXU4ODEyUWc?oc=5"
         },
         {
-          "headline": "GELEXインフラ、半年で年間利益目標超達成",
-          "body": "グレックスグループ（GEX）の子会社であるGELEXインフラ（GEL）は、2026年上半期の税引前利益が1.177兆ドン（約73億円）に達し、年間計画を1.6%超過達成したと発表した。これは、同社のインフラプロジェクトが順調に進捗し、収益性が向上していることを示している。特に電力インフラや再生可能エネルギー分野への投資が奏功したと見られる。通期の業績上方修正期待が高まり、親会社であるグレックスグループ（GEX）の評価にもポジティブな影響を与える可能性がある。 — Nhà Đầu Tư ↗",
-          "link": "https://nhadautu.vn/ha-tang-gelex-lai-1177-ty-dong-sau-6-thang-dau-nam-d106645.html"
+          "headline": "ベトナム投資開発銀行、DXと融資で企業支援",
+          "body": "ベトナム投資開発銀行（BID）は、首都ハノイで展開されている「100日間デジタル変革キャンペーン」に呼応し、デジタル変革（DX）支援と大規模な信用供与プログラムを開始しました。この取り組みは、企業や個人事業主、公共サービス機関のDX推進を後押しし、同時に経済活動の活性化に必要な資金を提供することを目的としています。政府がDXと経済回復を重点課題とする中、ベトナム投資開発銀行のような大手国有銀行が積極的に関与することで、中小企業の生産性向上と競争力強化に大きく貢献することが期待されます。 — Nhà Đầu Tư ↗",
+          "link": "https://nhadautu.vn/bidv-va-nhung-giai-phap-tro-luc-cong-nghe-tai-chinh-d106797.html"
         },
         {
-          "headline": "マサン・ハイテク、半年で記録的利益",
-          "body": "マサン・ハイテク・マテリアルズ（MSR）が2026年上半期に記録的な利益を達成したと報じられた。これは、同社が過去16年間の投資を経て、この半年でその価値を大きく実現したことを意味する。タングステンなどのハイテク素材事業が好調に推移し、国際市場での需要拡大と価格上昇の恩恵を受けたものと見られる。同社の業績は、ベトナムのハイテク素材産業の成長ポテンシャルを示すものであり、今後のさらなる発展が期待される。 — Nhà Đầu Tư ↗",
-          "link": "https://nhadautu.vn/16-nam-dau-tu-6-thang-hien-thuc-hoa-gia-tri-dieu-gi-dang-thay-doi-tai-msr-d106643.html"
+          "headline": "不動産セクターに資金回帰、ノバランドに注目",
+          "body": "不動産セクターへの資金流入が再び活発化しており、特にノバランド不動産投資グループ（NVL）に注目が集まっています。市場の資金は、ビングループ（VIC）やビンホームズ（VHM）といった大手銘柄に加え、ノバランド不動産投資グループ（NVL）にも向かっていると報じられています。これは、不動産市場の底打ち期待や、政府による市場支援策への期待感が高まっていることを示唆しています。ノバランド不動産投資グループ（NVL）は、掲示板でも話題となっており、今後の不動産セクター全体の回復を占う上で重要な指標となる可能性があります。 — 個別/VIC ↗",
+          "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQNVdhUE1JbHFzWXdOUkdVdXhxZHA3QnBFVWU0aG0zQVBMX3FQMWpTNW85eXlPc3duSjZ1SWZhQ2FJdjNybnFFT2h5NXp5TTVaV1VaMmxQTnRadUFEN3lsRndscDdaNzIyV3pvRVVKZllqWHA1Nm43ZjdCSVZHQ1E4elNrVUJycmY2QkVXV2xvcDRZakE3VC04SWZvRW9ZNGozRFE?oc=5"
         },
         {
-          "headline": "デジワールド、KBCとHPGに18.6億円投資",
-          "body": "デジワールド（DGW）が、キンバックシティーグループ（KBC）とホアファットグループ（HPG）の株式に合計3005億ドン（約18.6億円）を投資していることが明らかになった。DGWは主にIT製品の流通を手掛ける企業だが、今回の投資は不動産開発や鉄鋼といった異業種の大手企業への戦略的な資本投下と見られる。これは、DGWが事業ポートフォリオの多角化や、他産業の成長を取り込む意図があることを示唆する。投資先のKBCとHPGにとっても、安定株主の存在はポジティブな要素となり得る。 — Tin nhanh chứng khoán ↗",
-          "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOTWNsOHMyZ2hkWDEtLWM3ZThtVUVKeDBvOWxmdWVwMXJNQkdwaGw0MEJyOHJINUJCdDJJd0N2Ukd6Rm9SV0Rzbmw4ZVc1ZVlmS0FiSjVZUkNWTkctTTBMb0F5NHZ3cEh5andQVUxRVXdqcFJSeHFlT0lZaXVWckFwci0wdlBrQ2dqaXh2c2ZLUnhOMWtva013aFFfcUxSWEtpc2dwODFvcW9jNVNwSmfSAa4BQVVfeXFMTk1jbDhzMmdoZFgxLS1jN2U4bVVFSngwbzlsZnVlcDFyTUJHcGhsNDBCcjhySDVCQnQySXdDdlJHekZvUldEc25sOGVXNWVZZktBYko1WVJDVk5HLU0wTG9BeTR2d3BIeWp3UFVMUVV3anBSUnhxZU9JWWl1VnJBcHItMHZQa0Nnaml4dnNmS1J4TjFrb2tNd2hRX3FMUlhLaXNncDgxb3FvYzVTcEpn?oc=5"
+          "headline": "ベトナム航空、燃料安と競合苦戦で回復期待",
+          "body": "ベトナム航空（HVN）は引き続きマージン取引停止リストに掲載されているものの、その業績回復への期待が高まっています。国際原油価格の下落による燃料費の低減は、航空会社の主要コスト削減に直結し、収益改善に寄与します。さらに、競合他社であるバンブーエアウェイズが損失を計上し、多くの路線を削減していることも、ベトナム航空（HVN）にとっては市場シェア拡大の好機となります。これらの要因が重なることで、ベトナム航空（HVN）の業績回復が加速し、投資家の関心を集める可能性があります。 — 個別/HVN ↗",
+          "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPWmJGcm84MlhIcG00WnI1bnRZMGZoeTMyNlhuNWdRclJ1dEtwbTFFLVRWNEN5b0RGNDV6X1NCOWVSckxQblpjcXowcUpKWVJwZURibVoyVnJiaVJtOUxKNllnYW5OX0dGTUd5NlVpaWlEc3Z3ME1jVFdlRl9LaExKVXBUX0d4cnRlaFlxM21KRnI5SGdfa0kxZEd3MzV4VnA3MGd3cHVoRkcxaE5LNWFyelRMR3BLN3pr?oc=5"
         }
       ],
-      "others": "・グリーン投資2.1億ユーロ、農業・ロジスティクスへ / ・ペトロベトナムガス、ハティン省で戦略的提携 / ・FDI流入と外国人売越しの逆説 /"
+      "others": "・ドル高、黒市場で再び上昇 / ・暗号資産サービス、AML報告対象に / ・銀行・マネーロンダリング対策法改正へ /"
     },
     {
-      "date": "2026-07-31",
+      "date": "2026-08-07",
       "stories": [
         {
-          "headline": "世界株安に逆行、VN指数4ヶ月ぶり高値",
-          "body": "ベトナム株式市場は世界的な株安の流れに逆行し、VN指数が約31ポイント（2.4%）上昇し、約4ヶ月ぶりの高値を記録しました。特に銀行株が市場を牽引し、ヴィエティンバンク（CTG）やベトコムバンク（VCB）などが大幅高となりました。これは、ベトナム経済のマクロ経済の安定性や企業業績への期待感から、投資家の資金が流入していることを示唆しています。世界経済の不確実性が高まる中で、ベトナム市場のレジリエンスが改めて浮き彫りとなり、今後の市場の堅調な推移が期待されます。 — thoibaonganhang.vn, BÁO SÀI GÒN GIẢI PHÓNG, vnexpress.net ↗",
-          "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNMUJvdFB5RkFKb1dJblJqQndlMlFmWnkycURqczNkdWhaMlJHUHVzYnNnV19wVG5TYXBtNlZCQXNHRFBZSTBHc05ya1JWRDd5WjVYLWVFanRVZTlzbU1DbDFIYnQ4RjJPRkVxdldqNVdwcXM2NWF6a1Q5UldLVDdOV0I5Y2diWk96YkZKQ09ZLVM3aWstMXlGdG96NTVXTGtLcklr?oc=5"
+          "headline": "国有企業、9000億円超を高金利預金",
+          "body": "ある国有企業が60億ドル超（約9000億円）もの巨額資金を銀行に預金しており、最高で年利8.9%という高金利を享受していることが明らかになった。これは、現在の市場金利が高水準にあることを示唆するとともに、一部の企業が現金ポジションを厚くし、投資よりも預金による安定収益を優先している状況を浮き彫りにする。この動きは、企業の設備投資や新規事業への資金流入が鈍化する可能性を示唆し、市場全体の流動性や成長期待に影響を与える可能性がある。また、銀行にとっては安定的な資金調達源となる一方で、高金利での預金確保が収益を圧迫するリスクも孕む。 — CafeF (VI) ↗",
+          "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNOUd4VVBDQnNpMGpiS0ZYckpnRmJUZ0pKcjdIQk02NEJoeG5KMWM1TTF3NUxOYzZxNXN1eHhOdVBzajJQc0Q5ZzY2M0JIRUpTMUtOeXVQNDlBeVlVYUNQZjJFbFItQkozTXBEYWJzYW1fVUlHQkVuNFRiNFlpbEhVYUVQeVZPb3NsX053bGhOT1pfLUZjVThsLVM2QUhUMFYyU1kwMHd3WWRWS09KazZaMTFESDl5X1VidTBqSG9NcHE4bW50cEp0MHNrUDAyUEM5aXc?oc=5"
         },
         {
-          "headline": "VIX証券、VICとVHM購入計画でストップ高",
-          "body": "VIX証券（VIX）の株価がストップ高を記録しました。これは、同社がビングループ（VIC）とビンホームズ（VHM）の株式を購入する計画を明らかにしたことが背景にあります。VIX証券は、グループ企業の株式ポートフォリオを強化する意向を示しており、特にベトナムを代表するコングロマリットであるビングループ（VIC）とその不動産子会社ビンホームズ（VHM）への投資は、市場に強いインパクトを与えました。この動きは、VIX証券の今後の業績に貢献するだけでなく、ビングループ（VIC）とビンホームズ（VHM）の株価にもポジティブな影響を与える可能性があります。 — Tuổi Trẻ, nguoiquansat.vn ↗",
-          "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOMjVyendXTWRBbllmWjhYWVNKVEV2YXBhRHl2M1ZyMDFGclJ2RjlBb3F1RGFUSmV5dFJpaHRQaU90ZE9FMm5DMC1mUHEyUkV1LThMempER21rVXk2UkVKV2JlMEd2RE1zczFxaDRZakV4SjFoZjNZWEJSaTN4T2NVWW8xeHp1V20xRldQOXI5ZWtkV3lxSzh4TV9B?oc=5"
+          "headline": "新規証券口座、大幅減で市場冷え込み",
+          "body": "ベトナムの新規証券口座開設数が大幅に減少していることが報じられた。これは、最近の市場の調整局面や高金利環境が個人投資家の投資意欲を減退させていることを明確に示している。新規口座開設数の減少は、市場への新たな資金流入が鈍化していることを意味し、短期的な市場のボラティリティを高める要因となる可能性がある。特に、個人投資家の動向が市場に与える影響が大きいベトナム市場においては、この傾向が続けば、市場全体の回復ペースに影響を及ぼす恐れがあるため、今後の動向が注視される。 — Đầu tư Chứng khoán (VI) ↗",
+          "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPel9ib2ptZmkzM3ZWSm5sV0lnblhiT0V3S0JPYTNiUzEyc2dtYlhnekhKSjNObzgtRS1fMjVXV2tyWjlFX0FUTXM0bGVrdXBTYnBPcF9XMVhBaGR0ZjJWZ25XWWhpQ3FOVm52WkVIUFpISlZnUHRPNDNTSy1MWTNWcWN1Vi1BY2Niem1jNjZZRlU?oc=5"
         },
         {
-          "headline": "個人預金、過去最高の10京ドン突破",
-          "body": "ベトナムの銀行における個人預金残高が、過去最高の10京ドン（約62兆円）を突破しました。これは、銀行が預金金利を2桁に引き上げる動きを見せたことや、経済の不確実性が高まる中で、個人投資家がより安全な資産として銀行預金を選択していることが背景にあります。特に、不動産市場や株式市場の変動が続く中、安定したリターンを求める傾向が強まっています。この記録的な預金増加は、銀行の流動性を高める一方で、株式市場からの資金流出圧力となる可能性も示唆しています。 — Tuoi Tre News, BBC ↗",
-          "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPVzBIUHV4ZEJTQTRIUnVaSG05Qld6YkRtaVZWUmtWV1BITmk5M3IzZGpWTzFkVFVuVDlIcXEzM3BjUFltd0R3ZXBYNEJhdzRmU3BtMHFySno4ZkRKM3haeVczeTBPTkd6RGliN3VIMXMxcjExeEVHUlhKRzdabFdjOHpOSDRnRXRRLVVZcE1ET3UtUVl3cy00Q3hlbDBLYllRcHB2TU1MMVZvaWtpNGRIcDQxX2xOc0d3bThQZldlTFdxdnYtMEg4bXFB?oc=5"
+          "headline": "フーニュアン、自社株買い停止で急落",
+          "body": "フーニュアン・ジュエリー（PNJ）が、株主からの自社株買いに関する意見聴取を停止すると発表した直後、株価が急落した。PNJ株は直近3営業日でストップ高を記録するなど急騰していたが、この発表を受けて一転、下落に転じた。自社株買いは株価を下支えするポジティブな材料と見なされることが多いため、その計画停止は投資家心理にネガティブな影響を与えた。この動きは、企業の資本政策が株価に与える影響の大きさを改めて示すものであり、市場は今後のPNJの経営戦略や株主還元策について、より明確な説明を求めるだろう。 — Nhà Đầu Tư ↗",
+          "link": "https://nhadautu.vn/pnj-tinh-dieu-chinh-ke-hoach-kinh-doanh-co-phieu-quay-dau-giam-manh-d106820.html"
         },
         {
-          "headline": "外国人投資家、HPGとCTGを買い越し",
-          "body": "世界的な株式市場の混乱にもかかわらず、外国人投資家はベトナム市場で買い越しに転じ、約7000億ドン（約43.4億円）を買い越しました。特にホアファットグループ（HPG）とヴィエティンバンク（CTG）の株式を積極的に購入しています。この買い越しは、ベトナム市場全体のレジリエンスを示すと同時に、これら主要銘柄に対する海外からの強い信頼を反映していると言えるでしょう。ホアファットグループ（HPG）はベトナム最大の鉄鋼メーカーであり、ヴィエティンバンク（CTG）は大手国有銀行の一つであることから、両銘柄への資金流入は、ベトナム経済の基盤産業への期待が高いことを示唆しています。 — Tin nhanh chứng khoán, VnBusiness, diendandoanhnghiep.vn, 24HMoney ↗",
-          "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOOGpPa3JGREVTZDNzcER3bFFmWGtEbGZCcGtHc1hKUFZqTHNvSHVpTW5UMmd2SFlUbDBQS2xaUDVSYXVfVmtLVjREYmt1OWxaWURGVWpSS3RIM2Fabm5NUGNRMGRNbHpJUktiNFRYUGtVbC1oN0dEM1lXWlFneGZ4Nzk3ZjdDWTFJY3ItWXd5R0pXQVN3eEktaW44X3B6ZHNndFdRMkM1VWdiUHYzOFpWTThnaHdhZ9IBtgFBVV95cUxOOGpPa3JGREVTZDNzcER3bFFmWGtEbGZCcGtHc1hKUFZqTHNvSHVpTW5UMmd2SFlUbDBQS2xaUDVSYXVfVmtLVjREYmt1OWxaWURGVWpSS3RIM2Fabm5NUGNRMGRNbHpJUktiNFRYUGtVbC1oN0dEM1lXWlFneGZ4Nzk3ZjdDWTFJY3ItWXd5R0pXQVN3eEktaW44X3B6ZHNndFdRMkM1VWdiUHYzOFpWTThnaHdhZw?oc=5"
+          "headline": "ダナン、リエンチエウ港に372億円追加投資",
+          "body": "ダナン市がリエンチエウ港の共通インフラ整備に6.2兆ドン（約372億円）を追加投資すると発表した。この資金は、防波堤、液体貨物バース、アクセス道路、そして鉄道接続線の完成に充てられる。この大規模なインフラ投資は、リエンチエウ港の物流能力を大幅に向上させ、ベトナム中部地域の貿易ハブとしての役割を強化する。これにより、ジェマディプト（GMD）やハイアン運輸荷役（HAH）、ベトナムコンテナ（VSC）といった港湾運営・海運関連企業にとって、将来的な貨物取扱量の増加や事業機会の拡大が期待される。特に、VSCは掲示板バズ上位であり、市場の注目を集めるだろう。 — Nhà Đầu Tư ↗",
+          "link": "https://nhadautu.vn/da-nang-dau-tu-them-hon-6200-ty-vao-ha-tang-cang-lien-chieu-d106812.html"
+        },
+        {
+          "headline": "ケッペル、エンパイアシティ持分売却",
+          "body": "シンガポールのケッペル・コーポレーションが、ホーチミン市の大型不動産プロジェクト「エンパイアシティ」の40%持分を2.7億ドル（約405億円）で売却すると発表した。この撤退は、プロジェクトが抱える法的な問題が解決されていない中で行われ、88階建てのランドマークタワーの将来に疑問符を投げかけている。大手外資デベロッパーの撤退は、ベトナムの不動産市場、特に大規模プロジェクトにおける法規制の不透明性やリスクを浮き彫りにする。この動きは、他の外資系投資家や国内の不動産開発企業、例えばノバランド不動産投資グループ（NVL）やファットダット不動産開発（PDR）といった銘柄の投資判断にも影響を与える可能性がある。 — Nhà Đầu Tư ↗",
+          "link": "https://nhadautu.vn/thap-empire-city-88-tang-se-di-ve-dau-khi-keppel-rut-lui-d106816.html"
         }
       ],
-      "others": "・ガソリン価格が2ヶ月ぶりの高値 / ・ドルがドンに対して上昇 / ・ヴィエティンバンクが個人事業主向けデジタル空間を発表 /"
+      "others": "・バオベト、170兆ドン超預金で一時損失 / ・FPT、AI恩恵で注目銘柄に浮上 / ・ミス・ワールド2026、ハロン湾で開幕 /"
     }
   ]
 }
