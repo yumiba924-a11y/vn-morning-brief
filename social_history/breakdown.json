@@ -1,43 +1,32 @@
 {
-  "date": "2026-08-07",
-  "index_prev": 1764.78,
-  "index_cur": 1768.06,
-  "index_pt": 3.28,
-  "index_ret_pct": 0.19,
+  "date": "2026-08-10",
+  "index_prev": 1768.06,
+  "index_cur": 1776.77,
+  "index_pt": 8.71,
+  "index_ret_pct": 0.49,
   "is_break": false,
-  "vn30_contrib_pt": 4.27,
-  "residual_pt": -0.99,
+  "vn30_contrib_pt": 2.21,
+  "residual_pt": 6.5,
   "no_material_movers": [
     "LGC",
-    "BID"
+    "VPB"
   ],
   "culprits": [
     {
       "symbol": "VIC",
-      "ret_pct": -1.74,
-      "contrib_pt": -6.39,
-      "foreign_net_bn": -152.51,
+      "ret_pct": -3.02,
+      "contrib_pt": -12.05,
+      "foreign_net_bn": -29.16,
       "room_used_pct": 6.7,
       "in_vn30": true,
       "has_material": true,
-      "material_headline": "Sau VIC, VHM cũng tăng mạnh ngay ngày chia cổ phiếu, kịch bản cũ đang ",
-      "material_date": "08/06"
-    },
-    {
-      "symbol": "VHM",
-      "ret_pct": -5.32,
-      "contrib_pt": -3.65,
-      "foreign_net_bn": -284.45,
-      "room_used_pct": 14.2,
-      "in_vn30": true,
-      "has_material": true,
-      "material_headline": "Sau VIC, VHM cũng tăng mạnh ngay ngày chia cổ phiếu, kịch bản cũ đang ",
-      "material_date": "08/06"
+      "material_headline": "Nhịp đập Thị trường 10/08: Cổ phiếu VIC và VHM kìm hãm đà phục hồi của",
+      "material_date": "08/10"
     },
     {
       "symbol": "LGC",
       "ret_pct": -100.0,
-      "contrib_pt": -2.98,
+      "contrib_pt": -3.28,
       "foreign_net_bn": -0.02,
       "room_used_pct": 91.8,
       "in_vn30": false,
@@ -47,31 +36,97 @@
     },
     {
       "symbol": "GAS",
-      "ret_pct": 6.88,
-      "contrib_pt": 2.51,
-      "foreign_net_bn": 35.71,
+      "ret_pct": 6.97,
+      "contrib_pt": 3.0,
+      "foreign_net_bn": 31.96,
       "room_used_pct": 4.2,
       "in_vn30": true,
       "has_material": true,
-      "material_headline": "Cổ phiếu doanh nghiệp nhà nước GVR, PV GAS, BSR, Petrolimex, Becamex..",
-      "material_date": "08/07"
+      "material_headline": "Cổ phiếu PV GAS tăng trần phiên thứ 2 liên tiếp - vietnam.vn",
+      "material_date": "08/10"
     },
     {
-      "symbol": "CTG",
-      "ret_pct": 3.67,
-      "contrib_pt": 1.93,
-      "foreign_net_bn": 148.57,
-      "room_used_pct": 82.3,
+      "symbol": "TCB",
+      "ret_pct": 5.56,
+      "contrib_pt": 2.79,
+      "foreign_net_bn": -359.39,
+      "room_used_pct": 92.9,
       "in_vn30": true,
       "has_material": true,
-      "material_headline": "NHNN cần tăng nắm giữ bao nhiêu cổ phiếu CTG để sở hữu tối thiểu 65% V",
-      "material_date": "08/07"
+      "material_headline": "Cổ phiếu TCB bứt phá, nhóm ngân hàng đồng loạt tăng - nguoiquansat.vn",
+      "material_date": "08/10"
+    },
+    {
+      "symbol": "GVR",
+      "ret_pct": 6.89,
+      "contrib_pt": 1.96,
+      "foreign_net_bn": 9.21,
+      "room_used_pct": 4.8,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Chứng khoán trưa 10/8: BCM tăng trần, GAS - GVR kéo VN-Index tiến sát ",
+      "material_date": "08/10"
+    },
+    {
+      "symbol": "VPB",
+      "ret_pct": 3.4,
+      "contrib_pt": 1.61,
+      "foreign_net_bn": -31.39,
+      "room_used_pct": 77.3,
+      "in_vn30": true,
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
+    },
+    {
+      "symbol": "VHM",
+      "ret_pct": -1.92,
+      "contrib_pt": -1.37,
+      "foreign_net_bn": -248.1,
+      "room_used_pct": 14.2,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Vingroup chuyển nhượng gần 5 triệu cổ phiếu VHM, tỷ lệ sở hữu giảm còn",
+      "material_date": "08/10"
+    },
+    {
+      "symbol": "DMX",
+      "ret_pct": 4.88,
+      "contrib_pt": 1.24,
+      "foreign_net_bn": 173.16,
+      "room_used_pct": 19.1,
+      "in_vn30": false,
+      "has_material": true,
+      "material_headline": "Một số cổ phiếu cần quan tâm 10/8: Cơ hội tiềm năng với MWG và DMX - v",
+      "material_date": "08/09"
+    },
+    {
+      "symbol": "STG",
+      "ret_pct": -100.0,
+      "contrib_pt": -0.89,
+      "foreign_net_bn": -0.02,
+      "room_used_pct": 88.4,
+      "in_vn30": false,
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
+    },
+    {
+      "symbol": "BSR",
+      "ret_pct": 2.67,
+      "contrib_pt": 0.84,
+      "foreign_net_bn": 7.96,
+      "room_used_pct": 2.4,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Lịch chốt quyền cổ tức tuần 10-14/8: MBB, BSR, MCH đồng loạt thanh toá",
+      "material_date": "08/09"
     },
     {
       "symbol": "BID",
-      "ret_pct": 3.03,
-      "contrib_pt": 1.81,
-      "foreign_net_bn": 42.42,
+      "ret_pct": 1.15,
+      "contrib_pt": 0.78,
+      "foreign_net_bn": 13.49,
       "room_used_pct": 58.4,
       "in_vn30": true,
       "has_material": false,
@@ -79,70 +134,15 @@
       "material_date": null
     },
     {
-      "symbol": "VCF",
-      "ret_pct": -100.0,
-      "contrib_pt": -1.68,
-      "foreign_net_bn": -0.03,
-      "room_used_pct": 1.0,
-      "in_vn30": false,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "GVR",
-      "ret_pct": 6.82,
-      "contrib_pt": 1.65,
-      "foreign_net_bn": 6.58,
-      "room_used_pct": 4.7,
+      "symbol": "MWG",
+      "ret_pct": 2.82,
+      "contrib_pt": 0.71,
+      "foreign_net_bn": 0.02,
+      "room_used_pct": 100.0,
       "in_vn30": true,
       "has_material": true,
-      "material_headline": "Cổ phiếu DN nhà nước GVR, BCM, GAS... đồng loạt tăng trần: Điều gì đã ",
-      "material_date": "08/07"
-    },
-    {
-      "symbol": "VNM",
-      "ret_pct": 5.08,
-      "contrib_pt": 1.36,
-      "foreign_net_bn": 160.7,
-      "room_used_pct": 49.6,
-      "in_vn30": true,
-      "has_material": true,
-      "material_headline": "VNM: Khuyến nghị MUA với giá mục tiêu 86,800 đồng/cổ phiếu - Vietstock",
-      "material_date": "08/06"
-    },
-    {
-      "symbol": "VCB",
-      "ret_pct": 1.19,
-      "contrib_pt": 1.27,
-      "foreign_net_bn": -27.42,
-      "room_used_pct": 67.2,
-      "in_vn30": true,
-      "has_material": true,
-      "material_headline": "Chứng khoán hôm nay: Khuyến nghị mua DMX, POW và chờ mua VCB - bnews.v",
-      "material_date": "08/07"
-    },
-    {
-      "symbol": "BSR",
-      "ret_pct": 4.59,
-      "contrib_pt": 1.25,
-      "foreign_net_bn": 34.06,
-      "room_used_pct": 2.4,
-      "in_vn30": true,
-      "has_material": true,
-      "material_headline": "Cổ phiếu doanh nghiệp nhà nước GVR, PV GAS, BSR, Petrolimex, Becamex..",
-      "material_date": "08/07"
-    },
-    {
-      "symbol": "ACG",
-      "ret_pct": -100.0,
-      "contrib_pt": -1.02,
-      "foreign_net_bn": 0.01,
-      "room_used_pct": 76.9,
-      "in_vn30": false,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
+      "material_headline": "Một số cổ phiếu cần quan tâm 10/8: Cơ hội tiềm năng với MWG và DMX - v",
+      "material_date": "08/09"
     }
   ]
 }
