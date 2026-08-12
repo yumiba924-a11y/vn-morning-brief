@@ -1,19 +1,39 @@
 {
-  "date": "2026-08-11",
-  "index_prev": 1776.77,
-  "index_cur": 1773.41,
-  "index_pt": -3.36,
-  "index_ret_pct": -0.19,
-  "is_break": false,
-  "vn30_contrib_pt": -4.27,
-  "residual_pt": 0.91,
+  "date": "2026-08-12",
+  "index_prev": 1773.41,
+  "index_cur": 1793.18,
+  "index_pt": 19.77,
+  "index_ret_pct": 1.11,
+  "is_break": true,
+  "vn30_contrib_pt": 17.8,
+  "residual_pt": 1.97,
   "no_material_movers": [
-    "LGC",
-    "LPB",
-    "VCB",
-    "STG"
+    "CRV",
+    "LGC"
   ],
   "culprits": [
+    {
+      "symbol": "VIC",
+      "ret_pct": 3.36,
+      "contrib_pt": 11.79,
+      "foreign_net_bn": 188.78,
+      "room_used_pct": 6.7,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Nhịp đập Thị trường 12/08: Tiếp tục giằng co, cổ phiếu VIC và VHM góp ",
+      "material_date": "08/12"
+    },
+    {
+      "symbol": "CRV",
+      "ret_pct": -100.0,
+      "contrib_pt": -3.65,
+      "foreign_net_bn": -0.0,
+      "room_used_pct": 0.0,
+      "in_vn30": false,
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
+    },
     {
       "symbol": "LGC",
       "ret_pct": -100.0,
@@ -26,48 +46,37 @@
       "material_date": null
     },
     {
+      "symbol": "VHM",
+      "ret_pct": 2.36,
+      "contrib_pt": 1.51,
+      "foreign_net_bn": -67.12,
+      "room_used_pct": 13.9,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Vingroup chuyển nhượng gần 5 triệu cổ phiếu VHM - nguoiquansat.vn",
+      "material_date": "08/10"
+    },
+    {
+      "symbol": "TMS",
+      "ret_pct": -100.0,
+      "contrib_pt": -1.36,
+      "foreign_net_bn": -0.0,
+      "room_used_pct": 84.1,
+      "in_vn30": false,
+      "has_material": true,
+      "material_headline": "Transimex (TMS): Sắp phát hành hơn 12 triệu cổ phiếu để trả cổ tức, lã",
+      "material_date": "08/09"
+    },
+    {
       "symbol": "GAS",
-      "ret_pct": -2.88,
-      "contrib_pt": -1.2,
-      "foreign_net_bn": 1.47,
+      "ret_pct": 3.23,
+      "contrib_pt": 1.31,
+      "foreign_net_bn": 2.69,
       "room_used_pct": 4.2,
       "in_vn30": true,
       "has_material": true,
       "material_headline": "Cổ phiếu PV GAS tăng trần phiên thứ 2 liên tiếp - Znews",
       "material_date": "08/10"
-    },
-    {
-      "symbol": "LPB",
-      "ret_pct": 2.68,
-      "contrib_pt": 0.91,
-      "foreign_net_bn": 55.16,
-      "room_used_pct": 27.7,
-      "in_vn30": true,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "VCB",
-      "ret_pct": -0.83,
-      "contrib_pt": -0.91,
-      "foreign_net_bn": -25.45,
-      "room_used_pct": 67.2,
-      "in_vn30": true,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "CTG",
-      "ret_pct": -1.52,
-      "contrib_pt": -0.84,
-      "foreign_net_bn": -2.63,
-      "room_used_pct": 82.4,
-      "in_vn30": true,
-      "has_material": true,
-      "material_headline": "Cổ phiếu CTG - NÂNG TỶ LỆ SỞ HỮU NHÀ NƯỚC - CÓ NÊN MUA? Bóc tách BCTC ",
-      "material_date": "08/11"
     },
     {
       "symbol": "STG",
@@ -81,70 +90,59 @@
       "material_date": null
     },
     {
-      "symbol": "GEE",
-      "ret_pct": 6.91,
-      "contrib_pt": 0.67,
-      "foreign_net_bn": 5.8,
-      "room_used_pct": 2.2,
-      "in_vn30": false,
-      "has_material": true,
-      "material_headline": "Cổ phiếu Gelex Electric (GEE) bất ngờ “cháy hàng” giữa phiên thị trườn",
-      "material_date": "08/11"
-    },
-    {
-      "symbol": "BID",
-      "ret_pct": -1.01,
-      "contrib_pt": -0.63,
-      "foreign_net_bn": 13.7,
-      "room_used_pct": 58.4,
-      "in_vn30": true,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "VPB",
-      "ret_pct": -1.35,
-      "contrib_pt": -0.6,
-      "foreign_net_bn": -35.09,
-      "room_used_pct": 77.0,
-      "in_vn30": true,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
-    },
-    {
-      "symbol": "BSR",
-      "ret_pct": -2.07,
-      "contrib_pt": -0.6,
-      "foreign_net_bn": -1.85,
-      "room_used_pct": 2.4,
-      "in_vn30": true,
-      "has_material": true,
-      "material_headline": "Khuyến nghị cổ phiếu PDR, DXG, BSR, ELC, AST ngày 11/8 - bnews.vn",
-      "material_date": "08/11"
-    },
-    {
       "symbol": "TCB",
-      "ret_pct": -1.12,
-      "contrib_pt": -0.54,
-      "foreign_net_bn": -221.79,
-      "room_used_pct": 92.8,
+      "ret_pct": 1.61,
+      "contrib_pt": 0.77,
+      "foreign_net_bn": -51.77,
+      "room_used_pct": 92.4,
       "in_vn30": true,
       "has_material": true,
-      "material_headline": "Tự doanh chứng khoán mua ròng hàng trăm tỉ đồng, cổ phiếu TCB áp sát k",
+      "material_headline": "TCB: Cổ phiếu TCB còn dư địa? - CÔNG TY CỔ PHẦN CHỨNG KHOÁN CV",
+      "material_date": "08/12"
+    },
+    {
+      "symbol": "GVR",
+      "ret_pct": 2.71,
+      "contrib_pt": 0.74,
+      "foreign_net_bn": -9.1,
+      "room_used_pct": 4.9,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Gợi ý mã cổ phiếu tiềm năng: GVR - Chứng khoán DNSE",
       "material_date": "08/10"
     },
     {
-      "symbol": "TCX",
-      "ret_pct": 2.0,
-      "contrib_pt": 0.48,
-      "foreign_net_bn": -30.16,
-      "room_used_pct": 9.2,
+      "symbol": "BCM",
+      "ret_pct": 6.93,
+      "contrib_pt": 0.64,
+      "foreign_net_bn": -15.32,
+      "room_used_pct": 1.5,
+      "in_vn30": false,
+      "has_material": true,
+      "material_headline": "Cổ phiếu BCM tăng trần, “cháy hàng” trong ngày VN-Index áp sát mốc 1.8",
+      "material_date": "08/12"
+    },
+    {
+      "symbol": "DMX",
+      "ret_pct": 2.16,
+      "contrib_pt": 0.52,
+      "foreign_net_bn": -25.78,
+      "room_used_pct": 19.0,
+      "in_vn30": false,
+      "has_material": true,
+      "material_headline": "DMX chi hơn 5.000 tỷ chia cổ tức bằng tiền - VnEconomy",
+      "material_date": "08/12"
+    },
+    {
+      "symbol": "BSR",
+      "ret_pct": 1.73,
+      "contrib_pt": 0.49,
+      "foreign_net_bn": 20.23,
+      "room_used_pct": 2.4,
       "in_vn30": true,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
+      "has_material": true,
+      "material_headline": "Cổ phiếu đáng chú ý ngày 12/8: BSR, FRT và MBB - bnews.vn",
+      "material_date": "08/12"
     }
   ]
 }
