@@ -1,38 +1,28 @@
 {
-  "date": "2026-08-12",
-  "index_prev": 1773.41,
-  "index_cur": 1793.18,
-  "index_pt": 19.77,
-  "index_ret_pct": 1.11,
+  "date": "2026-08-13",
+  "index_prev": 1793.18,
+  "index_cur": 1765.63,
+  "index_pt": -27.55,
+  "index_ret_pct": -1.54,
   "is_break": true,
-  "vn30_contrib_pt": 17.8,
-  "residual_pt": 1.97,
+  "vn30_contrib_pt": -22.55,
+  "residual_pt": -5.0,
   "no_material_movers": [
-    "CRV",
-    "LGC"
+    "LGC",
+    "VCF",
+    "STG"
   ],
   "culprits": [
     {
       "symbol": "VIC",
-      "ret_pct": 3.36,
-      "contrib_pt": 11.79,
-      "foreign_net_bn": 188.78,
+      "ret_pct": -3.53,
+      "contrib_pt": -12.8,
+      "foreign_net_bn": -126.51,
       "room_used_pct": 6.7,
       "in_vn30": true,
       "has_material": true,
       "material_headline": "Nhịp đập Thị trường 12/08: Tiếp tục giằng co, cổ phiếu VIC và VHM góp ",
       "material_date": "08/12"
-    },
-    {
-      "symbol": "CRV",
-      "ret_pct": -100.0,
-      "contrib_pt": -3.65,
-      "foreign_net_bn": -0.0,
-      "room_used_pct": 0.0,
-      "in_vn30": false,
-      "has_material": false,
-      "material_headline": null,
-      "material_date": null
     },
     {
       "symbol": "LGC",
@@ -47,35 +37,35 @@
     },
     {
       "symbol": "VHM",
-      "ret_pct": 2.36,
-      "contrib_pt": 1.51,
-      "foreign_net_bn": -67.12,
-      "room_used_pct": 13.9,
+      "ret_pct": -2.71,
+      "contrib_pt": -1.78,
+      "foreign_net_bn": -159.61,
+      "room_used_pct": 13.7,
       "in_vn30": true,
       "has_material": true,
-      "material_headline": "Vingroup chuyển nhượng gần 5 triệu cổ phiếu VHM - nguoiquansat.vn",
-      "material_date": "08/10"
+      "material_headline": "Chứng khoán hôm nay: Vì sao đu đỉnh VHM VIC vẫn có lãi, mua cổ phiếu k",
+      "material_date": "08/13"
     },
     {
-      "symbol": "TMS",
+      "symbol": "VCF",
       "ret_pct": -100.0,
-      "contrib_pt": -1.36,
-      "foreign_net_bn": -0.0,
-      "room_used_pct": 84.1,
+      "contrib_pt": -1.71,
+      "foreign_net_bn": -0.01,
+      "room_used_pct": 1.0,
       "in_vn30": false,
-      "has_material": true,
-      "material_headline": "Transimex (TMS): Sắp phát hành hơn 12 triệu cổ phiếu để trả cổ tức, lã",
-      "material_date": "08/09"
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
     },
     {
       "symbol": "GAS",
-      "ret_pct": 3.23,
-      "contrib_pt": 1.31,
-      "foreign_net_bn": 2.69,
+      "ret_pct": -2.62,
+      "contrib_pt": -1.1,
+      "foreign_net_bn": -2.99,
       "room_used_pct": 4.2,
       "in_vn30": true,
       "has_material": true,
-      "material_headline": "Cổ phiếu PV GAS tăng trần phiên thứ 2 liên tiếp - Znews",
+      "material_headline": "Cổ phiếu đáng chú ý ngày 11/8: TCB, GAS, VGC - nguoiquansat.vn",
       "material_date": "08/10"
     },
     {
@@ -90,59 +80,70 @@
       "material_date": null
     },
     {
-      "symbol": "TCB",
-      "ret_pct": 1.61,
-      "contrib_pt": 0.77,
-      "foreign_net_bn": -51.77,
-      "room_used_pct": 92.4,
+      "symbol": "HPG",
+      "ret_pct": -1.81,
+      "contrib_pt": -0.73,
+      "foreign_net_bn": -106.65,
+      "room_used_pct": 44.4,
       "in_vn30": true,
       "has_material": true,
-      "material_headline": "TCB: Cổ phiếu TCB còn dư địa? - CÔNG TY CỔ PHẦN CHỨNG KHOÁN CV",
+      "material_headline": "HPG đã hoàn thành 70% mục tiêu lợi nhuận năm, cổ phiếu ngành thép liệu",
       "material_date": "08/12"
     },
     {
-      "symbol": "GVR",
-      "ret_pct": 2.71,
-      "contrib_pt": 0.74,
-      "foreign_net_bn": -9.1,
-      "room_used_pct": 4.9,
+      "symbol": "ACB",
+      "ret_pct": -2.42,
+      "contrib_pt": -0.69,
+      "foreign_net_bn": -92.85,
+      "room_used_pct": 80.5,
       "in_vn30": true,
       "has_material": true,
-      "material_headline": "Gợi ý mã cổ phiếu tiềm năng: GVR - Chứng khoán DNSE",
-      "material_date": "08/10"
+      "material_headline": "Ba cổ phiếu ngân hàng ACB, SSB, MSB vào rổ MSCI Frontier Markets - Vie",
+      "material_date": "08/13"
     },
     {
-      "symbol": "BCM",
-      "ret_pct": 6.93,
-      "contrib_pt": 0.64,
-      "foreign_net_bn": -15.32,
-      "room_used_pct": 1.5,
+      "symbol": "VCK",
+      "ret_pct": -4.22,
+      "contrib_pt": -0.69,
+      "foreign_net_bn": -41.96,
+      "room_used_pct": 3.7,
       "in_vn30": false,
-      "has_material": true,
-      "material_headline": "Cổ phiếu BCM tăng trần, “cháy hàng” trong ngày VN-Index áp sát mốc 1.8",
-      "material_date": "08/12"
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
     },
     {
-      "symbol": "DMX",
-      "ret_pct": 2.16,
-      "contrib_pt": 0.52,
-      "foreign_net_bn": -25.78,
-      "room_used_pct": 19.0,
-      "in_vn30": false,
-      "has_material": true,
-      "material_headline": "DMX chi hơn 5.000 tỷ chia cổ tức bằng tiền - VnEconomy",
-      "material_date": "08/12"
+      "symbol": "BID",
+      "ret_pct": -1.02,
+      "contrib_pt": -0.63,
+      "foreign_net_bn": 20.25,
+      "room_used_pct": 58.5,
+      "in_vn30": true,
+      "has_material": false,
+      "material_headline": null,
+      "material_date": null
     },
     {
-      "symbol": "BSR",
-      "ret_pct": 1.73,
-      "contrib_pt": 0.49,
-      "foreign_net_bn": 20.23,
-      "room_used_pct": 2.4,
+      "symbol": "VPB",
+      "ret_pct": -1.36,
+      "contrib_pt": -0.6,
+      "foreign_net_bn": -32.27,
+      "room_used_pct": 76.7,
       "in_vn30": true,
       "has_material": true,
-      "material_headline": "Cổ phiếu đáng chú ý ngày 12/8: BSR, FRT và MBB - bnews.vn",
-      "material_date": "08/12"
+      "material_headline": "Nhận định cổ phiếu MWG, REE, VPB: Khuyến nghị và giá mục tiêu - bnews.",
+      "material_date": "08/13"
+    },
+    {
+      "symbol": "FPT",
+      "ret_pct": -2.26,
+      "contrib_pt": -0.59,
+      "foreign_net_bn": -54.78,
+      "room_used_pct": 56.2,
+      "in_vn30": true,
+      "has_material": true,
+      "material_headline": "Cập nhật cổ phiếu FPT – Cuộc gặp với chuyên viên phân tích: Nắm bắt cơ",
+      "material_date": "08/11"
     }
   ]
 }
